@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社PLUS - 生徒の「考え」を、進路指導の力に。</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- ヘッダー -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-blue-900">
+                    株式会社PLUS
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-900 font-medium">ホーム</a>
+                    <a href="service.html" class="text-gray-700 hover:text-blue-900 font-medium">サービス紹介</a>
+                    <a href="company.html" class="text-gray-700 hover:text-blue-900 font-medium">会社概要</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-900 font-medium">お問い合わせ</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- モバイルメニュー -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="index.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">ホーム</a>
+                <a href="service.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">サービス紹介</a>
+                <a href="company.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">会社概要</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="bg-gradient-to-b from-blue-50 to-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6">
+                生徒の「考え」を、<br class="md:hidden">進路指導の力に。
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto">
+                AIと記録の力で、<br class="md:hidden">進路面談の質と時間を最大化します。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="service.html" class="inline-block bg-blue-900 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-800 transition">
+                    サービスについて詳しく見る
+                </a>
+                <a href="contact.html" class="inline-block bg-white text-blue-900 border-2 border-blue-900 px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-50 transition">
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンセプトセクション -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+                    学校・先生が安心して使える<br class="md:hidden">進路支援ツール
+                </h2>
+                <div class="w-20 h-1 bg-blue-900 mx-auto mb-8"></div>
+            </div>
+            <div class="bg-blue-50 rounded-2xl p-8 md:p-12">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                    株式会社PLUSは、学校・先生が安心して使える進路支援ツールを提供しています。
+                </p>
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    生徒の思いや考えを日常的に記録し、進路指導主事・学年主任の先生が<br>
+                    <span class="font-bold text-blue-900">「探す時間」ではなく「向き合う時間」</span>に集中できる環境をつくります。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VisionWell+ 概要 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    VisionWell+
+                </h2>
+                <p class="text-xl text-gray-600">
+                    進路支援を変える、3つの視点
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 生徒にとって -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-900 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">生徒にとって</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>AIに相談しながら考えを整理できる</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>自分の気持ち・価値観を言葉にできる</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>面談の場で「うまく話せない」を減らせる</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 教員にとって -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-900 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">教員にとって</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>生徒の記録を一元管理</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>調査票作成時に、過去の記録を探し回らなくていい</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>面談前に生徒像を把握できる</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 学校にとって -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-900 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">学校にとって</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>進路面談の正味時間を最大化</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>指導の質が属人化しにくい</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-2">✓</span>
+                            <span>記録が蓄積され、学年・年度を越えて活用できる</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="service.html" class="inline-block bg-blue-900 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-800 transition">
+                    サービスの詳細を見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    導入による変化
+                </h2>
+                <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Before -->
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-6 flex items-center">
+                        <span class="bg-gray-300 text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                            Before
+                        </span>
+                    </h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-gray-400 mr-3 text-xl">×</span>
+                            <span>記録が点在している</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-400 mr-3 text-xl">×</span>
+                            <span>面談前の情報整理に時間がかかる</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gray-400 mr-3 text-xl">×</span>
+                            <span>生徒の考えが十分に引き出せない</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- After -->
+                <div class="bg-blue-50 rounded-xl p-8 border-2 border-blue-200">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-6 flex items-center">
+                        <span class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                            After
+                        </span>
+                    </h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-3 text-xl">✓</span>
+                            <span>記録が自然に蓄積される</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-3 text-xl">✓</span>
+                            <span>面談は「考えを深める時間」に集中</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-900 mr-3 text-xl">✓</span>
+                            <span>生徒が主体的に進路を考えられる</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-blue-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                まずはお気軽にご相談ください
+            </h2>
+            <p class="text-xl text-blue-100 mb-8">
+                サービスについてのご相談、導入検討・実証実験のご相談を承っております。
+            </p>
+            <a href="contact.html" class="inline-block bg-white text-blue-900 px-10 py-4 rounded-lg font-medium text-lg hover:bg-blue-50 transition">
+                お問い合わせはこちら
+            </a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">株式会社PLUS</h3>
+                    <p class="text-gray-600">
+                        教育機関向け進路支援サービスの<br>企画・開発・提供
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">サイトマップ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-600 hover:text-blue-900">ホーム</a></li>
+                        <li><a href="service.html" class="text-gray-600 hover:text-blue-900">サービス紹介</a></li>
+                        <li><a href="company.html" class="text-gray-600 hover:text-blue-900">会社概要</a></li>
+                        <li><a href="contact.html" class="text-gray-600 hover:text-blue-900">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">所在地</h4>
+                    <p class="text-gray-600">
+                        愛知県名古屋市
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-gray-600">
+                <p>&copy; 2026 株式会社PLUS All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

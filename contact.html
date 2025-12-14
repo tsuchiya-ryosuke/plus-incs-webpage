@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 株式会社PLUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- ヘッダー -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-blue-900">
+                    株式会社PLUS
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-900 font-medium">ホーム</a>
+                    <a href="service.html" class="text-gray-700 hover:text-blue-900 font-medium">サービス紹介</a>
+                    <a href="company.html" class="text-gray-700 hover:text-blue-900 font-medium">会社概要</a>
+                    <a href="contact.html" class="text-blue-900 font-medium border-b-2 border-blue-900">お問い合わせ</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- モバイルメニュー -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="index.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">ホーム</a>
+                <a href="service.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">サービス紹介</a>
+                <a href="company.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">会社概要</a>
+                <a href="contact.html" class="block text-blue-900 font-medium py-2">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ページヒーロー -->
+    <section class="bg-gradient-to-b from-blue-50 to-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+                お問い合わせ
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700">
+                お気軽にご相談ください
+            </p>
+        </div>
+    </section>
+
+    <!-- お問い合わせフォーム -->
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="text-lg text-gray-700 mb-8">
+                    サービスについてのご相談、導入検討・実証実験のご相談など、<br class="hidden md:block">
+                    どのようなことでもお気軽にお問い合わせください。<br>
+                    担当者より、2営業日以内にご連絡させていただきます。
+                </p>
+            </div>
+
+            <!-- お問い合わせ種別の案内 -->
+            <div class="grid md:grid-cols-3 gap-4 mb-12">
+                <div class="bg-blue-50 rounded-lg p-6 text-center">
+                    <div class="text-blue-900 mb-3">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">資料請求</h3>
+                    <p class="text-sm text-gray-600">サービス資料をお送りします</p>
+                </div>
+
+                <div class="bg-blue-50 rounded-lg p-6 text-center">
+                    <div class="text-blue-900 mb-3">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">導入相談</h3>
+                    <p class="text-sm text-gray-600">導入についてご相談いただけます</p>
+                </div>
+
+                <div class="bg-blue-50 rounded-lg p-6 text-center">
+                    <div class="text-blue-900 mb-3">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">実証実験</h3>
+                    <p class="text-sm text-gray-600">PoCのご相談を承ります</p>
+                </div>
+            </div>
+
+            <!-- フォーム -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 md:p-10">
+                <form id="contact-form" class="space-y-6">
+                    <!-- お名前 -->
+                    <div>
+                        <label for="name" class="block text-sm font-bold text-gray-900 mb-2">
+                            お名前 <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
+                            placeholder="山田 太郎"
+                        >
+                    </div>
+
+                    <!-- 学校名・組織名 -->
+                    <div>
+                        <label for="organization" class="block text-sm font-bold text-gray-900 mb-2">
+                            学校名・組織名 <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="organization"
+                            name="organization"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
+                            placeholder="○○高等学校"
+                        >
+                    </div>
+
+                    <!-- メールアドレス -->
+                    <div>
+                        <label for="email" class="block text-sm font-bold text-gray-900 mb-2">
+                            メールアドレス <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
+                            placeholder="example@school.ed.jp"
+                        >
+                    </div>
+
+                    <!-- 電話番号 -->
+                    <div>
+                        <label for="phone" class="block text-sm font-bold text-gray-900 mb-2">
+                            電話番号 <span class="text-gray-500 text-xs font-normal">（任意）</span>
+                        </label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
+                            placeholder="03-1234-5678"
+                        >
+                    </div>
+
+                    <!-- お問い合わせ種別 -->
+                    <div>
+                        <label for="inquiry-type" class="block text-sm font-bold text-gray-900 mb-2">
+                            お問い合わせ種別 <span class="text-red-500">*</span>
+                        </label>
+                        <select
+                            id="inquiry-type"
+                            name="inquiry-type"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
+                        >
+                            <option value="">選択してください</option>
+                            <option value="資料請求">資料請求</option>
+                            <option value="導入相談">導入相談</option>
+                            <option value="実証実験の相談">実証実験の相談</option>
+                            <option value="サービスについて詳しく聞きたい">サービスについて詳しく聞きたい</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+
+                    <!-- お問い合わせ内容 -->
+                    <div>
+                        <label for="message" class="block text-sm font-bold text-gray-900 mb-2">
+                            お問い合わせ内容 <span class="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
+                            placeholder="お問い合わせ内容をご記入ください"
+                        ></textarea>
+                    </div>
+
+                    <!-- プライバシーポリシー -->
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <label class="flex items-start">
+                            <input
+                                type="checkbox"
+                                id="privacy"
+                                name="privacy"
+                                required
+                                class="mt-1 mr-3 w-5 h-5 text-blue-900 border-gray-300 rounded focus:ring-blue-900"
+                            >
+                            <span class="text-sm text-gray-700">
+                                個人情報の取り扱いについて同意します。<br>
+                                <span class="text-xs text-gray-600">お預かりした個人情報は、お問い合わせへの対応およびサービスのご案内のみに利用し、第三者に提供することはありません。</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- 送信ボタン -->
+                    <div class="text-center pt-4">
+                        <button
+                            type="submit"
+                            class="bg-blue-900 text-white px-12 py-4 rounded-lg font-bold text-lg hover:bg-blue-800 transition shadow-md hover:shadow-lg w-full md:w-auto"
+                        >
+                            送信する
+                        </button>
+                    </div>
+
+                    <!-- フォーム送信後のメッセージ表示エリア -->
+                    <div id="form-message" class="hidden mt-4 p-4 rounded-lg text-center"></div>
+                </form>
+
+                <!-- 注記 -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-600 text-center">
+                        <span class="text-red-500">*</span> は必須項目です<br>
+                        担当者より、2営業日以内にご連絡させていただきます。
+                    </p>
+                </div>
+            </div>
+
+            <!-- その他の連絡方法 -->
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">
+                    お急ぎの場合や、その他のご質問がございましたら、<br class="hidden md:block">
+                    お気軽にお問い合わせください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">株式会社PLUS</h3>
+                    <p class="text-gray-600">
+                        教育機関向け進路支援サービスの<br>企画・開発・提供
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">サイトマップ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-600 hover:text-blue-900">ホーム</a></li>
+                        <li><a href="service.html" class="text-gray-600 hover:text-blue-900">サービス紹介</a></li>
+                        <li><a href="company.html" class="text-gray-600 hover:text-blue-900">会社概要</a></li>
+                        <li><a href="contact.html" class="text-gray-600 hover:text-blue-900">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">所在地</h4>
+                    <p class="text-gray-600">
+                        愛知県名古屋市
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-gray-600">
+                <p>&copy; 2026 株式会社PLUS All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // フォーム送信処理（デモ用）
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.className = 'mt-4 p-4 rounded-lg text-center bg-blue-50 border border-blue-200';
+            messageDiv.innerHTML = `
+                <div class="text-blue-900">
+                    <svg class="w-12 h-12 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="font-bold mb-2">お問い合わせを受け付けました</p>
+                    <p class="text-sm">担当者より2営業日以内にご連絡させていただきます。</p>
+                </div>
+            `;
+            messageDiv.classList.remove('hidden');
+
+            // フォームをリセット
+            this.reset();
+
+            // ページトップまでスクロール
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 注記: 実際の運用時には、ここでGoogle FormsやNotion Forms、
+            // またはバックエンドAPIに送信する処理を実装してください
+        });
+    </script>
+</body>
+</html>

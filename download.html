@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資料ダウンロード | 株式会社PLUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .gradient-border {
+            position: relative;
+            background: white;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 via-white to-blue-50">
+    <!-- ヘッダー -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-blue-900">
+                    株式会社PLUS
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-900 font-medium transition">ホーム</a>
+                    <a href="service.html" class="text-gray-700 hover:text-blue-900 font-medium transition">サービス紹介</a>
+                    <a href="company.html" class="text-gray-700 hover:text-blue-900 font-medium transition">会社概要</a>
+                    <a href="download.html" class="text-blue-900 font-medium border-b-2 border-blue-900">資料請求</a>
+                    <a href="contact.html" class="bg-blue-900 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-800 transition shadow-md hover:shadow-lg">お問い合わせ</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- モバイルメニュー -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="index.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">ホーム</a>
+                <a href="service.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">サービス紹介</a>
+                <a href="company.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">会社概要</a>
+                <a href="download.html" class="block text-blue-900 font-medium py-2">資料請求</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ページヒーロー -->
+    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 py-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 animate-fadeInUp">
+            <div class="inline-block bg-blue-700/50 backdrop-blur-sm text-blue-100 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                3分で完了
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                サービス資料ダウンロード
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+                VisionWell+の詳細資料を無料でお送りします
+            </p>
+        </div>
+    </section>
+
+    <!-- 資料内容の紹介 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    資料に含まれる内容
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-900 to-blue-600 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- サービス概要 -->
+                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
+                    <div class="bg-blue-900 w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">サービス概要</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>VisionWell+の基本機能</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>生徒・教員・学校それぞれのメリット</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>システムの特徴と強み</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 導入の流れ -->
+                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
+                    <div class="bg-blue-900 w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">導入の流れ</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>導入までのステップ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>必要な準備と期間</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>サポート体制</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- よくある質問 -->
+                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
+                    <div class="bg-blue-900 w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4">よくある質問</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>セキュリティ・個人情報保護</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>料金プランと契約形態</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>既存システムとの連携</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ダウンロードフォーム -->
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    今すぐ資料をダウンロード
+                </h2>
+                <p class="text-lg text-gray-600">
+                    ご入力いただいたメールアドレス宛に、資料のダウンロードリンクをお送りします
+                </p>
+            </div>
+
+            <!-- フォーム -->
+            <div class="gradient-border rounded-2xl p-8 md:p-10 bg-white shadow-2xl">
+                <form id="download-form" class="space-y-6">
+                    <!-- お名前 -->
+                    <div>
+                        <label for="name" class="block text-sm font-bold text-gray-900 mb-2">
+                            お名前 <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            placeholder="山田 太郎"
+                        >
+                    </div>
+
+                    <!-- 学校名・組織名 -->
+                    <div>
+                        <label for="organization" class="block text-sm font-bold text-gray-900 mb-2">
+                            学校名・組織名 <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="organization"
+                            name="organization"
+                            required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            placeholder="○○高等学校"
+                        >
+                    </div>
+
+                    <!-- メールアドレス -->
+                    <div>
+                        <label for="email" class="block text-sm font-bold text-gray-900 mb-2">
+                            メールアドレス <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            placeholder="example@school.ed.jp"
+                        >
+                    </div>
+
+                    <!-- プライバシーポリシー -->
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                        <label class="flex items-start cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="privacy"
+                                name="privacy"
+                                required
+                                class="mt-1 mr-3 w-5 h-5 text-blue-900 border-gray-300 rounded focus:ring-blue-900"
+                            >
+                            <span class="text-sm text-gray-700">
+                                個人情報の取り扱いについて同意します。<br>
+                                <span class="text-xs text-gray-600">お預かりした個人情報は、資料送付およびサービスのご案内のみに利用し、第三者に提供することはありません。</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- 送信ボタン -->
+                    <div class="text-center pt-4">
+                        <button
+                            type="submit"
+                            class="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-12 py-4 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl w-full md:w-auto transform hover:-translate-y-1"
+                        >
+                            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            資料をダウンロード
+                        </button>
+                    </div>
+
+                    <!-- フォーム送信後のメッセージ表示エリア -->
+                    <div id="form-message" class="hidden mt-4 p-6 rounded-xl text-center"></div>
+                </form>
+
+                <!-- 注記 -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-600 text-center">
+                        <span class="text-red-500">*</span> は必須項目です<br>
+                        ご登録いただいたメールアドレス宛に、即時で資料ダウンロードリンクをお送りします。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 安心ポイント -->
+            <div class="mt-12 grid md:grid-cols-3 gap-6 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                        <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700">個人情報は厳重に管理</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                        <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700">即時ダウンロード可能</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                        <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700">無理な営業は一切なし</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 次のステップ -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-blue-900 mb-8">
+                資料ダウンロード後、さらに詳しく知りたい方へ
+            </h2>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="inline-block bg-white text-blue-900 border-2 border-blue-900 px-8 py-4 rounded-xl font-medium text-lg hover:bg-blue-50 transition-all duration-300 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                    </svg>
+                    導入について相談する
+                </a>
+                <a href="service.html" class="inline-block bg-blue-900 text-white px-8 py-4 rounded-xl font-medium text-lg hover:bg-blue-800 transition-all duration-300 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    サービス詳細を見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gradient-to-br from-gray-900 to-gray-800 py-12 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">株式会社PLUS</h3>
+                    <p class="text-gray-300">
+                        教育機関向け進路支援サービスの<br>企画・開発・提供
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">サイトマップ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition">ホーム</a></li>
+                        <li><a href="service.html" class="text-gray-300 hover:text-white transition">サービス紹介</a></li>
+                        <li><a href="company.html" class="text-gray-300 hover:text-white transition">会社概要</a></li>
+                        <li><a href="download.html" class="text-gray-300 hover:text-white transition">資料請求</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">所在地</h4>
+                    <p class="text-gray-300">
+                        愛知県名古屋市
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 株式会社PLUS All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // フォーム送信処理
+        document.getElementById('download-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.className = 'mt-4 p-6 rounded-xl text-center bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200';
+            messageDiv.innerHTML = `
+                <div class="text-green-900">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="font-bold text-xl mb-2">資料ダウンロードリンクを送信しました</p>
+                    <p class="text-sm mb-4">ご登録いただいたメールアドレス宛に、資料のダウンロードリンクをお送りしました。<br>メールが届かない場合は、迷惑メールフォルダをご確認ください。</p>
+                    <p class="text-xs text-gray-600">※ 実際の運用時には、自動メール送信システムと連携します</p>
+                </div>
+            `;
+            messageDiv.classList.remove('hidden');
+
+            // フォームをリセット
+            this.reset();
+
+            // ページトップまでスクロール
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

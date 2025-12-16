@@ -30,9 +30,9 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-blue-900">
+                <a href="index.html" class="text-2xl font-bold text-blue-900 hover:text-blue-700 transition">
                     株式会社PLUS
-                </div>
+                </a>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-700 hover:text-blue-900 font-medium transition">ホーム</a>
                     <a href="service.html" class="text-gray-700 hover:text-blue-900 font-medium transition">サービス紹介</a>
@@ -42,9 +42,12 @@
                     <a href="contact.html" class="text-blue-900 font-medium border-b-2 border-blue-900">お問い合わせ</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
+                        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
@@ -125,14 +128,22 @@
                         <label for="name" class="block text-sm font-bold text-gray-900 mb-2">
                             お名前 <span class="text-red-500">*</span>
                         </label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
-                            placeholder="山田 太郎"
-                        >
+                        <div class="relative">
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition peer"
+                                placeholder="山田 太郎"
+                            >
+                            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 hidden" id="name-valid">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <p class="text-red-500 text-sm mt-1 hidden" id="name-error">お名前を入力してください</p>
                     </div>
 
                     <!-- 学校名・組織名 -->
@@ -140,14 +151,22 @@
                         <label for="organization" class="block text-sm font-bold text-gray-900 mb-2">
                             学校名・組織名 <span class="text-red-500">*</span>
                         </label>
-                        <input
-                            type="text"
-                            id="organization"
-                            name="organization"
-                            required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
-                            placeholder="○○高等学校"
-                        >
+                        <div class="relative">
+                            <input
+                                type="text"
+                                id="organization"
+                                name="organization"
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition peer"
+                                placeholder="○○高等学校"
+                            >
+                            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 hidden" id="organization-valid">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <p class="text-red-500 text-sm mt-1 hidden" id="organization-error">学校名・組織名を入力してください</p>
                     </div>
 
                     <!-- メールアドレス -->
@@ -155,14 +174,22 @@
                         <label for="email" class="block text-sm font-bold text-gray-900 mb-2">
                             メールアドレス <span class="text-red-500">*</span>
                         </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
-                            placeholder="example@school.ed.jp"
-                        >
+                        <div class="relative">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent transition peer"
+                                placeholder="example@school.ed.jp"
+                            >
+                            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 hidden" id="email-valid">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <p class="text-red-500 text-sm mt-1 hidden" id="email-error">有効なメールアドレスを入力してください</p>
                     </div>
 
                     <!-- 電話番号 -->
@@ -298,19 +325,13 @@
         </div>
     </footer>
 
-    <!-- フローティングCTAボタン -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 animate-slideInRight">
+    <!-- フローティングCTAボタン（お問い合わせページでは資料請求のみ表示） -->
+    <div class="fixed bottom-6 right-6 z-50 animate-slideInRight">
         <a href="download.html" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-6 py-3 rounded-full font-bold text-sm hover:from-blue-800 hover:to-blue-600 transition-all duration-300 shadow-2xl hover:shadow-3xl flex items-center gap-2 group">
             <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
             <span class="hidden sm:inline">資料請求</span>
-        </a>
-        <a href="contact.html" class="bg-white text-blue-900 border-2 border-blue-900 px-6 py-3 rounded-full font-medium text-sm hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-            </svg>
-            <span class="hidden sm:inline">相談する</span>
         </a>
     </div>
 
@@ -318,12 +339,80 @@
         // モバイルメニューの開閉
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
             menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+
+            this.setAttribute('aria-expanded', !isExpanded);
+            this.setAttribute('aria-label', isExpanded ? 'メニューを開く' : 'メニューを閉じる');
         });
+
+        // リアルタイムバリデーション
+        function validateField(field, validId, errorId) {
+            const validIcon = document.getElementById(validId);
+            const errorMsg = document.getElementById(errorId);
+            const input = field;
+
+            input.addEventListener('blur', function() {
+                if (input.validity.valid && input.value.trim() !== '') {
+                    validIcon.classList.remove('hidden');
+                    errorMsg.classList.add('hidden');
+                    input.classList.remove('border-red-500');
+                    input.classList.add('border-green-500');
+                } else if (input.value.trim() !== '' || input.dataset.touched) {
+                    validIcon.classList.add('hidden');
+                    errorMsg.classList.remove('hidden');
+                    input.classList.add('border-red-500');
+                    input.classList.remove('border-green-500');
+                }
+                input.dataset.touched = 'true';
+            });
+
+            input.addEventListener('input', function() {
+                if (input.validity.valid && input.value.trim() !== '') {
+                    validIcon.classList.remove('hidden');
+                    errorMsg.classList.add('hidden');
+                    input.classList.remove('border-red-500');
+                    input.classList.add('border-green-500');
+                } else if (input.dataset.touched) {
+                    validIcon.classList.add('hidden');
+                    if (input.value.trim() !== '') {
+                        errorMsg.classList.remove('hidden');
+                        input.classList.add('border-red-500');
+                    }
+                    input.classList.remove('border-green-500');
+                }
+            });
+        }
+
+        validateField(document.getElementById('name'), 'name-valid', 'name-error');
+        validateField(document.getElementById('organization'), 'organization-valid', 'organization-error');
+        validateField(document.getElementById('email'), 'email-valid', 'email-error');
 
         // フォーム送信処理（デモ用）
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            // 全フィールドのバリデーションチェック
+            const requiredFields = ['name', 'organization', 'email', 'inquiry-type', 'message'];
+            let isValid = true;
+
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.validity.valid || field.value.trim() === '') {
+                    isValid = false;
+                    field.dataset.touched = 'true';
+                    field.dispatchEvent(new Event('blur'));
+                }
+            });
+
+            if (!isValid) {
+                return;
+            }
 
             const messageDiv = document.getElementById('form-message');
             messageDiv.className = 'mt-4 p-4 rounded-lg text-center bg-blue-50 border border-blue-200';
@@ -341,8 +430,15 @@
             // フォームをリセット
             this.reset();
 
-            // ページトップまでスクロール
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // バリデーション状態をリセット
+            document.querySelectorAll('[id$="-valid"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('input, select, textarea').forEach(el => {
+                el.classList.remove('border-green-500', 'border-red-500');
+                delete el.dataset.touched;
+            });
+
+            // メッセージ位置までスクロール
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
             // 注記: 実際の運用時には、ここでGoogle FormsやNotion Forms、
             // またはバックエンドAPIに送信する処理を実装してください

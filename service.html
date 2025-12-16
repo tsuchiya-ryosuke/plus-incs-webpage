@@ -23,6 +23,17 @@
         .animate-slideInRight {
             animation: slideInRight 0.5s ease-out;
         }
+
+        /* スクロールアニメーション */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -30,9 +41,9 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-blue-900">
+                <a href="index.html" class="text-2xl font-bold text-blue-900 hover:text-blue-700 transition">
                     株式会社PLUS
-                </div>
+                </a>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-700 hover:text-blue-900 font-medium transition">ホーム</a>
                     <a href="service.html" class="text-blue-900 font-medium border-b-2 border-blue-900">サービス紹介</a>
@@ -42,9 +53,12 @@
                     <a href="contact.html" class="text-gray-700 hover:text-blue-900 font-medium transition">お問い合わせ</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
+                        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
@@ -556,15 +570,26 @@
                 </p>
             </div>
 
+            <!-- モバイル用スクロールヒント -->
+            <div class="md:hidden text-center mb-4">
+                <p class="text-sm text-gray-500 flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-1 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                    横にスクロールできます
+                </p>
+            </div>
+
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-                <table class="w-full">
-                    <thead>
-                        <tr class="bg-gradient-to-r from-blue-900 to-blue-700">
-                            <th class="py-6 px-6 text-left text-white font-bold text-lg">場面</th>
-                            <th class="py-6 px-6 text-left text-white font-bold text-lg">従来の方法</th>
-                            <th class="py-6 px-6 text-left text-white font-bold text-lg bg-blue-800">VisionWell+</th>
-                        </tr>
-                    </thead>
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[700px]">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-blue-900 to-blue-700">
+                                <th class="py-6 px-4 md:px-6 text-left text-white font-bold text-base md:text-lg whitespace-nowrap">場面</th>
+                                <th class="py-6 px-4 md:px-6 text-left text-white font-bold text-base md:text-lg">従来の方法</th>
+                                <th class="py-6 px-4 md:px-6 text-left text-white font-bold text-base md:text-lg bg-blue-800">VisionWell+</th>
+                            </tr>
+                        </thead>
                     <tbody class="divide-y divide-gray-200">
                         <!-- 進路面談前 -->
                         <tr class="hover:bg-blue-50 transition">
@@ -742,7 +767,8 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                    </table>
+                </div>
             </div>
 
             <div class="text-center mt-12">
@@ -1159,7 +1185,30 @@
         // モバイルメニューの開閉
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
             menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+
+            this.setAttribute('aria-expanded', !isExpanded);
+            this.setAttribute('aria-label', isExpanded ? 'メニューを開く' : 'メニューを閉じる');
+        });
+
+        // スクロールアニメーション
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('section:not(:first-of-type)').forEach(section => {
+            section.classList.add('fade-in-section');
+            observer.observe(section);
         });
     </script>
 </body>

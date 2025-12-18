@@ -5,49 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社PLUS - 生徒の「考え」を、進路指導の力に。</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-fadeInUp {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        .animate-slideInRight {
-            animation: slideInRight 0.5s ease-out;
-        }
-
-        /* スクロールアニメーション */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body class="bg-white">
     <!-- ヘッダー -->
@@ -465,66 +423,6 @@
         </div>
     </section>
 
-    <!-- Before / After -->
-    <section class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-                    導入による変化
-                </h2>
-                <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Before -->
-                <div class="bg-gray-50 rounded-xl p-8">
-                    <h3 class="text-2xl font-bold text-gray-700 mb-6 flex items-center">
-                        <span class="bg-gray-300 text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                            Before
-                        </span>
-                    </h3>
-                    <ul class="space-y-4 text-gray-700">
-                        <li class="flex items-start">
-                            <span class="text-gray-400 mr-3 text-xl">×</span>
-                            <span>記録が点在している</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-gray-400 mr-3 text-xl">×</span>
-                            <span>面談前の情報整理に時間がかかる</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-gray-400 mr-3 text-xl">×</span>
-                            <span>生徒の考えが十分に引き出せない</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- After -->
-                <div class="bg-blue-50 rounded-xl p-8 border-2 border-blue-200">
-                    <h3 class="text-2xl font-bold text-blue-900 mb-6 flex items-center">
-                        <span class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                            After
-                        </span>
-                    </h3>
-                    <ul class="space-y-4 text-gray-700">
-                        <li class="flex items-start">
-                            <span class="text-blue-900 mr-3 text-xl">✓</span>
-                            <span>記録が自然に蓄積される</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-900 mr-3 text-xl">✓</span>
-                            <span>面談は「考えを深める時間」に集中</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-900 mr-3 text-xl">✓</span>
-                            <span>生徒が主体的に進路を考えられる</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- 生徒目線の Before / After -->
     <section class="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -899,35 +797,6 @@
         </a>
     </div>
 
-    <script>
-        // モバイルメニューの開閉
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const iconOpen = document.getElementById('menu-icon-open');
-            const iconClose = document.getElementById('menu-icon-close');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-            menu.classList.toggle('hidden');
-            iconOpen.classList.toggle('hidden');
-            iconClose.classList.toggle('hidden');
-
-            this.setAttribute('aria-expanded', !isExpanded);
-            this.setAttribute('aria-label', isExpanded ? 'メニューを開く' : 'メニューを閉じる');
-        });
-
-        // スクロールアニメーション
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('section:not(:first-of-type)').forEach(section => {
-            section.classList.add('fade-in-section');
-            observer.observe(section);
-        });
-    </script>
+    <script src="assets/js/common.js"></script>
 </body>
 </html>

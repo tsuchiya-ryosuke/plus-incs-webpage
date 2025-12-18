@@ -10,9 +10,32 @@
 
 - **ホーム** (`index.html`) - トップページ、サービス概要
 - **サービス紹介** (`service.html`) - VisionWell+の詳細機能説明
+- **導入事例** (`cases.html`) - 導入校の成果・先生方の声
 - **会社概要** (`company.html`) - 会社情報、ビジョン、ミッション
 - **資料請求** (`download.html`) - サービス資料のダウンロードフォーム
 - **お問い合わせ** (`contact.html`) - 問い合わせフォーム
+
+## プロジェクト構造
+
+```
+plus-incs-webpage/
+├── index.html          # トップページ
+├── service.html        # サービス紹介
+├── cases.html          # 導入事例
+├── company.html        # 会社概要
+├── download.html       # 資料請求
+├── contact.html        # お問い合わせ
+├── assets/
+│   ├── css/
+│   │   └── common.css  # 共通スタイル
+│   └── js/
+│       └── common.js   # 共通スクリプト
+├── docs/
+│   ├── UX_DESIGN_NOTES.md      # UXデザイン設計ノート
+│   └── IMAGE_REQUIREMENTS.md   # 画像要件定義書
+├── README.md           # プロジェクト説明
+└── CNAME               # DNS設定
+```
 
 ## 技術スタック
 

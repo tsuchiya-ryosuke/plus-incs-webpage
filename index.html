@@ -66,23 +66,39 @@
             <div class="absolute top-0 left-0 w-96 h-96 bg-blue-200 rounded-full filter blur-3xl"></div>
             <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl"></div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 animate-fadeInUp">
-                先生の「時間」を創り、<br class="md:hidden">生徒の「本音」を引き出す。
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto animate-fadeInUp" style="animation-delay: 0.2s;">
-                事務作業はAIに任せ、<br class="md:hidden">先生は「先生にしかできない指導」へ。
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp" style="animation-delay: 0.4s;">
-                <a href="download.html" class="inline-block bg-gradient-to-r from-blue-900 to-blue-700 text-white px-10 py-4 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    資料ダウンロード
-                </a>
-                <a href="service.html" class="inline-block bg-white text-blue-900 border-2 border-blue-900 px-10 py-4 rounded-xl font-medium text-lg hover:bg-blue-50 transition-all duration-300 shadow-md hover:shadow-lg">
-                    サービス詳細を見る
-                </a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- テキスト部分 -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 animate-fadeInUp">
+                        先生の「時間」を創り、<br class="md:hidden">生徒の「本音」を引き出す。
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto md:mx-0 animate-fadeInUp" style="animation-delay: 0.2s;">
+                        事務作業はAIに任せ、<br class="md:hidden">先生は「先生にしかできない指導」へ。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fadeInUp" style="animation-delay: 0.4s;">
+                        <a href="download.html" class="inline-block bg-gradient-to-r from-blue-900 to-blue-700 text-white px-10 py-4 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            資料ダウンロード
+                        </a>
+                        <a href="service.html" class="inline-block bg-white text-blue-900 border-2 border-blue-900 px-10 py-4 rounded-xl font-medium text-lg hover:bg-blue-50 transition-all duration-300 shadow-md hover:shadow-lg">
+                            サービス詳細を見る
+                        </a>
+                    </div>
+                </div>
+                <!-- 画像プレースホルダー -->
+                <div class="flex justify-center md:justify-end">
+                    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl w-full max-w-lg h-80 flex flex-col items-center justify-center text-gray-500 shadow-lg">
+                        <svg class="w-16 h-16 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p class="font-bold text-lg mb-2">ヒーローイメージ</p>
+                        <p class="text-sm text-center px-4">500-600px × 400-500px</p>
+                        <p class="text-xs text-center px-4 mt-2">先生と生徒の対話写真 or<br>ダッシュボードモックアップ</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -182,6 +198,15 @@
             <!-- 面談の流れ（ビフォーアフター統合） -->
             <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 mb-12 border border-blue-100">
                 <h3 class="text-xl font-bold text-blue-900 mb-6 text-center">面談はこう変わります</h3>
+                <!-- Before/After 比較イラスト プレースホルダー -->
+                <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-xl w-full h-48 md:h-64 flex flex-col items-center justify-center text-gray-500 mb-8">
+                    <svg class="w-12 h-12 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <p class="font-bold text-lg mb-1">Before/After 比較イラスト</p>
+                    <p class="text-sm">800-1000px × 300-400px</p>
+                    <p class="text-xs mt-1">左: 困っている先生 / 右: 笑顔で対話</p>
+                </div>
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Before -->
                     <div class="bg-gray-50 rounded-xl p-6">
@@ -366,7 +391,14 @@
                         <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">1</div>
                         <h3 class="font-bold text-blue-900">面談チャット＆アジェンダ生成</h3>
                     </div>
-                    <p class="text-gray-700 text-sm">生徒がAIと対話し、考えを整理。先生と共有できるアジェンダを自動生成します。</p>
+                    <p class="text-gray-700 text-sm mb-4">生徒がAIと対話し、考えを整理。先生と共有できるアジェンダを自動生成します。</p>
+                    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg h-40 flex flex-col items-center justify-center text-gray-500">
+                        <svg class="w-8 h-8 mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p class="text-xs font-medium">チャット画面UI</p>
+                        <p class="text-xs">400px × 250px</p>
+                    </div>
                 </div>
 
                 <!-- 機能2：学期レポート -->
@@ -375,7 +407,14 @@
                         <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">2</div>
                         <h3 class="font-bold text-blue-900">学期レポート</h3>
                     </div>
-                    <p class="text-gray-700 text-sm">学期ごとの振り返りを記録。3年間の成長を可視化し、面接対策にも活用できます。</p>
+                    <p class="text-gray-700 text-sm mb-4">学期ごとの振り返りを記録。3年間の成長を可視化し、面接対策にも活用できます。</p>
+                    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg h-40 flex flex-col items-center justify-center text-gray-500">
+                        <svg class="w-8 h-8 mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p class="text-xs font-medium">レポート・グラフ画面</p>
+                        <p class="text-xs">400px × 250px</p>
+                    </div>
                 </div>
 
                 <!-- 機能3：生徒カルテ -->
@@ -384,7 +423,14 @@
                         <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">3</div>
                         <h3 class="font-bold text-blue-900">生徒カルテ</h3>
                     </div>
-                    <p class="text-gray-700 text-sm">進路面談時に、共有シートや過去の記録を一画面で確認。準備なしで本題に入れます。</p>
+                    <p class="text-gray-700 text-sm mb-4">進路面談時に、共有シートや過去の記録を一画面で確認。準備なしで本題に入れます。</p>
+                    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg h-40 flex flex-col items-center justify-center text-gray-500">
+                        <svg class="w-8 h-8 mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p class="text-xs font-medium">生徒情報ダッシュボード</p>
+                        <p class="text-xs">400px × 250px</p>
+                    </div>
                 </div>
 
                 <!-- 機能4：調査書作成支援 -->
@@ -393,7 +439,14 @@
                         <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">4</div>
                         <h3 class="font-bold text-blue-900">調査書作成支援</h3>
                     </div>
-                    <p class="text-gray-700 text-sm">学期レポートをとりまとめ、AIが調査書の素案を作成。作成時間を大幅に削減します。</p>
+                    <p class="text-gray-700 text-sm mb-4">学期レポートをとりまとめ、AIが調査書の素案を作成。作成時間を大幅に削減します。</p>
+                    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg h-40 flex flex-col items-center justify-center text-gray-500">
+                        <svg class="w-8 h-8 mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p class="text-xs font-medium">AI文章生成・編集画面</p>
+                        <p class="text-xs">400px × 250px</p>
+                    </div>
                 </div>
 
             </div>
@@ -579,6 +632,13 @@
                         <span class="bg-blue-100 text-blue-900 text-xs font-bold px-2 py-1 rounded mr-2">生徒</span>
                         <h3 class="font-bold text-blue-900">初めての面談準備</h3>
                     </div>
+                    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg h-32 flex flex-col items-center justify-center text-gray-500 mb-4">
+                        <svg class="w-8 h-8 mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p class="text-xs font-medium">生徒がスマホでAI相談</p>
+                        <p class="text-xs">300px × 200px</p>
+                    </div>
                     <p class="text-gray-700 text-sm">
                         「将来のこと考えたいけど、何も決まってない」とAIに相談。対話を通じて「動物が好き」「生物が面白い」という気づきを得て、アジェンダを先生と共有。面談でいきなり深い話ができました。
                     </p>
@@ -589,6 +649,13 @@
                     <div class="flex items-center mb-3">
                         <span class="bg-blue-100 text-blue-900 text-xs font-bold px-2 py-1 rounded mr-2">教員</span>
                         <h3 class="font-bold text-blue-900">推薦入試の準備を効率化</h3>
+                    </div>
+                    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg h-32 flex flex-col items-center justify-center text-gray-500 mb-4">
+                        <svg class="w-8 h-8 mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p class="text-xs font-medium">先生がPCで効率作業</p>
+                        <p class="text-xs">300px × 200px</p>
                     </div>
                     <p class="text-gray-700 text-sm">
                         推薦文作成にAI生成機能を活用。3年間の学期レポートから自動生成された下書きをベースに、具体的なエピソードを追加。通常1時間以上かかる作業が30分で完成しました。

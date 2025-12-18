@@ -5,36 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>会社概要 | 株式会社PLUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        .animate-slideInRight {
-            animation: slideInRight 0.5s ease-out;
-        }
-
-        /* スクロールアニメーション */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body class="bg-white">
     <!-- ヘッダー -->
@@ -377,35 +348,6 @@
         </a>
     </div>
 
-    <script>
-        // モバイルメニューの開閉
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const iconOpen = document.getElementById('menu-icon-open');
-            const iconClose = document.getElementById('menu-icon-close');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-            menu.classList.toggle('hidden');
-            iconOpen.classList.toggle('hidden');
-            iconClose.classList.toggle('hidden');
-
-            this.setAttribute('aria-expanded', !isExpanded);
-            this.setAttribute('aria-label', isExpanded ? 'メニューを開く' : 'メニューを閉じる');
-        });
-
-        // スクロールアニメーション
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('section:not(:first-of-type)').forEach(section => {
-            section.classList.add('fade-in-section');
-            observer.observe(section);
-        });
-    </script>
+    <script src="assets/js/common.js"></script>
 </body>
 </html>

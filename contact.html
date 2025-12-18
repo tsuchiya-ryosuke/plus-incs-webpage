@@ -5,25 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせ | 株式会社PLUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        .animate-slideInRight {
-            animation: slideInRight 0.5s ease-out;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body class="bg-white">
     <!-- ヘッダー -->
@@ -335,22 +317,8 @@
         </a>
     </div>
 
+    <script src="assets/js/common.js"></script>
     <script>
-        // モバイルメニューの開閉
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const iconOpen = document.getElementById('menu-icon-open');
-            const iconClose = document.getElementById('menu-icon-close');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-            menu.classList.toggle('hidden');
-            iconOpen.classList.toggle('hidden');
-            iconClose.classList.toggle('hidden');
-
-            this.setAttribute('aria-expanded', !isExpanded);
-            this.setAttribute('aria-label', isExpanded ? 'メニューを開く' : 'メニューを閉じる');
-        });
-
         // リアルタイムバリデーション
         function validateField(field, validId, errorId) {
             const validIcon = document.getElementById(validId);

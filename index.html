@@ -157,96 +157,213 @@
         </div>
     </section>
 
-    <!-- VisionWell+ 概要 -->
+    <!-- VisionWell+ 解決策セクション -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <p class="text-blue-700 font-medium mb-4">STEP 1：解決策</p>
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-                    VisionWell+
+                    VisionWell+でジレンマを解決
                 </h2>
-                <p class="text-xl text-gray-600">
-                    進路支援を変える、3つの視点
+                <div class="w-20 h-1 bg-blue-900 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                    生徒がAIと対話して考えを整理し、先生に共有。<br>
+                    先生は準備済みの状態で、<span class="font-bold text-blue-900">本質的な面談</span>に集中できます。
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- 生徒にとって -->
-                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-900 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
+            <!-- 面談の流れ（ビフォーアフター統合） -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 mb-12 border border-blue-100">
+                <h3 class="text-xl font-bold text-blue-900 mb-6 text-center">面談はこう変わります</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Before -->
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-gray-300 text-gray-700 text-sm font-bold px-3 py-1 rounded-full mr-3">Before</span>
+                            <span class="text-gray-600 font-medium">従来の進路面談</span>
+                        </div>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-gray-400 mr-2">×</span>
+                                <span>面談の最初10分は「最近どう？」から始まる</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gray-400 mr-2">×</span>
+                                <span>生徒が本音を言いにくい</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gray-400 mr-2">×</span>
+                                <span>事務連絡で時間が終わってしまう</span>
+                            </li>
+                        </ul>
                     </div>
-                    <h3 class="text-xl font-bold text-blue-900 mb-4">生徒にとって</h3>
-                    <p class="text-sm text-gray-600 mb-4 italic">「先生は忙しそう...」「本音は言いにくい...」そんな悩みを解消</p>
-                    <ul class="space-y-3 text-gray-700">
+                    <!-- After -->
+                    <div class="bg-blue-50 rounded-xl p-6 border-2 border-blue-200">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-blue-900 text-white text-sm font-bold px-3 py-1 rounded-full mr-3">After</span>
+                            <span class="text-blue-900 font-medium">VisionWell+導入後</span>
+                        </div>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2">✓</span>
+                                <span>生徒の考えを事前に把握、<strong>いきなり本題</strong>から</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2">✓</span>
+                                <span>AIには<strong>本音を話せる</strong>→整理して先生に共有</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2">✓</span>
+                                <span>20分すべてを<strong>深い対話</strong>に使える</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3つの視点（コンパクト化） -->
+            <h3 class="text-xl font-bold text-blue-900 mb-6 text-center">それぞれにとってのメリット</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 生徒にとって -->
+                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-100 rounded-lg p-2 mr-3">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-blue-900">生徒</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span><strong>24時間いつでも</strong>AIに相談できる安心感</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>24時間いつでもAIに相談</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span>先生には言いにくい<strong>本音も正直に</strong>話せる</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>本音を言いやすい環境</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span>面談で「<strong>わかってくれている</strong>」と実感できる</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>「わかってくれている」実感</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- 教員にとって -->
-                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-900 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
+                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-100 rounded-lg p-2 mr-3">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-blue-900">教員</h4>
                     </div>
-                    <h3 class="text-xl font-bold text-blue-900 mb-4">教員にとって</h3>
-                    <ul class="space-y-3 text-gray-700">
+                    <ul class="space-y-2 text-sm text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
+                            <span class="text-blue-600 mr-2">•</span>
                             <span>生徒の記録を一元管理</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span>調査票作成時に、過去の記録を探し回らなくていい</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>過去の記録を探す手間なし</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span>面談前に生徒像を把握できる</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>面談前に生徒像を把握</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- 学校にとって -->
-                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-900 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
+                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-100 rounded-lg p-2 mr-3">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-blue-900">学校</h4>
                     </div>
-                    <h3 class="text-xl font-bold text-blue-900 mb-4">学校にとって</h3>
-                    <ul class="space-y-3 text-gray-700">
+                    <ul class="space-y-2 text-sm text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span>進路面談の正味時間を最大化</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>面談時間の質を最大化</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span>指導の質が属人化しにくい</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>指導の質が属人化しない</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-900 mr-2">✓</span>
-                            <span>記録が蓄積され、学年・年度を越えて活用できる</span>
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>記録が年度を越えて活用</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="service.html" class="inline-block bg-blue-900 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-800 transition">
-                    サービスの詳細を見る
+            <div class="text-center mt-10">
+                <p class="text-gray-600 mb-4">では、具体的にどんな機能があるのでしょうか？</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要機能（VisionWell+の直後に配置） -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="text-blue-700 font-medium mb-4">STEP 2：具体的な機能</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+                    4つの主要機能
+                </h2>
+                <div class="w-20 h-1 bg-blue-900 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                    VisionWell+の機能を簡単にご紹介します
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 機能1：面談チャット -->
+                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">1</div>
+                        <h3 class="font-bold text-blue-900">面談チャット＆アジェンダ生成</h3>
+                    </div>
+                    <p class="text-gray-700 text-sm">生徒がAIと対話し、考えを整理。先生と共有できるアジェンダを自動生成します。</p>
+                </div>
+
+                <!-- 機能2：学期レポート -->
+                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">2</div>
+                        <h3 class="font-bold text-blue-900">学期レポート</h3>
+                    </div>
+                    <p class="text-gray-700 text-sm">学期ごとの振り返りを記録。3年間の成長を可視化し、面接対策にも活用できます。</p>
+                </div>
+
+                <!-- 機能3：面談モード -->
+                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">3</div>
+                        <h3 class="font-bold text-blue-900">面談モード・調査票作成</h3>
+                    </div>
+                    <p class="text-gray-700 text-sm">生徒情報を一画面で確認。AIが推薦文の下書きを生成し、作成時間を大幅削減。</p>
+                </div>
+
+                <!-- 機能4：進路情報検索 -->
+                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 text-sm">4</div>
+                        <h3 class="font-bold text-blue-900">進路情報検索（RAG機能）</h3>
+                    </div>
+                    <p class="text-gray-700 text-sm">自然な言葉で検索し、最新の進路情報にすぐアクセス。面談中も即座に調べられます。</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="service.html" class="inline-block text-blue-900 font-medium hover:underline">
+                    機能の詳細を見る →
                 </a>
             </div>
         </div>
@@ -260,12 +377,13 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
+                <p class="text-blue-200 font-medium mb-4">STEP 3：導入効果</p>
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
                     数値で見る導入効果
                 </h2>
                 <div class="w-20 h-1 bg-white mx-auto mb-8"></div>
                 <p class="text-xl text-blue-100">
-                    実際に導入いただいた学校の成果をご紹介します
+                    実際に導入いただいた学校での成果です
                 </p>
             </div>
 
@@ -327,405 +445,93 @@
     <!-- お客様の声 -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <p class="text-blue-700 font-medium mb-4">STEP 4：利用者の声</p>
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
-                    お客様の声
+                    先生方の声
                 </h2>
                 <div class="w-20 h-1 bg-blue-900 mx-auto mb-8"></div>
                 <p class="text-lg text-gray-700">
-                    実際に導入いただいた先生方からいただいた声をご紹介します
+                    導入いただいた先生方の実際の声です
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- 声1 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border-2 border-blue-100 hover:shadow-xl transition">
-                    <div class="flex mb-4">
-                        <div class="text-yellow-400 text-2xl">★★★★★</div>
-                    </div>
-                    <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                        「面談の20分すべてを、本質的な対話に使えるようになりました。生徒が事前に考えを整理してくれているので、最初の10分のヒアリングが不要に。いきなり深い話から始められる。これは革命的でした」
+                <!-- 声1：ベテラン教員の視点 -->
+                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 shadow-lg border-2 border-blue-100">
+                    <blockquote class="text-gray-700 leading-relaxed mb-4 italic">
+                        「面談の20分すべてを、本質的な対話に使えるようになりました。生徒が事前に考えを整理してくれているので、いきなり深い話から始められます」
                     </blockquote>
                     <div class="flex items-center border-t border-blue-100 pt-4">
-                        <div class="bg-blue-900 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
+                        <div class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3 text-sm">
                             佐
                         </div>
                         <div>
-                            <p class="font-bold text-gray-900">進路指導主任 佐藤先生（仮名）</p>
-                            <p class="text-sm text-gray-600">○○高等学校</p>
+                            <p class="font-bold text-gray-900 text-sm">進路指導主任 佐藤先生</p>
+                            <p class="text-xs text-gray-600">○○高等学校</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 声2 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border-2 border-blue-100 hover:shadow-xl transition">
-                    <div class="flex mb-4">
-                        <div class="text-yellow-400 text-2xl">★★★★★</div>
-                    </div>
-                    <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                        「生徒が面談前にAIと対話して、自分の考えを整理してくるようになりました。面談が一方通行ではなく、双方向の対話になった。生徒の成長を実感しています」
+                <!-- 声2：新任教員の視点 -->
+                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 shadow-lg border-2 border-blue-100">
+                    <blockquote class="text-gray-700 leading-relaxed mb-4 italic">
+                        「新任で経験がありませんでしたが、RAG機能で必要な情報をその場で調べて提供できました。先輩に頼らなくても質の高い指導ができます」
                     </blockquote>
                     <div class="flex items-center border-t border-blue-100 pt-4">
-                        <div class="bg-blue-900 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
-                            田
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">3学年主任 田中先生（仮名）</p>
-                            <p class="text-sm text-gray-600">△△高等学校</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 声3 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border-2 border-blue-100 hover:shadow-xl transition">
-                    <div class="flex mb-4">
-                        <div class="text-yellow-400 text-2xl">★★★★★</div>
-                    </div>
-                    <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                        「推薦文作成が、従来60分かかっていたのが30分で完成。AIが生成した下書きをベースに、具体的なエピソードを加えるだけ。時間も質も向上しました」
-                    </blockquote>
-                    <div class="flex items-center border-t border-blue-100 pt-4">
-                        <div class="bg-blue-900 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
-                            佐
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">進路指導主任 佐藤先生（仮名）</p>
-                            <p class="text-sm text-gray-600">○○高等学校</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 声4 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg border-2 border-blue-100 hover:shadow-xl transition">
-                    <div class="flex mb-4">
-                        <div class="text-yellow-400 text-2xl">★★★★★</div>
-                    </div>
-                    <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                        「新任で進路指導の経験がありませんでしたが、RAG機能でその場で必要な情報を調べて生徒に提供できました。先輩に頼らなくても、質の高い進路指導ができるようになりました」
-                    </blockquote>
-                    <div class="flex items-center border-t border-blue-100 pt-4">
-                        <div class="bg-blue-900 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
+                        <div class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3 text-sm">
                             山
                         </div>
                         <div>
-                            <p class="font-bold text-gray-900">2年担任 山田先生（仮名）</p>
-                            <p class="text-sm text-gray-600">□□高等学校</p>
+                            <p class="font-bold text-gray-900 text-sm">2年担任 山田先生</p>
+                            <p class="text-xs text-gray-600">□□高等学校</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="cases.html" class="inline-block bg-blue-900 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-800 transition shadow-md hover:shadow-lg">
-                    もっと事例を見る
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 生徒目線の Before / After -->
-    <section class="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <p class="text-blue-700 font-medium mb-4">生徒にとっての変化</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-                    生徒が感じる「面談の変化」
-                </h2>
-                <div class="w-20 h-1 bg-blue-900 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
-                    VisionWell+の導入で、生徒の進路相談体験がこう変わります
-                </p>
-            </div>
-
-            <!-- 比較表 -->
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100">
-                <div class="grid md:grid-cols-3">
-                    <!-- ヘッダー -->
-                    <div class="bg-gray-100 p-4 font-bold text-gray-700 text-center hidden md:block">項目</div>
-                    <div class="bg-gray-200 p-4 font-bold text-gray-600 text-center hidden md:block">Before（従来）</div>
-                    <div class="bg-blue-900 p-4 font-bold text-white text-center hidden md:block">After（VisionWell+導入後）</div>
-
-                    <!-- 相談のタイミング -->
-                    <div class="p-6 border-b border-gray-100 md:border-r">
-                        <p class="font-bold text-blue-900 mb-1 md:text-center">相談のタイミング</p>
-                    </div>
-                    <div class="p-6 border-b border-gray-100 md:border-r bg-gray-50">
-                        <p class="text-sm text-gray-500 md:hidden font-medium mb-1">Before</p>
-                        <p class="text-gray-600">面談の予約が必要<br class="hidden md:block">先生の時間に合わせる</p>
-                    </div>
-                    <div class="p-6 border-b border-gray-100 bg-blue-50">
-                        <p class="text-sm text-blue-600 md:hidden font-medium mb-1">After</p>
-                        <p class="text-gray-800 font-medium"><span class="text-blue-900">24時間いつでも</span>AIに相談可能</p>
-                    </div>
-
-                    <!-- 本音の伝えやすさ -->
-                    <div class="p-6 border-b border-gray-100 md:border-r">
-                        <p class="font-bold text-blue-900 mb-1 md:text-center">本音の伝えやすさ</p>
-                    </div>
-                    <div class="p-6 border-b border-gray-100 md:border-r bg-gray-50">
-                        <p class="text-sm text-gray-500 md:hidden font-medium mb-1">Before</p>
-                        <p class="text-gray-600">先生に直接言いにくい<br class="hidden md:block">評価が気になる</p>
-                    </div>
-                    <div class="p-6 border-b border-gray-100 bg-blue-50">
-                        <p class="text-sm text-blue-600 md:hidden font-medium mb-1">After</p>
-                        <p class="text-gray-800 font-medium">AIには<span class="text-blue-900">正直に話せる</span><br class="hidden md:block">整理してから先生に相談</p>
-                    </div>
-
-                    <!-- 面談の内容 -->
-                    <div class="p-6 border-b border-gray-100 md:border-r">
-                        <p class="font-bold text-blue-900 mb-1 md:text-center">面談の内容</p>
-                    </div>
-                    <div class="p-6 border-b border-gray-100 md:border-r bg-gray-50">
-                        <p class="text-sm text-gray-500 md:hidden font-medium mb-1">Before</p>
-                        <p class="text-gray-600">事務連絡や確認が多い<br class="hidden md:block">本題に入る前に時間切れ</p>
-                    </div>
-                    <div class="p-6 border-b border-gray-100 bg-blue-50">
-                        <p class="text-sm text-blue-600 md:hidden font-medium mb-1">After</p>
-                        <p class="text-gray-800 font-medium">最初から<span class="text-blue-900">本質的な進路相談</span>ができる</p>
-                    </div>
-
-                    <!-- 先生の理解度 -->
-                    <div class="p-6 border-b border-gray-100 md:border-r md:border-b-0">
-                        <p class="font-bold text-blue-900 mb-1 md:text-center">先生の理解度</p>
-                    </div>
-                    <div class="p-6 border-b border-gray-100 md:border-r md:border-b-0 bg-gray-50">
-                        <p class="text-sm text-gray-500 md:hidden font-medium mb-1">Before</p>
-                        <p class="text-gray-600">毎回同じ質問から始まる<br class="hidden md:block">覚えてもらえていない感</p>
-                    </div>
-                    <div class="p-6 bg-blue-50">
-                        <p class="text-sm text-blue-600 md:hidden font-medium mb-1">After</p>
-                        <p class="text-gray-800 font-medium">自分のことを<span class="text-blue-900">把握してくれている</span>安心感</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-10">
-                <p class="text-gray-700 mb-6">
-                    生徒が<span class="font-bold text-blue-900">「わかってくれている」</span>と感じる面談が、<br class="md:hidden">進路選択への自信につながります。
-                </p>
-                <a href="service.html" class="inline-block bg-blue-900 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-800 transition shadow-md hover:shadow-lg">
-                    詳しい機能を見る
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 主要機能 -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
-                    主要機能
-                </h2>
-                <div class="w-20 h-1 bg-blue-900 mx-auto mb-8"></div>
-                <p class="text-lg text-gray-700">
-                    VisionWell+は、進路支援に必要な機能を統合的に提供します
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- 学期レポート -->
-                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg p-3 mr-4">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-blue-900">学期レポート</h3>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        学期ごとに生徒が振り返りを記録。AIが要約し、<strong>3年間の成長の軌跡</strong>を可視化します。
-                    </p>
-                    <div class="bg-blue-50 rounded-lg p-4 mb-4">
-                        <p class="text-sm font-bold text-blue-900 mb-2">生徒にとってのメリット</p>
-                        <ul class="space-y-1 text-sm text-gray-700">
-                            <li class="flex items-start">
-                                <span class="text-blue-600 mr-2">✓</span>
-                                <span><strong>面接対策</strong>で「頑張ったこと」を探せる</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-600 mr-2">✓</span>
-                                <span>過去と比較して<strong>成長を実感</strong>できる</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-600 mr-2">✓</span>
-                                <span>担任が変わっても<strong>情報が引き継がれる</strong></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>オートセーブで安心</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>AIサマリーで要約</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 面談チャット -->
-                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg p-3 mr-4">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-blue-900">面談チャット＆アジェンダ生成</h3>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        AIとの対話で考えを整理。チャット内容から面談アジェンダを自動生成します。
-                    </p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>AIが適切な質問を投げかける</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>アジェンダを先生と共有</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>面談がスムーズに始まる</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 教師用進路支援 -->
-                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg p-3 mr-4">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-blue-900">面談モード・調査票作成</h3>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        生徒情報を一画面で確認。AIが推薦文の下書きを生成し、作成時間を大幅削減。
-                    </p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>共有アジェンダ・レポート・進路情報を統合表示</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>AI生成で推薦文作成時間を短縮</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>複数バージョン管理</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 進路情報検索 -->
-                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg p-3 mr-4">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-blue-900">進路情報検索（RAG機能）</h3>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        自然な言葉で検索し、最新の進路情報にすぐアクセス。面談中も即座に調べられます。
-                    </p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>自然言語で検索可能</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>関連情報も表示</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
-                            <span>面談中にその場で情報提供</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="service.html" class="inline-block bg-blue-900 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-800 transition shadow-md hover:shadow-lg">
-                    機能の詳細を見る
+            <div class="text-center mt-8">
+                <a href="cases.html" class="inline-block text-blue-900 font-medium hover:underline">
+                    もっと事例を見る →
                 </a>
             </div>
         </div>
     </section>
 
     <!-- 利用シーン -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <p class="text-blue-700 font-medium mb-4">STEP 5：利用イメージ</p>
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
                     こんな場面で活用できます
                 </h2>
-                <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
+                <div class="w-20 h-1 bg-blue-900 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">
+                    具体的な利用シーンをご紹介します
+                </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- シーン1 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl p-8 border border-blue-100">
-                    <div class="flex items-start mb-4">
-                        <div class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">1</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-blue-900 mb-2">高校1年生の初めての面談準備</h3>
-                            <p class="text-sm text-gray-600 mb-3">生徒：ユキさん、担任：田中先生</p>
-                        </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- シーン1：生徒側の利用 -->
+                <div class="bg-white rounded-xl p-6 border border-blue-100">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-blue-100 text-blue-900 text-xs font-bold px-2 py-1 rounded mr-2">生徒</span>
+                        <h3 class="font-bold text-blue-900">初めての面談準備</h3>
                     </div>
-                    <p class="text-gray-700">
-                        ユキさんはチャットで「将来のことを考えたいけど、まだ何も決まってない」と入力。AIとの対話を通じて「動物が好き」「生物の授業が面白い」という気づきを得て、アジェンダを先生と共有。田中先生は事前に生徒の興味を把握し、面談で深い対話ができました。
+                    <p class="text-gray-700 text-sm">
+                        「将来のこと考えたいけど、何も決まってない」とAIに相談。対話を通じて「動物が好き」「生物が面白い」という気づきを得て、アジェンダを先生と共有。面談でいきなり深い話ができました。
                     </p>
                 </div>
 
-                <!-- シーン2 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl p-8 border border-blue-100">
-                    <div class="flex items-start mb-4">
-                        <div class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">2</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-blue-900 mb-2">学期ごとの振り返りで成長を実感</h3>
-                            <p class="text-sm text-gray-600 mb-3">生徒：タケシさん（高校2年生）</p>
-                        </div>
+                <!-- シーン2：教員側の利用 -->
+                <div class="bg-white rounded-xl p-6 border border-blue-100">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-blue-100 text-blue-900 text-xs font-bold px-2 py-1 rounded mr-2">教員</span>
+                        <h3 class="font-bold text-blue-900">推薦入試の準備を効率化</h3>
                     </div>
-                    <p class="text-gray-700">
-                        タケシさんは学期末に学期レポートを記入。「今学期頑張ったこと」を書きながら「自分はプレゼンが得意になった」と気づきます。1年次のレポートを見返すと「数学が苦手だったけど、今は得意科目に」という成長を実感できました。
-                    </p>
-                </div>
-
-                <!-- シーン3 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl p-8 border border-blue-100">
-                    <div class="flex items-start mb-4">
-                        <div class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">3</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-blue-900 mb-2">推薦入試の準備を効率化</h3>
-                            <p class="text-sm text-gray-600 mb-3">生徒：アヤさん、進路指導：佐藤先生</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700">
-                        佐藤先生はアヤさんの推薦文作成にAI生成機能を活用。3年間の学期レポートと進路情報から自動生成された下書きをベースに、具体的なエピソードを追加。通常1時間以上かかる作業が30分で完成しました。
-                    </p>
-                </div>
-
-                <!-- シーン4 -->
-                <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl p-8 border border-blue-100">
-                    <div class="flex items-start mb-4">
-                        <div class="bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">4</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-blue-900 mb-2">新任の先生も質の高い進路指導</h3>
-                            <p class="text-sm text-gray-600 mb-3">新任：山田先生</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700">
-                        山田先生は初めての進路面談で不安を感じていましたが、生徒のアジェンダとレポートで事前準備ができました。面談中、生徒が「工学部に興味がある」と言った際も、RAG機能で「工学部 種類 違い」と検索し、その場で説明。先輩教員に頼らず質の高い指導ができました。
+                    <p class="text-gray-700 text-sm">
+                        推薦文作成にAI生成機能を活用。3年間の学期レポートから自動生成された下書きをベースに、具体的なエピソードを追加。通常1時間以上かかる作業が30分で完成しました。
                     </p>
                 </div>
             </div>
@@ -733,17 +539,23 @@
     </section>
 
     <!-- CTA -->
-    <section class="py-20 bg-blue-900">
+    <section class="py-16 bg-blue-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            <p class="text-blue-200 font-medium mb-3">STEP 6：お問い合わせ</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
                 まずはお気軽にご相談ください
             </h2>
-            <p class="text-xl text-blue-100 mb-8">
-                サービスについてのご相談、導入検討・実証実験のご相談を承っております。
+            <p class="text-lg text-blue-100 mb-6">
+                サービスについてのご相談、導入検討・実証実験のご相談を承っております
             </p>
-            <a href="contact.html" class="inline-block bg-white text-blue-900 px-10 py-4 rounded-lg font-medium text-lg hover:bg-blue-50 transition">
-                お問い合わせはこちら
-            </a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="download.html" class="inline-block bg-white text-blue-900 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition">
+                    資料をダウンロード
+                </a>
+                <a href="contact.html" class="inline-block bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition">
+                    お問い合わせ
+                </a>
+            </div>
         </div>
     </section>
 

@@ -43,7 +43,7 @@ function initScrollAnimation() {
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     // 最初のセクション以外にアニメーションを適用
-    document.querySelectorAll('section:not(:first-of-type)').forEach(section => {
+    document.querySelectorAll('section:not(:first-of-type):not(.no-scroll-animate)').forEach(section => {
         section.classList.add('fade-in-section');
         observer.observe(section);
     });

@@ -101,3 +101,22 @@ body {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
 }
+
+/* ==============================
+   フォーム埋め込み（iframe）
+   ============================== */
+
+.form-embed {
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    box-shadow: 0 20px 50px -35px rgba(15, 23, 42, 0.5);
+}
+
+.form-embed iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: #ffffff;
+}

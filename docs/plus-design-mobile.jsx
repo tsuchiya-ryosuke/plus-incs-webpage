@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import ja from "../locales/ja/plus-design-mobile.json";
 
 const C = {
   brand: "#3ea8ff", brandPale: "#edf6ff",
@@ -6,10 +7,39 @@ const C = {
   border: "#e4edf4", borderFaint: "#f0f4f8",
   bg: "#f5f8fa", white: "#fff",
   green: "#1cb955", greenPale: "#edfaf3",
-  amber: "#e09200", amberPale: "#fef8ec",
 };
 const R = { btn: "8px", card: "12px", badge: "3px" };
 const ff = "'Noto Sans JP', -apple-system, sans-serif";
+
+const DEMO_NOW = new Date("2026-01-12T12:00:00+09:00");
+
+function formatAbsoluteDate(dateString, includeSuffix = false) {
+  const text = new Intl.DateTimeFormat("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "Asia/Tokyo",
+  }).format(new Date(dateString));
+  return includeSuffix ? `${text} ${ja.common.created}` : text;
+}
+
+function formatRelativeTime(dateString, now = DEMO_NOW) {
+  const date = new Date(dateString);
+  const diffMs = date.getTime() - now.getTime();
+  const absMs = Math.abs(diffMs);
+  const rtf = new Intl.RelativeTimeFormat("ja-JP", { numeric: "auto" });
+  const hourMs = 1000 * 60 * 60;
+  const dayMs = hourMs * 24;
+  const weekMs = dayMs * 7;
+
+  if (absMs < dayMs) {
+    return rtf.format(Math.round(diffMs / hourMs), "hour");
+  }
+  if (absMs < weekMs * 2) {
+    return rtf.format(Math.round(diffMs / dayMs), "day");
+  }
+  return rtf.format(Math.round(diffMs / weekMs), "week");
+}
 
 function bs(v) {
   const b = { fontFamily: ff, fontSize: 13, fontWeight: 600, border: "none", borderRadius: R.btn, padding: "8px 20px", cursor: "pointer" };
@@ -18,74 +48,29 @@ function bs(v) {
 
 export default function App() {
   const [tab, setTab] = useState("flow");
-  const tabs = [
-    { id: "flow", label: "生徒フロー" },
-    { id: "teacher", label: "先生画面" },
-    { id: "details", label: "入力欄の設計" },
-  ];
+  const tabs = ja.tabs;
 
   return (
     <div style={{ fontFamily: ff, background: C.bg, minHeight: "100vh", color: C.text }}>
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
-        .focusable {
-          outline: none;
-        }
+        .focusable { outline: none; }
         .focusable:focus-visible {
-          outline: 3px solid ${C.brand};
-          outline-offset: 2px;
-          box-shadow: 0 0 0 2px ${C.white};
+          outline: 3px solid ${C.brand}; outline-offset: 2px; box-shadow: 0 0 0 2px ${C.white};
         }
-        .page-shell {
-          width: min(100%, 1100px);
-          margin: 0 auto;
-          padding: 32px clamp(16px, 3vw, 24px) 0;
-        }
-        .content-shell {
-          width: min(100%, 1100px);
-          margin: 0 auto;
-          padding: 28px clamp(16px, 3vw, 24px) 60px;
-        }
-        .top-tabs {
-          display: flex;
-          gap: 0;
-          position: relative;
-          bottom: -1px;
-          overflow-x: auto;
-          scrollbar-width: thin;
-          -webkit-overflow-scrolling: touch;
-        }
-        .top-tabs button {
-          flex: 0 0 auto;
-        }
-        .phone-grid {
-          display: flex;
-          gap: 20px;
-          justify-content: center;
-          flex-wrap: wrap;
-          container-type: inline-size;
-        }
-        .phone-shell {
-          width: clamp(240px, 38vw, 360px);
-          border: 1px solid ${C.border};
-          border-radius: 20px;
-          overflow: hidden;
-          background: ${C.bg};
-          min-height: 510px;
-          display: flex;
-          flex-direction: column;
-        }
-        @container (max-width: 760px) {
-          .phone-shell {
-            width: clamp(220px, 92cqw, 380px);
-          }
-        }
+        .page-shell { width: min(100%, 1100px); margin: 0 auto; padding: 32px clamp(16px, 3vw, 24px) 0; }
+        .content-shell { width: min(100%, 1100px); margin: 0 auto; padding: 28px clamp(16px, 3vw, 24px) 60px; }
+        .top-tabs { display: flex; gap: 0; position: relative; bottom: -1px; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+        .top-tabs button { flex: 0 0 auto; }
+        .phone-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; container-type: inline-size; }
+        .phone-shell { width: clamp(240px, 38vw, 360px); border: 1px solid ${C.border}; border-radius: 20px; overflow: hidden; background: ${C.bg}; min-height: 510px; display: flex; flex-direction: column; }
+        @container (max-width: 760px) { .phone-shell { width: clamp(220px, 92cqw, 380px); } }
       `}</style>
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}` }}>
         <div className="page-shell">
-          <p style={{ fontSize: 12, fontWeight: 600, color: C.brand, margin: "0 0 8px", letterSpacing: "0.04em" }}>PLUS DESIGN</p>
-          <h1 style={{ fontSize: 21, fontWeight: 700, margin: "0 0 6px", lineHeight: 1.5 }}>チャット画面 確定デザイン</h1>
-          <p style={{ fontSize: 13, color: C.textSub, margin: "0 0 24px", lineHeight: 1.6 }}>共有シートボタン = 入力欄統合型 / ナビ = ヘッダー内セグメント</p>
+          <p style={{ fontSize: 12, fontWeight: 600, color: C.brand, margin: "0 0 8px", letterSpacing: "0.04em" }}>{ja.header.badge}</p>
+          <h1 style={{ fontSize: 21, fontWeight: 700, margin: "0 0 6px", lineHeight: 1.5 }}>{ja.header.title}</h1>
+          <p style={{ fontSize: 13, color: C.textSub, margin: "0 0 24px", lineHeight: 1.6 }}>{ja.header.subtitle}</p>
           <nav className="top-tabs">
             {tabs.map(t => (
               <button key={t.id} onClick={() => setTab(t.id)} className="focusable" style={{
@@ -112,82 +97,39 @@ export default function App() {
   );
 }
 
-/* ═══════════════════════════ */
-/*     生徒フロー（4画面）     */
-/* ═══════════════════════════ */
 function StudentFlow() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-      <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.8 }}>
-        チャット → 共有シート作成 → プレビュー → 送信完了の一連の流れ。共有シートのリンクは入力欄の直下に常駐し、チャット体験の一部として溶け込む。
-      </div>
+      <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.8 }}>{ja.studentFlow.lead}</div>
 
-      <SH>1. チャット → 2. 共有シート生成</SH>
+      <SH>{ja.studentFlow.stepTitle1}</SH>
       <div className="phone-grid">
-        <Phone label="1. 通常のチャット">
-          <Header active="チャット" />
-          <div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-            <AiB>進路について一緒に考えましょう。どんな分野に興味がありますか？</AiB>
-            <UserB>情報系の学部に行きたいです</UserB>
-            <AiB>いいですね。数学と英語の成績を教えてもらえますか？</AiB>
-            <UserB>数学は偏差値58、英語は52です</UserB>
-            <AiB>数学が強みですね。情報系では有利です。英語は今から対策すれば間に合いますよ。</AiB>
-          </div>
-          <InputC />
-        </Phone>
-
-        <Phone label="2. 会話が深まったタイミング">
-          <Header active="チャット" />
-          <div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-            <UserB>国公立と私立、どっちがいいですかね</UserB>
-            <AiB>数学が強いので、国公立の二次試験で有利になる可能性が高いです。一方、私立なら科目を絞れるメリットがあります。</AiB>
-            <UserB>なるほど…先生にも相談したいです</UserB>
-            <AiB>いい考えですね。ここまでの内容を共有シートにまとめて先生に送れますよ。入力欄の下にあるリンクから作れます。</AiB>
-          </div>
-          <InputC highlight />
-        </Phone>
+        <Phone label={ja.studentFlow.phone1.label}><Header active={ja.common.chat} /><div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>{ja.studentFlow.phone1.messages.map((m, i) => m.role === "ai" ? <AiB key={i}>{m.text}</AiB> : <UserB key={i}>{m.text}</UserB>)}</div><InputC /></Phone>
+        <Phone label={ja.studentFlow.phone2.label}><Header active={ja.common.chat} /><div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>{ja.studentFlow.phone2.messages.map((m, i) => m.role === "ai" ? <AiB key={i}>{m.text}</AiB> : <UserB key={i}>{m.text}</UserB>)}</div><InputC highlight /></Phone>
       </div>
-      <p style={{ fontSize: 12, color: C.textMeta, margin: 0, lineHeight: 1.7, textAlign: "center" }}>
-        共有シートリンクは常に入力欄の下にある。AIが共有を提案したタイミングで生徒の目に自然に入る。
-      </p>
+      <p style={{ fontSize: 12, color: C.textMeta, margin: 0, lineHeight: 1.7, textAlign: "center" }}>{ja.studentFlow.note}</p>
 
-      <SH>3. プレビュー → 4. 送信完了</SH>
+      <SH>{ja.studentFlow.stepTitle2}</SH>
       <div className="phone-grid">
-        <Phone label="3. プレビュー確認">
-          <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-            <button type="button" className="focusable" aria-label="前の画面に戻る" style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
-            <span style={{ fontSize: 15, fontWeight: 700 }}>共有シート</span>
-          </div>
+        <Phone label={ja.studentFlow.preview.label}>
+          <ScreenHeader title={ja.common.shareSheet} backAria={ja.studentFlow.preview.backAria} />
           <div style={{ padding: 16, flex: 1 }}>
             <div style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: 16, marginBottom: 14 }}>
-              <div style={{ fontSize: 11, color: C.textMeta, marginBottom: 12 }}>2026年1月10日 作成</div>
-              {[
-                ["希望分野", "情報系学部（国公立 or 私立で検討中）"],
-                ["現在の学力", "数学 偏差値58 / 英語 偏差値52"],
-                ["相談したいこと", "国公立を目指すか私立に絞るかの判断軸。英語の対策時期。"],
-                ["AIからの所見", "数学が強みで情報系は適性あり。英語は早期対策を推奨。"],
-              ].map(([label, val], i) => (
-                <div key={i} style={{ marginBottom: i < 3 ? 12 : 0 }}>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: C.textMeta, marginBottom: 3 }}>{label}</div>
-                  <div style={{ fontSize: 13, lineHeight: 1.7 }}>{val}</div>
-                </div>
-              ))}
+              <div style={{ fontSize: 11, color: C.textMeta, marginBottom: 12 }}>{formatAbsoluteDate(ja.sampleDates.sheetCreatedAt, true)}</div>
+              {ja.sampleSheet.items.map(([label, val], i) => (<div key={i} style={{ marginBottom: i < 3 ? 12 : 0 }}><div style={{ fontSize: 11, fontWeight: 600, color: C.textMeta, marginBottom: 3 }}>{label}</div><div style={{ fontSize: 13, lineHeight: 1.7 }}>{val}</div></div>))}
             </div>
-            <button type="button" className="focusable" style={{ ...bs("primary"), width: "100%", padding: "12px 20px", fontSize: 14, marginBottom: 8 }}>先生に送信する</button>
-            <button type="button" className="focusable" style={{ ...bs("secondary"), width: "100%", padding: "10px 20px", fontSize: 13 }}>編集する</button>
+            <button type="button" className="focusable" style={{ ...bs("primary"), width: "100%", padding: "12px 20px", fontSize: 14, marginBottom: 8 }}>{ja.studentFlow.preview.send}</button>
+            <button type="button" className="focusable" style={{ ...bs("secondary"), width: "100%", padding: "10px 20px", fontSize: 13 }}>{ja.studentFlow.preview.edit}</button>
           </div>
         </Phone>
 
-        <Phone label="4. 送信完了">
-          <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-            <button type="button" className="focusable" aria-label="前の画面に戻る" style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
-            <span style={{ fontSize: 15, fontWeight: 700 }}>共有シート</span>
-          </div>
+        <Phone label={ja.studentFlow.done.label}>
+          <ScreenHeader title={ja.common.shareSheet} backAria={ja.studentFlow.done.backAria} />
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", textAlign: "center" }}>
             <div style={{ width: 48, height: 48, borderRadius: "50%", background: C.greenPale, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, marginBottom: 14 }}>✓</div>
-            <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 6 }}>送信しました</div>
-            <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.7, marginBottom: 24 }}>田中先生に共有シートが届きました。</div>
-            <button type="button" className="focusable" style={{ ...bs("secondary"), padding: "10px 28px" }}>チャットに戻る</button>
+            <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 6 }}>{ja.studentFlow.done.title}</div>
+            <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.7, marginBottom: 24 }}>{ja.studentFlow.done.body}</div>
+            <button type="button" className="focusable" style={{ ...bs("secondary"), padding: "10px 28px" }}>{ja.studentFlow.done.back}</button>
           </div>
         </Phone>
       </div>
@@ -195,34 +137,25 @@ function StudentFlow() {
   );
 }
 
-/* ═══════════════════════════ */
-/*     先生画面                */
-/* ═══════════════════════════ */
 function TeacherScreens() {
+  const students = useMemo(() => ja.teacher.list.items.map((s) => ({ ...s, time: formatRelativeTime(s.updatedAt) })), []);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-      <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.8 }}>
-        先生は生徒ごとの一覧で共有シートを確認する。シートの構造は生徒が見たプレビューと同一。
-      </div>
+      <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.8 }}>{ja.teacher.lead}</div>
 
-      <SH>一覧 → 詳細</SH>
+      <SH>{ja.teacher.section}</SH>
       <div className="phone-grid">
-        <Phone label="生徒一覧">
+        <Phone label={ja.teacher.list.label}>
           <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>PLUS</span>
-            <span style={{ fontSize: 10, color: C.textMeta, background: C.borderFaint, padding: "2px 7px", borderRadius: R.badge }}>先生</span>
+            <span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>{ja.brand.wordmark}</span>
+            <span style={{ fontSize: 10, color: C.textMeta, background: C.borderFaint, padding: "2px 7px", borderRadius: R.badge }}>{ja.teacher.list.badge}</span>
           </div>
           <div style={{ padding: 16, flex: 1 }}>
-            <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>3年1組</div>
-            <div style={{ fontSize: 12, color: C.textMeta, marginBottom: 14 }}>共有シート 8件（新着 3件）</div>
+            <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{ja.teacher.list.className}</div>
+            <div style={{ fontSize: 12, color: C.textMeta, marginBottom: 14 }}>{ja.teacher.list.summary}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {[
-                { nm: "青木 太郎", topic: "情報系学部の志望校選び", time: "2時間前", isNew: true },
-                { nm: "石川 花子", topic: "推薦か一般かの相談", time: "5時間前", isNew: true },
-                { nm: "上田 健一", topic: "文理選択について", time: "昨日", isNew: true },
-                { nm: "遠藤 美咲", topic: "模試の結果振り返り", time: "3日前", isNew: false },
-                { nm: "大野 翔太", topic: "併願パターンの相談", time: "1週間前", isNew: false },
-              ].map((s, i) => (
+              {students.map((s, i) => (
                 <button type="button" className="focusable" key={i} style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: "12px 14px", cursor: "pointer", textAlign: "left", width: "100%" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
                     <div style={{ fontSize: 13, fontWeight: 600 }}>{s.nm}</div>
@@ -238,30 +171,20 @@ function TeacherScreens() {
           </div>
         </Phone>
 
-        <Phone label="シート詳細">
+        <Phone label={ja.teacher.detail.label}>
           <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-            <button type="button" className="focusable" aria-label="生徒一覧に戻る" style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
-            <span style={{ fontSize: 15, fontWeight: 700 }}>青木 太郎</span>
+            <button type="button" className="focusable" aria-label={ja.teacher.detail.backAria} style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
+            <span style={{ fontSize: 15, fontWeight: 700 }}>{ja.teacher.detail.studentName}</span>
           </div>
           <div style={{ padding: 16, flex: 1 }}>
             <div style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: 16, marginBottom: 14 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <span style={{ fontSize: 11, color: C.textMeta }}>2026年1月10日</span>
-                <span style={{ fontSize: 10, fontWeight: 600, color: C.brand, background: C.brandPale, padding: "2px 8px", borderRadius: R.badge }}>新着</span>
+                <span style={{ fontSize: 11, color: C.textMeta }}>{formatAbsoluteDate(ja.sampleDates.sheetCreatedAt)}</span>
+                <span style={{ fontSize: 10, fontWeight: 600, color: C.brand, background: C.brandPale, padding: "2px 8px", borderRadius: R.badge }}>{ja.common.newLabel}</span>
               </div>
-              {[
-                ["希望分野", "情報系学部（国公立 or 私立）"],
-                ["現在の学力", "数学 偏差値58 / 英語 偏差値52"],
-                ["相談したいこと", "国公立か私立かの判断軸。英語の対策時期。"],
-                ["AIからの所見", "数学が強みで情報系は適性あり。英語は早期対策を推奨。"],
-              ].map(([label, val], i) => (
-                <div key={i} style={{ marginBottom: i < 3 ? 12 : 0 }}>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: C.textMeta, marginBottom: 3 }}>{label}</div>
-                  <div style={{ fontSize: 13, lineHeight: 1.7 }}>{val}</div>
-                </div>
-              ))}
+              {ja.sampleSheet.items.map(([label, val], i) => (<div key={i} style={{ marginBottom: i < 3 ? 12 : 0 }}><div style={{ fontSize: 11, fontWeight: 600, color: C.textMeta, marginBottom: 3 }}>{label}</div><div style={{ fontSize: 13, lineHeight: 1.7 }}>{val}</div></div>))}
             </div>
-            <button type="button" className="focusable" style={{ ...bs("primary"), width: "100%", padding: "11px 20px", fontSize: 13 }}>コメントを返す</button>
+            <button type="button" className="focusable" style={{ ...bs("primary"), width: "100%", padding: "11px 20px", fontSize: 13 }}>{ja.teacher.detail.reply}</button>
           </div>
         </Phone>
       </div>
@@ -269,199 +192,94 @@ function TeacherScreens() {
   );
 }
 
-/* ═══════════════════════════ */
-/*     入力欄の設計詳細        */
-/* ═══════════════════════════ */
 function InputDetails() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-      <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.8 }}>
-        C案（入力欄統合型）の詳細仕様。共有シートリンクは入力欄の直下に小さく常駐し、チャットの付属機能として存在する。
-      </div>
-
-      <SH>構造の分解</SH>
+      <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.8 }}>{ja.inputDetails.lead}</div>
+      <SH>{ja.inputDetails.structureTitle}</SH>
       <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: 24 }}>
-        {/* Actual size input area mockup */}
         <div style={{ maxWidth: 340, margin: "0 auto" }}>
-          <div style={{ fontSize: 11, fontWeight: 600, color: C.textMeta, marginBottom: 8 }}>入力エリア全体</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: C.textMeta, marginBottom: 8 }}>{ja.inputDetails.inputArea}</div>
           <div style={{ background: C.white, border: `1px solid ${C.brand}33`, borderRadius: R.card, padding: 2 }}>
-            {/* Input row */}
-            <div style={{ padding: "10px 14px", borderBottom: `1px dashed ${C.borderFaint}` }}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: C.brand, marginBottom: 6 }}>① 入力欄</div>
-              <div style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 20, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 13, color: C.textMeta, flex: 1 }}>メッセージを入力...</span>
-                <button type="button" className="focusable" aria-label="メッセージを送信" style={{ width: 30, height: 30, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 13, flexShrink: 0, border: "none" }}>↑</button>
-              </div>
-            </div>
-            {/* Sheet link row */}
-            <div style={{ padding: "8px 14px" }}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: C.brand, marginBottom: 6 }}>② 共有シートリンク</div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
-                <div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div>
-                <button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, background: "transparent", border: "none", padding: 0 }}>共有シートを作成</button>
-              </div>
-            </div>
+            <div style={{ padding: "10px 14px", borderBottom: `1px dashed ${C.borderFaint}` }}><div style={{ fontSize: 11, fontWeight: 600, color: C.brand, marginBottom: 6 }}>{ja.inputDetails.field1}</div><InputRow /></div>
+            <div style={{ padding: "8px 14px" }}><div style={{ fontSize: 11, fontWeight: 600, color: C.brand, marginBottom: 6 }}>{ja.inputDetails.field2}</div><ShareLink /></div>
           </div>
         </div>
       </div>
 
-      <SH>通常時 vs 強調時</SH>
+      <SH>{ja.inputDetails.compareTitle}</SH>
       <div className="phone-grid">
-        <Phone label="通常時">
-          <Header active="チャット" />
-          <div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-            <AiB>どんな分野に興味がありますか？</AiB>
-            <UserB>情報系に行きたいです</UserB>
-            <AiB>いいですね。もう少し詳しく教えてください。</AiB>
-          </div>
-          <InputC />
-        </Phone>
-
-        <Phone label="AIが共有を提案した直後">
-          <Header active="チャット" />
-          <div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-            <UserB>先生にも相談したいです</UserB>
-            <AiB>いいですね。ここまでの内容を共有シートにまとめて先生に送れますよ。</AiB>
-          </div>
-          <InputC highlight />
-        </Phone>
+        <Phone label={ja.inputDetails.normalLabel}><Header active={ja.common.chat} /><div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>{ja.inputDetails.normalMessages.map((m, i) => m.role === "ai" ? <AiB key={i}>{m.text}</AiB> : <UserB key={i}>{m.text}</UserB>)}</div><InputC /></Phone>
+        <Phone label={ja.inputDetails.highlightLabel}><Header active={ja.common.chat} /><div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>{ja.inputDetails.highlightMessages.map((m, i) => m.role === "ai" ? <AiB key={i}>{m.text}</AiB> : <UserB key={i}>{m.text}</UserB>)}</div><InputC highlight /></Phone>
       </div>
-      <p style={{ fontSize: 12, color: C.textMeta, margin: 0, lineHeight: 1.7, textAlign: "center" }}>
-        通常時はリンクテキストだけで控えめに。AIが共有を提案したタイミングで背景色をつけてさりげなく強調。アニメーションや点滅は使わない。
-      </p>
+      <p style={{ fontSize: 12, color: C.textMeta, margin: 0, lineHeight: 1.7, textAlign: "center" }}>{ja.inputDetails.compareNote}</p>
 
-      <SH>現状との比較</SH>
+      <SH>{ja.inputDetails.beforeAfterTitle}</SH>
       <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
-        <Phone label="Before（現状）">
-          {/* Mimicking current VisionWell+ */}
+        <Phone label={ja.inputDetails.beforeLabel}>
           <div style={{ background: "#4a9e5c", padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <button type="button" className="focusable" aria-label="メニューを開く" style={{ fontSize: 16, color: C.white, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>☰</button>
-              <span style={{ fontSize: 15, fontWeight: 700, color: C.white }}>VisionWell+</span>
+              <button type="button" className="focusable" aria-label={ja.inputDetails.menuAria} style={{ fontSize: 16, color: C.white, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>☰</button>
+              <span style={{ fontSize: 15, fontWeight: 700, color: C.white }}>{ja.brand.legacyWordmark}</span>
             </div>
-            <span style={{ fontSize: 12, color: C.white, border: "1px solid rgba(255,255,255,.5)", borderRadius: 4, padding: "3px 8px" }}>設定</span>
+            <span style={{ fontSize: 12, color: C.white, border: "1px solid rgba(255,255,255,.5)", borderRadius: 4, padding: "3px 8px" }}>{ja.common.settings}</span>
           </div>
           <div style={{ display: "flex", background: C.white, borderBottom: `1px solid ${C.border}` }}>
-            <div style={{ flex: 1, textAlign: "center", padding: "10px 0", fontSize: 13, fontWeight: 600, color: "#4a9e5c", borderBottom: "2px solid #4a9e5c" }}>相談チャット</div>
-            <div style={{ flex: 1, textAlign: "center", padding: "10px 0", fontSize: 13, color: C.textMeta }}>学期レポート</div>
+            <div style={{ flex: 1, textAlign: "center", padding: "10px 0", fontSize: 13, fontWeight: 600, color: "#4a9e5c", borderBottom: "2px solid #4a9e5c" }}>{ja.common.chat}</div>
+            <div style={{ flex: 1, textAlign: "center", padding: "10px 0", fontSize: 13, color: C.textMeta }}>{ja.common.report}</div>
           </div>
           <div style={{ padding: "12px 12px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
-            <div style={{ alignSelf: "flex-start", background: C.white, border: `1px solid ${C.border}`, borderRadius: "14px 14px 14px 4px", padding: "8px 12px", fontSize: 12, maxWidth: "80%", lineHeight: 1.7 }}>進路について一緒に考えましょう。</div>
-            <div style={{ alignSelf: "flex-end", background: "#dcf8c6", borderRadius: "14px 14px 4px 14px", padding: "8px 12px", fontSize: 12, maxWidth: "80%" }}>情報系に行きたいです</div>
+            <AiB>{ja.inputDetails.beforeMessages[0]}</AiB>
+            <UserB>{ja.inputDetails.beforeMessages[1]}</UserB>
           </div>
-          {/* Current yellow button */}
-          <div style={{ padding: "6px 12px", background: "#fff9db", borderTop: "1px solid #f0e68c" }}>
-            <div style={{ textAlign: "center", padding: "8px 0", fontSize: 13, fontWeight: 600, color: "#8b6914" }}>📝 この会話を元に共有シートを生成</div>
-          </div>
-          <div style={{ padding: "10px 12px", background: C.white, borderTop: `1px solid ${C.border}` }}>
-            <div style={{ border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span style={{ fontSize: 12, color: C.textMeta }}>メッセージを入力してください...</span>
-              <span style={{ fontSize: 13, color: C.textMeta, background: C.bg, borderRadius: 4, padding: "4px 12px" }}>送信</span>
-            </div>
-          </div>
+          <div style={{ padding: "6px 12px", background: "#fff9db", borderTop: "1px solid #f0e68c" }}><div style={{ textAlign: "center", padding: "8px 0", fontSize: 13, fontWeight: 600, color: "#8b6914" }}>{ja.inputDetails.legacyAction}</div></div>
+          <div style={{ padding: "10px 12px", background: C.white, borderTop: `1px solid ${C.border}` }}><div style={{ border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", display: "flex", alignItems: "center", justifyContent: "space-between" }}><span style={{ fontSize: 12, color: C.textMeta }}>{ja.common.messagePlaceholderLong}</span><span style={{ fontSize: 13, color: C.textMeta, background: C.bg, borderRadius: 4, padding: "4px 12px" }}>{ja.common.send}</span></div></div>
         </Phone>
 
-        <Phone label="After（C案適用）">
-          <Header active="チャット" />
-          <div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-            <AiB>進路について一緒に考えましょう。</AiB>
-            <UserB>情報系に行きたいです</UserB>
-            <AiB>いいですね。数学と英語の成績を教えてもらえますか？</AiB>
-            <UserB>数学は偏差値58です</UserB>
-            <AiB>数学が強みですね。情報系には有利です。</AiB>
-          </div>
-          <InputC />
-        </Phone>
+        <Phone label={ja.inputDetails.afterLabel}><Header active={ja.common.chat} /><div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>{ja.inputDetails.afterMessages.map((m, i) => m.role === "ai" ? <AiB key={i}>{m.text}</AiB> : <UserB key={i}>{m.text}</UserB>)}</div><InputC /></Phone>
       </div>
-      <p style={{ fontSize: 12, color: C.textMeta, margin: 0, lineHeight: 1.7, textAlign: "center" }}>
-        ヘッダーが1段に。タブは消えてセグメントに。黄色ボタンが消えてリンクテキストに。吹き出しもトーン統一。全体として情報密度が下がり、チャットに集中できる。
-      </p>
+      <p style={{ fontSize: 12, color: C.textMeta, margin: 0, lineHeight: 1.7, textAlign: "center" }}>{ja.inputDetails.beforeAfterNote}</p>
     </div>
   );
 }
 
-/* ── shared ── */
-function Phone({ children, label }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-      <div className="phone-shell">{children}</div>
-      {label && <p style={{ fontSize: 11, fontWeight: 600, color: C.textSub, margin: 0, textAlign: "center", maxWidth: 200 }}>{label}</p>}
-    </div>
-  );
-}
+function Phone({ children, label }) { return <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}><div className="phone-shell">{children}</div>{label && <p style={{ fontSize: 11, fontWeight: 600, color: C.textSub, margin: 0, textAlign: "center", maxWidth: 200 }}>{label}</p>}</div>; }
+function ScreenHeader({ title, backAria }) { return <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}><button type="button" className="focusable" aria-label={backAria} style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button><span style={{ fontSize: 15, fontWeight: 700 }}>{title}</span></div>; }
 
 function Header({ active }) {
   return (
     <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "10px 16px" }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
-        <span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>PLUS</span>
-        <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} />
-      </div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}><span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>{ja.brand.wordmark}</span><div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} /></div>
       <div style={{ display: "flex", background: C.bg, borderRadius: R.btn, padding: 3, overflowX: "auto", gap: 4, scrollbarWidth: "thin" }}>
-        {["チャット", "レポート"].map(x => (
-          <button type="button" className="focusable" key={x} style={{
-            flex: "0 0 auto", minWidth: 84, textAlign: "center", padding: "6px 12px", fontSize: 12,
-            fontWeight: x === active ? 600 : 400,
-            color: x === active ? C.brand : C.textMeta,
-            background: x === active ? C.white : "transparent",
-            borderRadius: 6,
-            border: "none",
-            boxShadow: x === active ? "0 1px 3px rgba(0,0,0,.06)" : "none",
-          }}>{x}</button>
+        {[ja.common.chat, ja.common.report].map(x => (
+          <button type="button" className="focusable" key={x} style={{ flex: "0 0 auto", minWidth: 84, textAlign: "center", padding: "6px 12px", fontSize: 12, fontWeight: x === active ? 600 : 400, color: x === active ? C.brand : C.textMeta, background: x === active ? C.white : "transparent", borderRadius: 6, border: "none", boxShadow: x === active ? "0 1px 3px rgba(0,0,0,.06)" : "none" }}>{x}</button>
         ))}
       </div>
     </div>
   );
+}
+
+function InputRow() {
+  return <div style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 20, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 13, color: C.textMeta, flex: 1 }}>{ja.common.messagePlaceholder}</span><button type="button" className="focusable" aria-label={ja.common.sendAria} style={{ width: 30, height: 30, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 13, flexShrink: 0, border: "none" }}>↑</button></div>;
+}
+function ShareLink() {
+  return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}><div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div><button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, background: "transparent", border: "none", padding: 0 }}>{ja.common.createShareSheet}</button></div>;
 }
 
 function InputC({ highlight } = {}) {
-  return (
-    <div style={{ padding: "10px 14px", background: C.white, borderTop: `1px solid ${C.border}` }}>
-      <div style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 20, padding: "9px 14px", display: "flex", alignItems: "center", gap: 8 }}>
-        <span style={{ fontSize: 13, color: C.textMeta, flex: 1 }}>メッセージを入力...</span>
-        <button type="button" className="focusable" aria-label="メッセージを送信" style={{ width: 28, height: 28, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 12, flexShrink: 0, border: "none" }}>↑</button>
-      </div>
-      <div style={{
-        display: "flex", alignItems: "center", justifyContent: "center", gap: 6, paddingTop: 8,
-        ...(highlight ? { background: C.brandPale, margin: "8px -14px -10px", padding: "10px 14px", borderRadius: "0 0 0 0" } : {}),
-      }}>
-        <div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div>
-        <button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, cursor: "pointer", background: "transparent", border: "none", padding: 0 }}>共有シートを作成</button>
-      </div>
-    </div>
-  );
+  return <div style={{ padding: "10px 14px", background: C.white, borderTop: `1px solid ${C.border}` }}><InputRow /><div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, paddingTop: 8, ...(highlight ? { background: C.brandPale, margin: "8px -14px -10px", padding: "10px 14px", borderRadius: "0 0 0 0" } : {}), }}><div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div><button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, cursor: "pointer", background: "transparent", border: "none", padding: 0 }}>{ja.common.createShareSheet}</button></div></div>;
 }
 
-function AiB({ children }) {
-  return (<div style={{ alignSelf: "flex-start", background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "9px 12px", fontSize: 12, color: C.text, lineHeight: 1.7, maxWidth: "82%" }}>{children}</div>);
-}
-function UserB({ children }) {
-  return (<div style={{ alignSelf: "flex-end", background: C.brandPale, borderRadius: R.card, padding: "9px 12px", fontSize: 12, color: C.text, lineHeight: 1.7, maxWidth: "82%" }}>{children}</div>);
-}
+function AiB({ children }) { return (<div style={{ alignSelf: "flex-start", background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "9px 12px", fontSize: 12, color: C.text, lineHeight: 1.7, maxWidth: "82%" }}>{children}</div>); }
+function UserB({ children }) { return (<div style={{ alignSelf: "flex-end", background: C.brandPale, borderRadius: R.card, padding: "9px 12px", fontSize: 12, color: C.text, lineHeight: 1.7, maxWidth: "82%" }}>{children}</div>); }
 function SH({ children }) { return <div style={{ fontSize: 12, fontWeight: 600, color: C.textMeta, letterSpacing: "0.03em", paddingBottom: 6, borderBottom: `1px solid ${C.borderFaint}` }}>{children}</div>; }
 
 function VerificationChecklist() {
-  const checkpoints = [
-    { width: "360px", items: ["上部タブは横スクロール可能でラベルが切れない", "チャット入力欄と共有シートリンクが2行で収まる", "Phoneコンテナが横にはみ出さず1カラム表示"] },
-    { width: "768px", items: ["Phoneコンテナが2カラム表示に切り替わる", "セグメントUIのタップ領域が44px相当を維持", "見出し・本文の行長が可読域（約45〜75文字）"] },
-    { width: "1024px", items: ["Student/Teacher主要画面が2カラムで均等配置", "カード間余白（20px）が保持される", "共有シート詳細カードの階層が崩れない"] },
-    { width: "1280px", items: ["主要ページ全体が中央寄せで最大幅以内に収まる", "Phoneコンテナが過度に拡大せず clamp の上限内", "タブUIが1行を維持し、必要時のみ横スクロール"] },
-  ];
-
   return (
     <div style={{ marginTop: 36, background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "20px 22px" }}>
-      <h3 style={{ margin: "0 0 14px", fontSize: 15 }}>表示検証チェックリスト（主要ページ）</h3>
+      <h3 style={{ margin: "0 0 14px", fontSize: 15 }}>{ja.checklist.title}</h3>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-        {checkpoints.map((bp) => (
-          <div key={bp.width} style={{ border: `1px solid ${C.borderFaint}`, borderRadius: 10, padding: "12px 14px" }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: C.brand, marginBottom: 8 }}>{bp.width}</div>
-            <ul style={{ margin: 0, paddingLeft: 16, display: "grid", gap: 6 }}>
-              {bp.items.map((item) => (
-                <li key={item} style={{ fontSize: 12, color: C.textSub, lineHeight: 1.6 }}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {ja.checklist.breakpoints.map((bp) => (<div key={bp.width} style={{ border: `1px solid ${C.borderFaint}`, borderRadius: 10, padding: "12px 14px" }}><div style={{ fontSize: 12, fontWeight: 700, color: C.brand, marginBottom: 8 }}>{bp.width}</div><ul style={{ margin: 0, paddingLeft: 16, display: "grid", gap: 6 }}>{bp.items.map((item) => (<li key={item} style={{ fontSize: 12, color: C.textSub, lineHeight: 1.6 }}>{item}</li>))}</ul></div>))}
       </div>
     </div>
   );

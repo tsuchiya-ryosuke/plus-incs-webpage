@@ -63,9 +63,23 @@
         </div>
     </section>
 
+    <!-- 目的別ナビ -->
+    <section class="bg-white border-y border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <p class="text-sm font-semibold text-blue-900 mb-3">目的から探す</p>
+            <div class="flex flex-wrap gap-3">
+                <a href="#service-overview" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">全体像をつかむ</a>
+                <a href="#service-features" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">機能を比較する</a>
+                <a href="#service-flow" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">導入後の運用像を確認する</a>
+                <a href="#service-next" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">次のアクションを決める</a>
+            </div>
+        </div>
+    </section>
+
     <!-- 課題と解決策 -->
-    <section class="py-16 bg-white">
+    <section id="service-overview" class="py-16 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-sm text-blue-800 font-medium text-center mb-8">ゴール：従来の課題とVisionWell+導入後の変化を1画面で把握する。</p>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- 課題 -->
                 <div class="bg-gray-50 rounded-2xl p-8">
@@ -110,16 +124,39 @@
                     </ul>
                 </div>
             </div>
+            <div class="text-center mt-10">
+                <a href="#service-features" class="inline-flex items-center text-blue-900 font-semibold hover:text-blue-700">
+                    次に見る：機能ごとの価値と役割 →
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- 主要機能 -->
-    <section class="py-16 bg-gray-50">
+    <section id="service-features" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-blue-900 mb-4">主要機能</h2>
+                <p class="text-sm text-blue-800 font-medium mb-4">ゴール：生徒向け・教員向けの機能を同じ粒度で比較し、運用のつながりを理解する。</p>
                 <div class="w-20 h-1 bg-blue-900 mx-auto mb-4"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto">生徒が使う機能でデータが蓄積され、先生の指導を強力にサポートします</p>
+            </div>
+            <div class="bg-white border border-blue-100 rounded-xl p-5 mb-10">
+                <p class="text-sm font-semibold text-blue-900 mb-3">利用目的で見る機能マップ（docs のモバイル導線を反映）</p>
+                <div class="grid md:grid-cols-3 gap-3 text-sm">
+                    <div class="bg-blue-50 rounded-lg p-3">
+                        <p class="font-bold text-blue-900 mb-1">送信する</p>
+                        <p class="text-gray-700">面談チャット＆アジェンダ生成 / 学期レポート</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3">
+                        <p class="font-bold text-blue-900 mb-1">確認する</p>
+                        <p class="text-gray-700">生徒カルテ / 提出・記録の一覧</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3">
+                        <p class="font-bold text-blue-900 mb-1">改善する</p>
+                        <p class="text-gray-700">調査書作成支援 / 面談準備の効率化</p>
+                    </div>
+                </div>
             </div>
 
             <!-- 2カラムレイアウト：デスクトップ用 -->
@@ -373,14 +410,20 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center mt-10">
+                <a href="#service-flow" class="inline-flex items-center text-blue-900 font-semibold hover:text-blue-700">
+                    次に見る：導入前によくある不安を確認する →
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section class="py-16 bg-white">
+    <section id="service-flow" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-blue-900 mb-4">よくあるご質問</h2>
+                <p class="text-sm text-blue-800 font-medium mb-4">ゴール：導入前に不安になりやすい論点（安全性・期間・サポート）を先に解消する。</p>
                 <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
             </div>
 
@@ -417,11 +460,16 @@
                     <p class="text-gray-700 ml-9">AIは下書きを生成し、最終的には先生が確認・編集します。AIはサポート役であり、先生の判断が最優先されます。</p>
                 </div>
             </div>
+            <div class="text-center mt-10">
+                <a href="#service-next" class="inline-flex items-center text-blue-900 font-semibold hover:text-blue-700">
+                    次に見る：料金と無料トライアル条件 →
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- 料金・無料トライアル -->
-    <section class="py-16 bg-gradient-to-br from-blue-900 to-blue-800">
+    <section id="service-next" class="py-16 bg-gradient-to-br from-blue-900 to-blue-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <div class="inline-block bg-yellow-400 text-blue-900 px-4 py-1 rounded-full font-bold text-sm mb-4">
@@ -430,6 +478,7 @@
                 <h2 class="text-3xl font-bold text-white mb-4">
                     2026年3月末まで完全無料
                 </h2>
+                <p class="text-sm text-blue-100 font-medium mb-4">ゴール：まず無料期間で運用検証し、本契約判断に必要な材料を揃える。</p>
                 <p class="text-blue-100">
                     今年度の残りの期間、すべての機能を無料でご利用いただけます
                 </p>
@@ -466,15 +515,21 @@
                     無料トライアルに申し込む
                 </a>
             </div>
+            <div class="text-center mt-8">
+                <a href="#service-contact" class="inline-flex items-center text-blue-100 font-semibold hover:text-white">
+                    次に見る：相談窓口と資料請求 →
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-16 bg-white">
+    <section id="service-contact" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-2xl font-bold text-blue-900 mb-4">
                 まずはお気軽にご相談ください
             </h2>
+            <p class="text-sm text-blue-800 font-medium mb-4">ゴール：資料請求か問い合わせか、今の検討段階に合う行動を選ぶ。</p>
             <p class="text-gray-700 mb-6">
                 導入のご相談、実証実験のご相談を承っております
             </p>

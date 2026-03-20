@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { C, R, S, T, E, badgeStyle, STATUS_TONE } from "./plus-design-tokens";
 
 /*
  * 体験ゴール定義（3軸）
@@ -17,30 +18,21 @@ import { useState } from "react";
  * - P2: VerificationChecklist（進捗実感の補助。運用確認項目を3軸に対応）
  */
 
-const C = {
-  brand: "#3ea8ff",
-  brandPale: "#edf6ff",
-  text: "#333333",
-  textSub: "#6e7b85",
-  textMeta: "#a0aab4",
-  border: "#e4edf4",
-  borderFaint: "#f0f4f8",
-  bg: "#f5f8fa",
-  white: "#ffffff",
-  green: "#1cb955",
-  greenPale: "#edfaf3",
-  amber: "#e09200",
-  amberPale: "#fef8ec",
-  red: "#f44336",
-  redPale: "#fef0ef",
-};
-
-const R = { btn: "8px", tag: "99rem", card: "12px", badge: "3px" };
 const ff = "'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif";
 
 function bs(v) {
-  const b = { fontFamily: ff, fontSize: 13, fontWeight: 600, border: "none", borderRadius: R.btn, padding: "8px 20px", cursor: "pointer" };
-  return v === "primary" ? { ...b, background: C.brand, color: "#fff" } : { ...b, background: "transparent", color: C.textSub, border: `1px solid ${C.border}` };
+  const b = {
+    fontFamily: ff,
+    ...T.body,
+    fontWeight: 600,
+    border: "none",
+    borderRadius: R.btn,
+    padding: `${S[8]}px 20px`,
+    cursor: "pointer",
+  };
+  return v === "primary"
+    ? { ...b, background: C.brand, color: C.white }
+    : { ...b, background: "transparent", color: C.textSub, border: `1px solid ${C.border}` };
 }
 
 export default function App() {
@@ -54,12 +46,12 @@ export default function App() {
         .page-shell {
           width: min(100%, 1080px);
           margin: 0 auto;
-          padding: 32px clamp(16px, 3vw, 24px) 0;
+          padding: ${S[32]}px clamp(${S[16]}px, 3vw, ${S[24]}px) 0;
         }
         .content-shell {
           width: min(100%, 1080px);
           margin: 0 auto;
-          padding: 28px clamp(16px, 3vw, 24px) 60px;
+          padding: 28px clamp(${S[16]}px, 3vw, ${S[24]}px) 60px;
         }
         .top-tabs {
           display: flex;
@@ -113,7 +105,7 @@ export default function App() {
                 background: tab === t.id ? C.bg : "transparent",
                 border: tab === t.id ? `1px solid ${C.border}` : "1px solid transparent",
                 borderBottom: tab === t.id ? `1px solid ${C.bg}` : `1px solid ${C.border}`,
-                borderRadius: "8px 8px 0 0", cursor: "pointer",
+                borderRadius: `${R.btn} ${R.btn} 0 0`, cursor: "pointer",
               }}>{t.label}</button>
             ))}
             <div style={{ flex: 1, borderBottom: `1px solid ${C.border}` }} />
@@ -137,7 +129,7 @@ function Principles() {
       <P n="01" t="引き算で設計する" d="要素を足す前に「これがなくても成り立つか？」と問う。装飾を削ってもコンテンツが際立つなら、削ったほうがいい。">
         <div className="two-col-grid">
           <Lbl text="足し算（避ける）">
-            <div style={{ background: "#eef4ff", borderRadius: 10, padding: 16, boxShadow: "0 2px 10px rgba(60,130,240,.12)", border: "1px solid #c5d8f8" }}>
+            <div style={{ background: "#eef4ff", borderRadius: 10, padding: 16, boxShadow: E["shadow-1"], border: "1px solid #c5d8f8" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
                 <span style={{ fontSize: 18 }}>📘</span>
                 <span style={{ fontSize: 14, fontWeight: 700, color: "#1e40af" }}>進路希望調査</span>
@@ -163,8 +155,8 @@ function Principles() {
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "flex-end" }}>
           <Led l="ボタン（8px角丸）"><button style={bs("primary")}>提出する</button></Led>
           <Led l="タグ（full-rounded）"><span style={{ background: C.brandPale, color: C.brand, borderRadius: R.tag, padding: "5px 14px", fontSize: 13, fontWeight: 500, cursor: "pointer" }}>進路指導</span></Led>
-          <Led l="バッジ（3px角丸）"><span style={{ background: C.greenPale, color: C.green, borderRadius: R.badge, padding: "4px 10px", fontSize: 12, fontWeight: 600 }}>提出済み</span></Led>
-          <Led l="バッジ（3px角丸）"><span style={{ background: C.amberPale, color: C.amber, borderRadius: R.badge, padding: "4px 10px", fontSize: 12, fontWeight: 600 }}>未提出</span></Led>
+          <Led l="バッジ（3px角丸）"><span style={{ ...badgeStyle("submitted"), padding: "4px 10px", fontSize: 12 }}>提出済み</span></Led>
+          <Led l="バッジ（3px角丸）"><span style={{ ...badgeStyle("unsubmitted"), padding: "4px 10px", fontSize: 12 }}>未提出</span></Led>
         </div>
       </P>
 
@@ -194,7 +186,7 @@ function Principles() {
           </Lbl>
           <Lbl text="シャドウで浮かす（避ける）">
             <div style={{ borderRadius: R.card, padding: 14 }}>
-              <div style={{ background: C.white, borderRadius: R.card, boxShadow: "0 4px 16px rgba(0,0,0,.1)", padding: 14 }}>
+              <div style={{ background: C.white, borderRadius: R.card, boxShadow: E["shadow-1"], padding: 14 }}>
                 <div style={{ fontSize: 13, fontWeight: 600 }}>模試の結果</div>
                 <div style={{ fontSize: 12, color: C.textMeta, marginTop: 4 }}>装飾的な影は認知ノイズ</div>
               </div>
@@ -222,12 +214,13 @@ function Screens() {
       <SF>
         <Nav active="ホーム" items={["ホーム", "進路", "お知らせ"]} />
         <div style={{ padding: "20px 24px 24px" }}>
+          <StateColorTable />
           <h2 style={{ fontSize: 15, fontWeight: 700, margin: "0 0 14px" }}>やること</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {[{ t: "進路希望調査", s: "提出期限 1月15日", d: false }, { t: "模試結果の確認", s: "12月実施分", d: false }, { t: "冬休み課題レポート", s: "提出期限 1月8日", d: true }].map((x, i) => (
               <div key={i} style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: "14px 18px", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer" }}>
                 <div><div style={{ fontSize: 14, fontWeight: 600, marginBottom: 3 }}>{x.t}</div><div style={{ fontSize: 12, color: C.textMeta }}>{x.s}</div></div>
-                <span style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: R.badge, color: x.d ? C.green : C.amber, background: x.d ? C.greenPale : C.amberPale }}>{x.d ? "提出済" : "未提出"}</span>
+                <span style={{ ...badgeStyle(x.d ? "submitted" : "unsubmitted"), padding: "3px 10px" }}>{x.d ? "提出済" : "未提出"}</span>
               </div>
             ))}
           </div>
@@ -260,7 +253,7 @@ function Screens() {
             {[{ n: 1, nm: "青木 太郎", d: true }, { n: 2, nm: "石川 花子", d: true }, { n: 3, nm: "上田 健一", d: false }, { n: 4, nm: "遠藤 美咲", d: false }, { n: 5, nm: "大野 翔太", d: true }].map((s, i) => (
               <div key={i} style={{ display: "grid", gridTemplateColumns: "44px 1fr 80px", padding: "11px 18px", borderBottom: i < 4 ? `1px solid ${C.borderFaint}` : "none", fontSize: 13, alignItems: "center" }}>
                 <span style={{ color: C.textMeta }}>{s.n}</span><span style={{ fontWeight: 500 }}>{s.nm}</span>
-                <span style={{ textAlign: "right" }}><span style={{ fontSize: 11, fontWeight: 600, padding: "2px 9px", borderRadius: R.badge, color: s.d ? C.green : C.amber, background: s.d ? C.greenPale : C.amberPale }}>{s.d ? "提出済" : "未提出"}</span></span>
+                <span style={{ textAlign: "right" }}><span style={badgeStyle(s.d ? "submitted" : "unsubmitted")}>{s.d ? "提出済" : "未提出"}</span></span>
               </div>
             ))}
           </div>
@@ -287,15 +280,15 @@ function DoDonts() {
       />
       <DD rule="情報量" doD="判断に必要な最小限の情報だけ" dontD="詰め込みすぎると認知ノイズになる"
         doE={<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "14px 16px" }}><div style={{ fontSize: 14, fontWeight: 600, marginBottom: 4 }}>進路希望調査</div><div style={{ fontSize: 12, color: C.textMeta }}>3年1組 · 提出期限 1/15</div></div>}
-        dontE={<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "14px 16px" }}><div style={{ display: "flex", gap: 5, alignItems: "center", marginBottom: 4 }}><span style={{ fontSize: 15 }}>📋</span><span style={{ fontSize: 14, fontWeight: 700 }}>進路希望調査</span><span style={{ fontSize: 9, background: C.redPale, color: C.red, padding: "1px 5px", borderRadius: 99, fontWeight: 700 }}>重要!</span><span style={{ fontSize: 9, background: C.amberPale, color: C.amber, padding: "1px 5px", borderRadius: 99, fontWeight: 600 }}>期限間近</span></div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 4 }}>第一志望から第三志望まで…</div><div style={{ fontSize: 10, color: C.textMeta }}>3年1組 · 田中先生 · 作成12/20 · 期限1/15 · 未提出7名</div></div>}
+        dontE={<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "14px 16px" }}><div style={{ display: "flex", gap: 5, alignItems: "center", marginBottom: 4 }}><span style={{ fontSize: 15 }}>📋</span><span style={{ fontSize: 14, fontWeight: 700 }}>進路希望調査</span><span style={{ fontSize: 9, color: C.semantic.error.text, background: C.semantic.error.bg, border: `1px solid ${C.semantic.error.border}`, padding: "1px 5px", borderRadius: 99, fontWeight: 700 }}>重要!</span><span style={{ ...badgeStyle("unsubmitted"), fontSize: 9, padding: "1px 5px", borderRadius: 99, fontWeight: 600 }}>期限間近</span></div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 4 }}>第一志望から第三志望まで…</div><div style={{ fontSize: 10, color: C.textMeta }}>3年1組 · 田中先生 · 作成12/20 · 期限1/15 · 未提出7名</div></div>}
       />
       <DD rule="ボタンの数" doD="プライマリは1つ。優先度を絞る" dontD="並列に置くと何を押すべきか迷う"
         doE={<div style={{ display: "flex", gap: 8 }}><button style={bs("primary")}>保存する</button><button style={bs("secondary")}>やめる</button></div>}
-        dontE={<div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}><button style={bs("primary")}>保存</button><button style={{ ...bs("primary"), background: C.green }}>公開</button><button style={{ ...bs("secondary"), color: C.amber, borderColor: C.amber }}>下書き</button><button style={{ ...bs("secondary"), color: C.red, borderColor: C.red }}>削除</button></div>}
+        dontE={<div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}><button style={bs("primary")}>保存</button><button style={{ ...bs("primary"), background: C.semantic.success.text }}>公開</button><button style={{ ...bs("secondary"), color: C.semantic.warning.text, borderColor: C.semantic.warning.border }}>下書き</button><button style={{ ...bs("secondary"), color: C.semantic.error.text, borderColor: C.semantic.error.border }}>削除</button></div>}
       />
       <DD rule="シャドウの使いどころ" doD="ドロップダウンなど浮遊する要素のみ" dontD="カードを飾る目的では使わない"
-        doE={<div><div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.btn, padding: "8px 14px", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 6, color: C.textSub, marginBottom: 6 }}>クラスを選択 <span style={{ fontSize: 10 }}>▼</span></div><div style={{ background: C.white, borderRadius: R.btn, boxShadow: "0 4px 16px rgba(0,0,0,.1)", border: `1px solid ${C.border}`, padding: 4, width: 150 }}>{["3年1組", "3年2組", "3年3組"].map((c, i) => (<div key={i} style={{ padding: "8px 12px", fontSize: 13, borderRadius: 6, color: i === 0 ? C.brand : C.text, background: i === 0 ? C.brandPale : "transparent", cursor: "pointer", fontWeight: i === 0 ? 600 : 400 }}>{c}</div>))}</div></div>}
-        dontE={<div style={{ display: "flex", flexDirection: "column", gap: 8 }}>{["カードA", "カードB"].map((t, i) => (<div key={i} style={{ background: C.white, borderRadius: R.card, boxShadow: "0 2px 12px rgba(0,0,0,.08)", padding: 14 }}><div style={{ fontSize: 13, fontWeight: 600 }}>{t}</div><div style={{ fontSize: 11, color: C.textMeta, marginTop: 3 }}>装飾的なシャドウ</div></div>))}</div>}
+        doE={<div><div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.btn, padding: "8px 14px", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 6, color: C.textSub, marginBottom: 6 }}>クラスを選択 <span style={{ fontSize: 10 }}>▼</span></div><div style={{ background: C.white, borderRadius: R.btn, boxShadow: E["shadow-1"], border: `1px solid ${C.border}`, padding: 4, width: 150 }}>{["3年1組", "3年2組", "3年3組"].map((c, i) => (<div key={i} style={{ padding: "8px 12px", fontSize: 13, borderRadius: 6, color: i === 0 ? C.brand : C.text, background: i === 0 ? C.brandPale : "transparent", cursor: "pointer", fontWeight: i === 0 ? 600 : 400 }}>{c}</div>))}</div></div>}
+        dontE={<div style={{ display: "flex", flexDirection: "column", gap: 8 }}>{["カードA", "カードB"].map((t, i) => (<div key={i} style={{ background: C.white, borderRadius: R.card, boxShadow: E["shadow-1"], padding: 14 }}><div style={{ fontSize: 13, fontWeight: 600 }}>{t}</div><div style={{ fontSize: 11, color: C.textMeta, marginTop: 3 }}>装飾的なシャドウ</div></div>))}</div>}
       />
     </div>
   );
@@ -313,5 +306,27 @@ function Nav({ active, items, teacher }) {
   return (<div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "10px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}><div style={{ display: "flex", alignItems: "center", gap: 16 }}><span style={{ fontSize: 17, fontWeight: 700, color: C.brand, letterSpacing: "-0.02em" }}>PLUS</span>{teacher && <span style={{ fontSize: 11, color: C.textMeta, background: C.borderFaint, padding: "2px 8px", borderRadius: R.badge }}>先生</span>}<div style={{ display: "flex", gap: 6 }}>{items.map(x => (<span key={x} style={{ fontSize: 13, fontWeight: x === active ? 600 : 400, color: x === active ? C.text : C.textMeta, padding: "4px 10px", borderRadius: R.btn, background: x === active ? C.bg : "transparent", cursor: "pointer" }}>{x}</span>))}</div></div><div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} /></div>);
 }
 function DD({ rule, doD, dontD, doE, dontE }) {
-  return (<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, overflow: "hidden" }}><div style={{ padding: "12px 22px", borderBottom: `1px solid ${C.borderFaint}` }}><span style={{ fontSize: 14, fontWeight: 600 }}>{rule}</span></div><div className="dd-grid"><div style={{ padding: "18px 22px", borderRight: `1px solid ${C.borderFaint}` }}><div style={{ fontSize: 11, fontWeight: 700, color: C.green, marginBottom: 4 }}>Do</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{doD}</div>{doE}</div><div style={{ padding: "18px 22px" }}><div style={{ fontSize: 11, fontWeight: 700, color: C.red, marginBottom: 4 }}>Don't</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{dontD}</div>{dontE}</div></div></div>);
+  return (<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, overflow: "hidden" }}><div style={{ padding: "12px 22px", borderBottom: `1px solid ${C.borderFaint}` }}><span style={{ fontSize: 14, fontWeight: 600 }}>{rule}</span></div><div className="dd-grid"><div style={{ padding: "18px 22px", borderRight: `1px solid ${C.borderFaint}` }}><div style={{ fontSize: 11, fontWeight: 700, color: C.semantic.success.text, marginBottom: 4 }}>Do</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{doD}</div>{doE}</div><div style={{ padding: "18px 22px" }}><div style={{ fontSize: 11, fontWeight: 700, color: C.semantic.error.text, marginBottom: 4 }}>Don't</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{dontD}</div>{dontE}</div></div></div>);
+}
+
+function StateColorTable() {
+  const rows = [
+    { state: "submitted", usage: "提出済み / 完了" },
+    { state: "unsubmitted", usage: "未提出 / 期限接近" },
+    { state: "new", usage: "新着 / 未読" },
+  ];
+  return (
+    <div style={{ border: `1px solid ${C.borderFaint}`, borderRadius: R.card, marginBottom: S[16], overflow: "hidden" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "120px 1fr", background: C.bg, ...T.caption, fontWeight: 700, color: C.textMeta }}>
+        <div style={{ padding: `${S[8]}px ${S[12]}px` }}>状態</div>
+        <div style={{ padding: `${S[8]}px ${S[12]}px` }}>使う場面</div>
+      </div>
+      {rows.map((row) => (
+        <div key={row.state} style={{ display: "grid", gridTemplateColumns: "120px 1fr", borderTop: `1px solid ${C.borderFaint}` }}>
+          <div style={{ padding: `${S[8]}px ${S[12]}px` }}><span style={badgeStyle(row.state)}>{STATUS_TONE[row.state].label}</span></div>
+          <div style={{ padding: `${S[8]}px ${S[12]}px`, ...T.body, color: C.textSub }}>{row.usage}</div>
+        </div>
+      ))}
+    </div>
+  );
 }

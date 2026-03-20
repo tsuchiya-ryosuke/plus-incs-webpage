@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import ja from "../locales/ja/plus-design-mobile.json";
+import { C, R, S, T, E, badgeStyle, STATUS_TONE } from "./plus-design-tokens";
 
 /*
  * 体験ゴール定義（3軸）
@@ -18,14 +19,6 @@ import ja from "../locales/ja/plus-design-mobile.json";
  * - P2: DD（design docs側の運用ルール更新。UI実装後に反映）
  */
 
-const C = {
-  brand: "#3ea8ff", brandPale: "#edf6ff",
-  text: "#333", textSub: "#6e7b85", textMeta: "#5f6b76",
-  border: "#e4edf4", borderFaint: "#f0f4f8",
-  bg: "#f5f8fa", white: "#fff",
-  green: "#1cb955", greenPale: "#edfaf3",
-};
-const R = { btn: "8px", card: "12px", badge: "3px" };
 const ff = "'Noto Sans JP', -apple-system, sans-serif";
 
 const DEMO_NOW = new Date("2026-01-12T12:00:00+09:00");
@@ -59,8 +52,18 @@ function formatRelativeTime(dateString, now = DEMO_NOW) {
 }
 
 function bs(v) {
-  const b = { fontFamily: ff, fontSize: 13, fontWeight: 600, border: "none", borderRadius: R.btn, padding: "8px 20px", cursor: "pointer" };
-  return v === "primary" ? { ...b, background: C.brand, color: "#fff" } : { ...b, background: "transparent", color: C.textSub, border: `1px solid ${C.border}` };
+  const b = {
+    fontFamily: ff,
+    ...T.body,
+    fontWeight: 600,
+    border: "none",
+    borderRadius: R.btn,
+    padding: `${S[8]}px 20px`,
+    cursor: "pointer",
+  };
+  return v === "primary"
+    ? { ...b, background: C.brand, color: C.white }
+    : { ...b, background: "transparent", color: C.textSub, border: `1px solid ${C.border}` };
 }
 
 export default function App() {
@@ -75,8 +78,8 @@ export default function App() {
         .focusable:focus-visible {
           outline: 3px solid ${C.brand}; outline-offset: 2px; box-shadow: 0 0 0 2px ${C.white};
         }
-        .page-shell { width: min(100%, 1100px); margin: 0 auto; padding: 32px clamp(16px, 3vw, 24px) 0; }
-        .content-shell { width: min(100%, 1100px); margin: 0 auto; padding: 28px clamp(16px, 3vw, 24px) 60px; }
+        .page-shell { width: min(100%, 1100px); margin: 0 auto; padding: ${S[32]}px clamp(${S[16]}px, 3vw, ${S[24]}px) 0; }
+        .content-shell { width: min(100%, 1100px); margin: 0 auto; padding: 28px clamp(${S[16]}px, 3vw, ${S[24]}px) 60px; }
         .top-tabs { display: flex; gap: 0; position: relative; bottom: -1px; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
         .top-tabs button { flex: 0 0 auto; }
         .phone-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; container-type: inline-size; }
@@ -96,7 +99,7 @@ export default function App() {
                 background: tab === t.id ? C.bg : "transparent",
                 border: tab === t.id ? `1px solid ${C.border}` : "1px solid transparent",
                 borderBottom: tab === t.id ? `1px solid ${C.bg}` : `1px solid ${C.border}`,
-                borderRadius: "8px 8px 0 0", cursor: "pointer",
+                borderRadius: `${R.btn} ${R.btn} 0 0`, cursor: "pointer",
               }}>{t.label}</button>
             ))}
             <div style={{ flex: 1, borderBottom: `1px solid ${C.border}` }} />
@@ -143,7 +146,7 @@ function StudentFlow() {
         <Phone label={ja.studentFlow.done.label}>
           <ScreenHeader title={ja.common.shareSheet} backAria={ja.studentFlow.done.backAria} />
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", textAlign: "center" }}>
-            <div style={{ width: 48, height: 48, borderRadius: "50%", background: C.greenPale, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, marginBottom: 14 }}>✓</div>
+            <div style={{ width: 48, height: 48, borderRadius: "50%", background: C.semantic.success.bg, color: C.semantic.success.text, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, marginBottom: 14 }}>✓</div>
             <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 6 }}>{ja.studentFlow.done.title}</div>
             <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.7, marginBottom: 24 }}>{ja.studentFlow.done.body}</div>
             <button type="button" className="focusable" style={{ ...bs("secondary"), padding: "10px 28px" }}>{ja.studentFlow.done.back}</button>
@@ -177,7 +180,7 @@ function TeacherScreens() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
                     <div style={{ fontSize: 13, fontWeight: 600 }}>{s.nm}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      {s.isNew && <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.brand, flexShrink: 0 }} />}
+                      {s.isNew && <span style={{ ...badgeStyle("new"), padding: "1px 6px", fontSize: 10 }}>{STATUS_TONE.new.label}</span>}
                       <span style={{ fontSize: 11, color: C.textMeta }}>{s.time}</span>
                     </div>
                   </div>
@@ -197,7 +200,7 @@ function TeacherScreens() {
             <div style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: 16, marginBottom: 14 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
                 <span style={{ fontSize: 11, color: C.textMeta }}>{formatAbsoluteDate(ja.sampleDates.sheetCreatedAt)}</span>
-                <span style={{ fontSize: 10, fontWeight: 600, color: C.brand, background: C.brandPale, padding: "2px 8px", borderRadius: R.badge }}>{ja.common.newLabel}</span>
+                <span style={{ ...badgeStyle("new"), fontSize: 10, padding: "2px 8px" }}>{ja.common.newLabel}</span>
               </div>
               {ja.sampleSheet.items.map(([label, val], i) => (<div key={i} style={{ marginBottom: i < 3 ? 12 : 0 }}><div style={{ fontSize: 11, fontWeight: 600, color: C.textMeta, marginBottom: 3 }}>{label}</div><div style={{ fontSize: 13, lineHeight: 1.7 }}>{val}</div></div>))}
             </div>
@@ -267,9 +270,9 @@ function Header({ active }) {
   return (
     <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "10px 16px" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}><span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>{ja.brand.wordmark}</span><div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} /></div>
-      <div style={{ display: "flex", background: C.bg, borderRadius: R.btn, padding: 3, overflowX: "auto", gap: 4, scrollbarWidth: "thin" }}>
+      <div style={{ display: "flex", background: C.bg, borderRadius: R.btn, padding: 3, overflowX: "auto", gap: S[4], scrollbarWidth: "thin" }}>
         {[ja.common.chat, ja.common.report].map(x => (
-          <button type="button" className="focusable" key={x} style={{ flex: "0 0 auto", minWidth: 84, textAlign: "center", padding: "6px 12px", fontSize: 12, fontWeight: x === active ? 600 : 400, color: x === active ? C.brand : C.textMeta, background: x === active ? C.white : "transparent", borderRadius: 6, border: "none", boxShadow: x === active ? "0 1px 3px rgba(0,0,0,.06)" : "none" }}>{x}</button>
+          <button type="button" className="focusable" key={x} style={{ flex: "0 0 auto", minWidth: 84, textAlign: "center", padding: "6px 12px", ...T.caption, fontWeight: x === active ? 600 : 400, color: x === active ? C.brand : C.textMeta, background: x === active ? C.white : "transparent", borderRadius: 6, border: "none", boxShadow: x === active ? E["shadow-1"] : E["shadow-0"] }}>{x}</button>
         ))}
       </div>
     </div>
@@ -295,9 +298,32 @@ function VerificationChecklist() {
   return (
     <div style={{ marginTop: 36, background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "20px 22px" }}>
       <h3 style={{ margin: "0 0 14px", fontSize: 15 }}>{ja.checklist.title}</h3>
+      <StateColorTable />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
         {ja.checklist.breakpoints.map((bp) => (<div key={bp.width} style={{ border: `1px solid ${C.borderFaint}`, borderRadius: 10, padding: "12px 14px" }}><div style={{ fontSize: 12, fontWeight: 700, color: C.brand, marginBottom: 8 }}>{bp.width}</div><ul style={{ margin: 0, paddingLeft: 16, display: "grid", gap: 6 }}>{bp.items.map((item) => (<li key={item} style={{ fontSize: 12, color: C.textSub, lineHeight: 1.6 }}>{item}</li>))}</ul></div>))}
       </div>
+    </div>
+  );
+}
+
+function StateColorTable() {
+  const rows = [
+    { state: "submitted", usage: "提出完了、成功通知" },
+    { state: "unsubmitted", usage: "未提出、期限接近" },
+    { state: "new", usage: "新着、未読" },
+  ];
+  return (
+    <div style={{ border: `1px solid ${C.borderFaint}`, borderRadius: R.card, marginBottom: S[16], overflow: "hidden" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "120px 1fr", background: C.bg, ...T.caption, fontWeight: 700, color: C.textMeta }}>
+        <div style={{ padding: `${S[8]}px ${S[12]}px` }}>状態</div>
+        <div style={{ padding: `${S[8]}px ${S[12]}px` }}>使いどころ</div>
+      </div>
+      {rows.map((row) => (
+        <div key={row.state} style={{ display: "grid", gridTemplateColumns: "120px 1fr", borderTop: `1px solid ${C.borderFaint}` }}>
+          <div style={{ padding: `${S[8]}px ${S[12]}px` }}><span style={badgeStyle(row.state)}>{STATUS_TONE[row.state].label}</span></div>
+          <div style={{ padding: `${S[8]}px ${S[12]}px`, ...T.body, color: C.textSub }}>{row.usage}</div>
+        </div>
+      ))}
     </div>
   );
 }

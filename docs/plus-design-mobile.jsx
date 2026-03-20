@@ -22,6 +22,9 @@ import { C, R, S, T, E, badgeStyle, STATUS_TONE } from "./plus-design-tokens";
 const ff = "'Noto Sans JP', -apple-system, sans-serif";
 
 const DEMO_NOW = new Date("2026-01-12T12:00:00+09:00");
+const TAP_TARGET_MIN = 44;
+const INTERACTIVE_TEXT = { lineHeight: 1.4, fontWeight: 600 };
+const THREE_TIER_CARD = { display: "grid", gridTemplateRows: "auto 1fr auto", minHeight: 138, gap: 8 };
 
 function formatAbsoluteDate(dateString, includeSuffix = false) {
   const text = new Intl.DateTimeFormat("ja-JP", {
@@ -82,9 +85,15 @@ export default function App() {
         .content-shell { width: min(100%, 1100px); margin: 0 auto; padding: 28px clamp(${S[16]}px, 3vw, ${S[24]}px) 60px; }
         .top-tabs { display: flex; gap: 0; position: relative; bottom: -1px; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
         .top-tabs button { flex: 0 0 auto; }
+        .top-tabs button .tab-label { display: inline-block; max-width: min(100%, 220px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .phone-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; container-type: inline-size; }
         .phone-shell { width: clamp(240px, 38vw, 360px); border: 1px solid ${C.border}; border-radius: 20px; overflow: hidden; background: ${C.bg}; min-height: 510px; display: flex; flex-direction: column; }
+        .mobile-safe-label { max-width: min(100%, 220px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         @container (max-width: 760px) { .phone-shell { width: clamp(220px, 92cqw, 380px); } }
+        @media (max-width: 768px) {
+          .top-tabs button .tab-label,
+          .mobile-safe-label { max-width: min(100%, 160px); }
+        }
       `}</style>
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}` }}>
         <div className="page-shell">
@@ -94,13 +103,13 @@ export default function App() {
           <nav className="top-tabs">
             {tabs.map(t => (
               <button key={t.id} onClick={() => setTab(t.id)} className="focusable" style={{
-                fontFamily: ff, padding: "10px 18px", fontSize: 13,
-                fontWeight: tab === t.id ? 700 : 400, color: tab === t.id ? C.brand : C.textSub,
+                fontFamily: ff, padding: "10px 18px", fontSize: 13, minHeight: TAP_TARGET_MIN, ...INTERACTIVE_TEXT,
+                fontWeight: tab === t.id ? 700 : INTERACTIVE_TEXT.fontWeight, color: tab === t.id ? C.brand : C.textSub,
                 background: tab === t.id ? C.bg : "transparent",
                 border: tab === t.id ? `1px solid ${C.border}` : "1px solid transparent",
                 borderBottom: tab === t.id ? `1px solid ${C.bg}` : `1px solid ${C.border}`,
                 borderRadius: `${R.btn} ${R.btn} 0 0`, cursor: "pointer",
-              }}>{t.label}</button>
+              }}><span className="tab-label">{t.label}</span></button>
             ))}
             <div style={{ flex: 1, borderBottom: `1px solid ${C.border}` }} />
           </nav>
@@ -176,9 +185,9 @@ function TeacherScreens() {
             <div style={{ fontSize: 12, color: C.textMeta, marginBottom: 14 }}>{ja.teacher.list.summary}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {students.map((s, i) => (
-                <button type="button" className="focusable" key={i} style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: "12px 14px", cursor: "pointer", textAlign: "left", width: "100%" }}>
+                <button type="button" className="focusable" key={i} style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: "12px 14px", minHeight: TAP_TARGET_MIN, cursor: "pointer", textAlign: "left", width: "100%" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
-                    <div style={{ fontSize: 13, fontWeight: 600 }}>{s.nm}</div>
+                    <div className="mobile-safe-label" style={{ fontSize: 13, ...INTERACTIVE_TEXT }}>{s.nm}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                       {s.isNew && <span style={{ ...badgeStyle("new"), padding: "1px 6px", fontSize: 10 }}>{STATUS_TONE.new.label}</span>}
                       <span style={{ fontSize: 11, color: C.textMeta }}>{s.time}</span>
@@ -263,7 +272,7 @@ function InputDetails() {
   );
 }
 
-function Phone({ children, label }) { return <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}><div className="phone-shell">{children}</div>{label && <p style={{ fontSize: 11, fontWeight: 600, color: C.textSub, margin: 0, textAlign: "center", maxWidth: 200 }}>{label}</p>}</div>; }
+function Phone({ children, label }) { return <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}><div className="phone-shell">{children}</div>{label && <p className="mobile-safe-label" style={{ fontSize: 11, fontWeight: 600, color: C.textSub, margin: 0, textAlign: "center" }}>{label}</p>}</div>; }
 function ScreenHeader({ title, backAria }) { return <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}><button type="button" className="focusable" aria-label={backAria} style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button><span style={{ fontSize: 15, fontWeight: 700 }}>{title}</span></div>; }
 
 function Header({ active }) {
@@ -272,7 +281,7 @@ function Header({ active }) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}><span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>{ja.brand.wordmark}</span><div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} /></div>
       <div style={{ display: "flex", background: C.bg, borderRadius: R.btn, padding: 3, overflowX: "auto", gap: S[4], scrollbarWidth: "thin" }}>
         {[ja.common.chat, ja.common.report].map(x => (
-          <button type="button" className="focusable" key={x} style={{ flex: "0 0 auto", minWidth: 84, textAlign: "center", padding: "6px 12px", ...T.caption, fontWeight: x === active ? 600 : 400, color: x === active ? C.brand : C.textMeta, background: x === active ? C.white : "transparent", borderRadius: 6, border: "none", boxShadow: x === active ? E["shadow-1"] : E["shadow-0"] }}>{x}</button>
+          <button type="button" className="focusable" key={x} style={{ flex: "0 0 auto", minWidth: 84, minHeight: TAP_TARGET_MIN, textAlign: "center", padding: "8px 12px", ...T.caption, ...INTERACTIVE_TEXT, fontWeight: x === active ? 700 : INTERACTIVE_TEXT.fontWeight, color: x === active ? C.brand : C.textMeta, background: x === active ? C.white : "transparent", borderRadius: 6, border: "none", boxShadow: x === active ? E["shadow-1"] : E["shadow-0"] }}><span className="mobile-safe-label">{x}</span></button>
         ))}
       </div>
     </div>
@@ -282,12 +291,12 @@ function Header({ active }) {
 function InputRow() {
   return <div style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 20, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 13, color: C.textMeta, flex: 1 }}>{ja.common.messagePlaceholder}</span><button type="button" className="focusable" aria-label={ja.common.sendAria} style={{ width: 30, height: 30, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 13, flexShrink: 0, border: "none" }}>↑</button></div>;
 }
-function ShareLink() {
-  return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}><div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div><button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, background: "transparent", border: "none", padding: 0 }}>{ja.common.createShareSheet}</button></div>;
+function ShareLink({ active } = {}) {
+  return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, minHeight: TAP_TARGET_MIN, padding: "0 2px" }}><div style={{ width: 18, height: 18, borderRadius: 4, border: `1.5px solid ${active ? C.white : C.brand}`, background: active ? C.brand : "transparent", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: active ? C.white : C.brand, flexShrink: 0 }}>↗</div><button type="button" className="focusable mobile-safe-label" style={{ fontSize: 12, color: C.brand, ...INTERACTIVE_TEXT, background: "transparent", border: "none", padding: 0 }}>{ja.common.createShareSheet}</button></div>;
 }
 
 function InputC({ highlight } = {}) {
-  return <div style={{ padding: "10px 14px", background: C.white, borderTop: `1px solid ${C.border}` }}><InputRow /><div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, paddingTop: 8, ...(highlight ? { background: C.brandPale, margin: "8px -14px -10px", padding: "10px 14px", borderRadius: "0 0 0 0" } : {}), }}><div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div><button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, cursor: "pointer", background: "transparent", border: "none", padding: 0 }}>{ja.common.createShareSheet}</button></div></div>;
+  return <div style={{ padding: "10px 14px", background: C.white, borderTop: `1px solid ${C.border}` }}><InputRow /><div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, paddingTop: 8, minHeight: TAP_TARGET_MIN, ...(highlight ? { background: C.brandPale, margin: "8px -14px -10px", padding: "10px 14px", borderLeft: `4px solid ${C.brand}`, borderRadius: "0 0 0 0" } : {}), }}><ShareLink active={highlight} /></div></div>;
 }
 
 function AiB({ children }) { return (<div style={{ alignSelf: "flex-start", background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "9px 12px", fontSize: 12, color: C.text, lineHeight: 1.7, maxWidth: "82%" }}>{children}</div>); }
@@ -300,7 +309,15 @@ function VerificationChecklist() {
       <h3 style={{ margin: "0 0 14px", fontSize: 15 }}>{ja.checklist.title}</h3>
       <StateColorTable />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-        {ja.checklist.breakpoints.map((bp) => (<div key={bp.width} style={{ border: `1px solid ${C.borderFaint}`, borderRadius: 10, padding: "12px 14px" }}><div style={{ fontSize: 12, fontWeight: 700, color: C.brand, marginBottom: 8 }}>{bp.width}</div><ul style={{ margin: 0, paddingLeft: 16, display: "grid", gap: 6 }}>{bp.items.map((item) => (<li key={item} style={{ fontSize: 12, color: C.textSub, lineHeight: 1.6 }}>{item}</li>))}</ul></div>))}
+        {ja.checklist.breakpoints.map((bp) => (
+          <div key={bp.width} style={{ border: `1px solid ${C.borderFaint}`, borderRadius: 10, padding: "12px 14px", ...THREE_TIER_CARD }}>
+            <div className="mobile-safe-label" style={{ fontSize: 12, fontWeight: 700, color: C.brand }}>{bp.width}</div>
+            <div style={{ fontSize: 12, color: C.text, lineHeight: 1.6 }}>{bp.items[0]}</div>
+            <ul style={{ margin: 0, paddingLeft: 16, display: "grid", gap: 4 }}>
+              {bp.items.slice(1).map((item) => (<li key={item} style={{ fontSize: 11, color: C.textSub, lineHeight: 1.5 }}>{item}</li>))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   );

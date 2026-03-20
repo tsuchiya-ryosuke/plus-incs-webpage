@@ -19,6 +19,8 @@ import { C, R, S, T, E, badgeStyle, STATUS_TONE } from "./plus-design-tokens";
  */
 
 const ff = "'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif";
+const TAP_TARGET_MIN = 44;
+const INTERACTIVE_TEXT = { lineHeight: 1.4, fontWeight: 600 };
 
 function bs(v) {
   const b = {
@@ -65,6 +67,13 @@ export default function App() {
         .top-tabs button {
           flex: 0 0 auto;
         }
+        .top-tabs button .tab-label {
+          display: inline-block;
+          max-width: min(100%, 220px);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         .two-col-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(260px, 1fr));
@@ -90,6 +99,9 @@ export default function App() {
           .dd-grid {
             grid-template-columns: minmax(0, 1fr);
           }
+          .top-tabs button .tab-label {
+            max-width: min(100%, 160px);
+          }
         }
       `}</style>
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}` }}>
@@ -100,13 +112,13 @@ export default function App() {
           <nav className="top-tabs">
             {tabs.map(t => (
               <button key={t.id} onClick={() => setTab(t.id)} style={{
-                fontFamily: ff, padding: "10px 20px", fontSize: 13,
-                fontWeight: tab === t.id ? 700 : 400, color: tab === t.id ? C.brand : C.textSub,
+                fontFamily: ff, padding: "10px 20px", fontSize: 13, minHeight: TAP_TARGET_MIN, ...INTERACTIVE_TEXT,
+                fontWeight: tab === t.id ? 700 : INTERACTIVE_TEXT.fontWeight, color: tab === t.id ? C.brand : C.textSub,
                 background: tab === t.id ? C.bg : "transparent",
                 border: tab === t.id ? `1px solid ${C.border}` : "1px solid transparent",
                 borderBottom: tab === t.id ? `1px solid ${C.bg}` : `1px solid ${C.border}`,
                 borderRadius: `${R.btn} ${R.btn} 0 0`, cursor: "pointer",
-              }}>{t.label}</button>
+              }}><span className="tab-label">{t.label}</span></button>
             ))}
             <div style={{ flex: 1, borderBottom: `1px solid ${C.border}` }} />
           </nav>
@@ -306,7 +318,25 @@ function Nav({ active, items, teacher }) {
   return (<div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "10px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}><div style={{ display: "flex", alignItems: "center", gap: 16 }}><span style={{ fontSize: 17, fontWeight: 700, color: C.brand, letterSpacing: "-0.02em" }}>PLUS</span>{teacher && <span style={{ fontSize: 11, color: C.textMeta, background: C.borderFaint, padding: "2px 8px", borderRadius: R.badge }}>先生</span>}<div style={{ display: "flex", gap: 6 }}>{items.map(x => (<span key={x} style={{ fontSize: 13, fontWeight: x === active ? 600 : 400, color: x === active ? C.text : C.textMeta, padding: "4px 10px", borderRadius: R.btn, background: x === active ? C.bg : "transparent", cursor: "pointer" }}>{x}</span>))}</div></div><div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} /></div>);
 }
 function DD({ rule, doD, dontD, doE, dontE }) {
-  return (<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, overflow: "hidden" }}><div style={{ padding: "12px 22px", borderBottom: `1px solid ${C.borderFaint}` }}><span style={{ fontSize: 14, fontWeight: 600 }}>{rule}</span></div><div className="dd-grid"><div style={{ padding: "18px 22px", borderRight: `1px solid ${C.borderFaint}` }}><div style={{ fontSize: 11, fontWeight: 700, color: C.semantic.success.text, marginBottom: 4 }}>Do</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{doD}</div>{doE}</div><div style={{ padding: "18px 22px" }}><div style={{ fontSize: 11, fontWeight: 700, color: C.semantic.error.text, marginBottom: 4 }}>Don't</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{dontD}</div>{dontE}</div></div></div>);
+  return (
+    <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, overflow: "hidden" }}>
+      <div style={{ padding: "12px 22px", borderBottom: `1px solid ${C.borderFaint}` }}>
+        <span style={{ fontSize: 14, fontWeight: 600 }}>{rule}</span>
+      </div>
+      <div className="dd-grid">
+        <div style={{ padding: "18px 22px", borderRight: `1px solid ${C.borderFaint}`, display: "grid", gridTemplateRows: "auto auto 1fr", gap: 8, minHeight: 190 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: C.semantic.success.text }}>Do</div>
+          <div style={{ fontSize: 11, color: C.textSub, lineHeight: 1.5 }}>{doD}</div>
+          <div style={{ alignSelf: "end" }}>{doE}</div>
+        </div>
+        <div style={{ padding: "18px 22px", display: "grid", gridTemplateRows: "auto auto 1fr", gap: 8, minHeight: 190 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: C.semantic.error.text }}>Don't</div>
+          <div style={{ fontSize: 11, color: C.textSub, lineHeight: 1.5 }}>{dontD}</div>
+          <div style={{ alignSelf: "end" }}>{dontE}</div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function StateColorTable() {

@@ -54,3 +54,10 @@ export const shadow = {
   none: "none",
   floatingOnly: "0 6px 18px rgba(0,0,0,0.12)",
 } as const;
+
+export const interaction = {
+  tapMinHeight: 44,
+  labelMaxWidth: "clamp(120px, 40vw, 220px)",
+  textLineHeight: 1.4,
+  textWeight: 600,
+} as const;

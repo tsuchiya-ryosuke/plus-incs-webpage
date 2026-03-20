@@ -1,14 +1,15 @@
 import { FormEvent, useState } from "react";
-import { colors, radius, spacing, typography } from "../../design/tokens";
+import { colors, interaction, radius, spacing, typography } from "../../design/tokens";
 import { Button } from "./Button";
 
 interface InputBarProps {
   placeholder?: string;
   shareLabel?: string;
+  highlightShare?: boolean;
   onSubmit?: (message: string) => void;
 }
 
-export function InputBar({ placeholder = "メッセージを入力...", shareLabel = "共有シートを作成", onSubmit }: InputBarProps) {
+export function InputBar({ placeholder = "メッセージを入力...", shareLabel = "共有シートを作成", highlightShare = false, onSubmit }: InputBarProps) {
   const [value, setValue] = useState("");
 
   function handleSubmit(event: FormEvent) {
@@ -28,10 +29,12 @@ export function InputBar({ placeholder = "メッセージを入力...", shareLab
           style={{
             flex: 1,
             padding: `${spacing.xs} ${spacing.md}`,
+            minHeight: interaction.tapMinHeight,
             border: `1px solid ${colors.border}`,
             borderRadius: radius.input,
             fontFamily: typography.fontFamily,
             fontSize: typography.size.md,
+            lineHeight: interaction.textLineHeight,
             background: colors.bg,
           }}
         />
@@ -39,21 +42,60 @@ export function InputBar({ placeholder = "メッセージを入力...", shareLab
           送信
         </Button>
       </div>
-      <button
-        type="button"
+      <div
         style={{
           marginTop: spacing.xs,
-          border: "none",
-          background: "transparent",
-          color: colors.brand,
-          fontFamily: typography.fontFamily,
-          fontSize: typography.size.sm,
-          cursor: "pointer",
-          padding: 0,
+          minHeight: interaction.tapMinHeight,
+          padding: highlightShare ? `${spacing.xs} ${spacing.sm}` : `0 ${spacing.xxs}`,
+          borderLeft: highlightShare ? `4px solid ${colors.brand}` : "4px solid transparent",
+          background: highlightShare ? colors.brandPale : "transparent",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: spacing.xs,
         }}
       >
-        {shareLabel}
-      </button>
+        <span
+          aria-hidden
+          style={{
+            width: 18,
+            height: 18,
+            borderRadius: 4,
+            border: `1.5px solid ${highlightShare ? colors.white : colors.brand}`,
+            background: highlightShare ? colors.brand : "transparent",
+            color: highlightShare ? colors.white : colors.brand,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 10,
+            lineHeight: 1,
+            flexShrink: 0,
+          }}
+        >
+          ↗
+        </span>
+        <button
+          type="button"
+          style={{
+            border: "none",
+            background: "transparent",
+            color: colors.brand,
+            fontFamily: typography.fontFamily,
+            fontSize: typography.size.sm,
+            lineHeight: interaction.textLineHeight,
+            fontWeight: interaction.textWeight,
+            cursor: "pointer",
+            minHeight: interaction.tapMinHeight,
+            maxWidth: interaction.labelMaxWidth,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            padding: 0,
+          }}
+        >
+          {shareLabel}
+        </button>
+      </div>
     </form>
   );
 }

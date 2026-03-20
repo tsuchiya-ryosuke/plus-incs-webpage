@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { colors, radius, spacing, typography } from "../../design/tokens";
+import { colors, interaction, radius, spacing, typography } from "../../design/tokens";
 
 export interface SegmentItem {
   id: string;
@@ -34,16 +34,18 @@ export function SegmentedControl({ items, selected, onChange }: SegmentedControl
             onClick={() => onChange(item.id)}
             style={{
               padding: `${spacing.xs} ${spacing.md}`,
+              minHeight: interaction.tapMinHeight,
               fontFamily: typography.fontFamily,
               fontSize: typography.size.md,
-              fontWeight: active ? typography.weight.semibold : typography.weight.medium,
+              lineHeight: interaction.textLineHeight,
+              fontWeight: active ? typography.weight.bold : interaction.textWeight,
               border: "none",
               background: active ? colors.brandPale : colors.white,
               color: active ? colors.brand : colors.textSub,
               cursor: "pointer",
             }}
           >
-            {item.label}
+            <span style={{ display: "inline-block", maxWidth: interaction.labelMaxWidth, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{item.label}</span>
           </button>
         );
       })}

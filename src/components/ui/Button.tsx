@@ -1,5 +1,5 @@
 import { CSSProperties, ButtonHTMLAttributes } from "react";
-import { colors, radius, spacing, typography } from "../../design/tokens";
+import { colors, interaction, radius, spacing, typography } from "../../design/tokens";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
@@ -11,7 +11,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const baseStyle: CSSProperties = {
   fontFamily: typography.fontFamily,
   fontSize: typography.size.md,
-  fontWeight: typography.weight.semibold,
+  fontWeight: interaction.textWeight,
+  lineHeight: interaction.textLineHeight,
+  minHeight: interaction.tapMinHeight,
   borderRadius: radius.button,
   padding: `${spacing.xs} ${spacing.lg}`,
   cursor: "pointer",

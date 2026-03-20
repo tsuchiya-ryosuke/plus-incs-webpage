@@ -33,12 +33,62 @@ export default function App() {
   return (
     <div style={{ fontFamily: ff, background: C.bg, minHeight: "100vh", color: C.text }}>
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <style>{`
+        .page-shell {
+          width: min(100%, 1080px);
+          margin: 0 auto;
+          padding: 32px clamp(16px, 3vw, 24px) 0;
+        }
+        .content-shell {
+          width: min(100%, 1080px);
+          margin: 0 auto;
+          padding: 28px clamp(16px, 3vw, 24px) 60px;
+        }
+        .top-tabs {
+          display: flex;
+          gap: 0;
+          position: relative;
+          bottom: -1px;
+          overflow-x: auto;
+          scrollbar-width: thin;
+          -webkit-overflow-scrolling: touch;
+        }
+        .top-tabs button {
+          flex: 0 0 auto;
+        }
+        .two-col-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(260px, 1fr));
+          gap: 20px;
+        }
+        .three-col-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(180px, 1fr));
+          gap: 14px;
+        }
+        .dd-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(260px, 1fr));
+        }
+        @media (max-width: 1024px) {
+          .three-col-grid {
+            grid-template-columns: repeat(2, minmax(220px, 1fr));
+          }
+        }
+        @media (max-width: 768px) {
+          .two-col-grid,
+          .three-col-grid,
+          .dd-grid {
+            grid-template-columns: minmax(0, 1fr);
+          }
+        }
+      `}</style>
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}` }}>
-        <div style={{ maxWidth: 820, margin: "0 auto", padding: "32px 24px 0" }}>
+        <div className="page-shell">
           <p style={{ fontSize: 12, fontWeight: 600, color: C.brand, margin: "0 0 8px", letterSpacing: "0.04em" }}>PLUS DESIGN GUIDELINE</p>
           <h1 style={{ fontSize: 21, fontWeight: 700, margin: "0 0 6px", lineHeight: 1.5, letterSpacing: "-0.01em" }}>PLUSデザインガイドライン</h1>
           <p style={{ fontSize: 13, color: C.textSub, margin: "0 0 24px", lineHeight: 1.6 }}>開発時に参照する、デザイン判断の視覚的リファレンス</p>
-          <nav style={{ display: "flex", gap: 0, position: "relative", bottom: -1 }}>
+          <nav className="top-tabs">
             {tabs.map(t => (
               <button key={t.id} onClick={() => setTab(t.id)} style={{
                 fontFamily: ff, padding: "10px 20px", fontSize: 13,
@@ -54,7 +104,7 @@ export default function App() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 820, margin: "0 auto", padding: "28px 24px 60px" }}>
+      <div className="content-shell">
         {tab === "principles" && <Principles />}
         {tab === "screen" && <Screens />}
         {tab === "dodont" && <DoDonts />}
@@ -68,7 +118,7 @@ function Principles() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
       <P n="01" t="引き算で設計する" d="要素を足す前に「これがなくても成り立つか？」と問う。装飾を削ってもコンテンツが際立つなら、削ったほうがいい。">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+        <div className="two-col-grid">
           <Lbl text="足し算（避ける）">
             <div style={{ background: "#eef4ff", borderRadius: 10, padding: 16, boxShadow: "0 2px 10px rgba(60,130,240,.12)", border: "1px solid #c5d8f8" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
@@ -116,7 +166,7 @@ function Principles() {
       </P>
 
       <P n="04" t="影は「浮いている」場合だけ" d="カード装飾にシャドウを使わない。背景色の差とボーダーで十分にレイヤーが分かれる。">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+        <div className="two-col-grid">
           <Lbl text="ボーダーで分離（採用）">
             <div style={{ background: C.bg, borderRadius: R.card, padding: 14 }}>
               <div style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: 14 }}>
@@ -137,7 +187,7 @@ function Principles() {
       </P>
 
       <P n="05" t="清潔で、冷たくない" d="教育系のポップさも、業務ツールの冷たさも避ける。PLUSのトーンは「やわらかいけど軽く見せない」。">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14 }}>
+        <div className="three-col-grid">
           <Lbl text="❌ ポップすぎ"><div style={{ background: "linear-gradient(135deg,#a855f7,#ec4899)", borderRadius: 14, padding: 16, color: "#fff", textAlign: "center" }}><div style={{ fontSize: 20, marginBottom: 4 }}>🎉</div><div style={{ fontSize: 13, fontWeight: 700 }}>がんばったね！</div></div></Lbl>
           <Lbl text="❌ 冷たすぎ"><div style={{ background: "#f8f8f8", border: "1px solid #ccc", borderRadius: 2, padding: 16 }}><div style={{ fontSize: 10, fontWeight: 600, color: "#666", textTransform: "uppercase", letterSpacing: "0.1em" }}>STATUS</div><div style={{ fontSize: 12, color: "#888", marginTop: 6 }}>Report generated.</div></div></Lbl>
           <Lbl text="✅ ちょうどいい"><div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: 16 }}><div style={{ fontSize: 13, fontWeight: 600, color: C.text }}>提出状況</div><div style={{ fontSize: 12, color: C.textSub, marginTop: 6, lineHeight: 1.6 }}>32名中 28名が提出済み</div></div></Lbl>
@@ -246,5 +296,5 @@ function Nav({ active, items, teacher }) {
   return (<div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "10px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}><div style={{ display: "flex", alignItems: "center", gap: 16 }}><span style={{ fontSize: 17, fontWeight: 700, color: C.brand, letterSpacing: "-0.02em" }}>PLUS</span>{teacher && <span style={{ fontSize: 11, color: C.textMeta, background: C.borderFaint, padding: "2px 8px", borderRadius: R.badge }}>先生</span>}<div style={{ display: "flex", gap: 6 }}>{items.map(x => (<span key={x} style={{ fontSize: 13, fontWeight: x === active ? 600 : 400, color: x === active ? C.text : C.textMeta, padding: "4px 10px", borderRadius: R.btn, background: x === active ? C.bg : "transparent", cursor: "pointer" }}>{x}</span>))}</div></div><div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} /></div>);
 }
 function DD({ rule, doD, dontD, doE, dontE }) {
-  return (<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, overflow: "hidden" }}><div style={{ padding: "12px 22px", borderBottom: `1px solid ${C.borderFaint}` }}><span style={{ fontSize: 14, fontWeight: 600 }}>{rule}</span></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}><div style={{ padding: "18px 22px", borderRight: `1px solid ${C.borderFaint}` }}><div style={{ fontSize: 11, fontWeight: 700, color: C.green, marginBottom: 4 }}>Do</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{doD}</div>{doE}</div><div style={{ padding: "18px 22px" }}><div style={{ fontSize: 11, fontWeight: 700, color: C.red, marginBottom: 4 }}>Don't</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{dontD}</div>{dontE}</div></div></div>);
+  return (<div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, overflow: "hidden" }}><div style={{ padding: "12px 22px", borderBottom: `1px solid ${C.borderFaint}` }}><span style={{ fontSize: 14, fontWeight: 600 }}>{rule}</span></div><div className="dd-grid"><div style={{ padding: "18px 22px", borderRight: `1px solid ${C.borderFaint}` }}><div style={{ fontSize: 11, fontWeight: 700, color: C.green, marginBottom: 4 }}>Do</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{doD}</div>{doE}</div><div style={{ padding: "18px 22px" }}><div style={{ fontSize: 11, fontWeight: 700, color: C.red, marginBottom: 4 }}>Don't</div><div style={{ fontSize: 11, color: C.textSub, marginBottom: 12, lineHeight: 1.5 }}>{dontD}</div>{dontE}</div></div></div>);
 }

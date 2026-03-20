@@ -36,13 +36,57 @@ export default function App() {
           outline-offset: 2px;
           box-shadow: 0 0 0 2px ${C.white};
         }
+        .page-shell {
+          width: min(100%, 1100px);
+          margin: 0 auto;
+          padding: 32px clamp(16px, 3vw, 24px) 0;
+        }
+        .content-shell {
+          width: min(100%, 1100px);
+          margin: 0 auto;
+          padding: 28px clamp(16px, 3vw, 24px) 60px;
+        }
+        .top-tabs {
+          display: flex;
+          gap: 0;
+          position: relative;
+          bottom: -1px;
+          overflow-x: auto;
+          scrollbar-width: thin;
+          -webkit-overflow-scrolling: touch;
+        }
+        .top-tabs button {
+          flex: 0 0 auto;
+        }
+        .phone-grid {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+          container-type: inline-size;
+        }
+        .phone-shell {
+          width: clamp(240px, 38vw, 360px);
+          border: 1px solid ${C.border};
+          border-radius: 20px;
+          overflow: hidden;
+          background: ${C.bg};
+          min-height: 510px;
+          display: flex;
+          flex-direction: column;
+        }
+        @container (max-width: 760px) {
+          .phone-shell {
+            width: clamp(220px, 92cqw, 380px);
+          }
+        }
       `}</style>
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}` }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 24px 0" }}>
+        <div className="page-shell">
           <p style={{ fontSize: 12, fontWeight: 600, color: C.brand, margin: "0 0 8px", letterSpacing: "0.04em" }}>PLUS DESIGN</p>
           <h1 style={{ fontSize: 21, fontWeight: 700, margin: "0 0 6px", lineHeight: 1.5 }}>チャット画面 確定デザイン</h1>
           <p style={{ fontSize: 13, color: C.textSub, margin: "0 0 24px", lineHeight: 1.6 }}>共有シートボタン = 入力欄統合型 / ナビ = ヘッダー内セグメント</p>
-          <nav style={{ display: "flex", gap: 0, position: "relative", bottom: -1 }}>
+          <nav className="top-tabs">
             {tabs.map(t => (
               <button key={t.id} onClick={() => setTab(t.id)} className="focusable" style={{
                 fontFamily: ff, padding: "10px 18px", fontSize: 13,
@@ -58,10 +102,11 @@ export default function App() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "28px 24px 60px" }}>
+      <div className="content-shell">
         {tab === "flow" && <StudentFlow />}
         {tab === "teacher" && <TeacherScreens />}
         {tab === "details" && <InputDetails />}
+        <VerificationChecklist />
       </div>
     </div>
   );
@@ -78,7 +123,7 @@ function StudentFlow() {
       </div>
 
       <SH>1. チャット → 2. 共有シート生成</SH>
-      <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+      <div className="phone-grid">
         <Phone label="1. 通常のチャット">
           <Header active="チャット" />
           <div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
@@ -107,7 +152,7 @@ function StudentFlow() {
       </p>
 
       <SH>3. プレビュー → 4. 送信完了</SH>
-      <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+      <div className="phone-grid">
         <Phone label="3. プレビュー確認">
           <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
             <button type="button" className="focusable" aria-label="前の画面に戻る" style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
@@ -161,7 +206,7 @@ function TeacherScreens() {
       </div>
 
       <SH>一覧 → 詳細</SH>
-      <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+      <div className="phone-grid">
         <Phone label="生徒一覧">
           <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>PLUS</span>
@@ -261,7 +306,7 @@ function InputDetails() {
       </div>
 
       <SH>通常時 vs 強調時</SH>
-      <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+      <div className="phone-grid">
         <Phone label="通常時">
           <Header active="チャット" />
           <div style={{ padding: "14px 14px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
@@ -339,11 +384,7 @@ function InputDetails() {
 function Phone({ children, label }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-      <div style={{ width: 280, background: "#1a1a1a", borderRadius: 28, padding: "10px 7px" }}>
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 4 }}><div style={{ width: 68, height: 18, background: "#1a1a1a", borderRadius: 9 }} /></div>
-        <div style={{ background: C.bg, borderRadius: 16, overflow: "hidden", height: 510, display: "flex", flexDirection: "column" }}>{children}</div>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 5 }}><div style={{ width: 80, height: 4, background: "#555", borderRadius: 2 }} /></div>
-      </div>
+      <div className="phone-shell">{children}</div>
       {label && <p style={{ fontSize: 11, fontWeight: 600, color: C.textSub, margin: 0, textAlign: "center", maxWidth: 200 }}>{label}</p>}
     </div>
   );
@@ -356,10 +397,10 @@ function Header({ active }) {
         <span style={{ fontSize: 16, fontWeight: 700, color: C.brand }}>PLUS</span>
         <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }} />
       </div>
-      <div style={{ display: "flex", background: C.bg, borderRadius: R.btn, padding: 3 }}>
+      <div style={{ display: "flex", background: C.bg, borderRadius: R.btn, padding: 3, overflowX: "auto", gap: 4, scrollbarWidth: "thin" }}>
         {["チャット", "レポート"].map(x => (
           <button type="button" className="focusable" key={x} style={{
-            flex: 1, textAlign: "center", padding: "6px 0", fontSize: 12,
+            flex: "0 0 auto", minWidth: 84, textAlign: "center", padding: "6px 12px", fontSize: 12,
             fontWeight: x === active ? 600 : 400,
             color: x === active ? C.brand : C.textMeta,
             background: x === active ? C.white : "transparent",
@@ -398,3 +439,30 @@ function UserB({ children }) {
   return (<div style={{ alignSelf: "flex-end", background: C.brandPale, borderRadius: R.card, padding: "9px 12px", fontSize: 12, color: C.text, lineHeight: 1.7, maxWidth: "82%" }}>{children}</div>);
 }
 function SH({ children }) { return <div style={{ fontSize: 12, fontWeight: 600, color: C.textMeta, letterSpacing: "0.03em", paddingBottom: 6, borderBottom: `1px solid ${C.borderFaint}` }}>{children}</div>; }
+
+function VerificationChecklist() {
+  const checkpoints = [
+    { width: "360px", items: ["上部タブは横スクロール可能でラベルが切れない", "チャット入力欄と共有シートリンクが2行で収まる", "Phoneコンテナが横にはみ出さず1カラム表示"] },
+    { width: "768px", items: ["Phoneコンテナが2カラム表示に切り替わる", "セグメントUIのタップ領域が44px相当を維持", "見出し・本文の行長が可読域（約45〜75文字）"] },
+    { width: "1024px", items: ["Student/Teacher主要画面が2カラムで均等配置", "カード間余白（20px）が保持される", "共有シート詳細カードの階層が崩れない"] },
+    { width: "1280px", items: ["主要ページ全体が中央寄せで最大幅以内に収まる", "Phoneコンテナが過度に拡大せず clamp の上限内", "タブUIが1行を維持し、必要時のみ横スクロール"] },
+  ];
+
+  return (
+    <div style={{ marginTop: 36, background: C.white, border: `1px solid ${C.border}`, borderRadius: R.card, padding: "20px 22px" }}>
+      <h3 style={{ margin: "0 0 14px", fontSize: 15 }}>表示検証チェックリスト（主要ページ）</h3>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
+        {checkpoints.map((bp) => (
+          <div key={bp.width} style={{ border: `1px solid ${C.borderFaint}`, borderRadius: 10, padding: "12px 14px" }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: C.brand, marginBottom: 8 }}>{bp.width}</div>
+            <ul style={{ margin: 0, paddingLeft: 16, display: "grid", gap: 6 }}>
+              {bp.items.map((item) => (
+                <li key={item} style={{ fontSize: 12, color: C.textSub, lineHeight: 1.6 }}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -7,29 +7,30 @@
     <title>株式会社PLUS - 生徒の「考え」を、進路指導の力に。</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white">
+<body class="bg-white" style="font-family: 'Noto Sans JP', -apple-system, sans-serif;">
     <!-- ヘッダー -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="bg-blue-900 text-white text-xs sm:text-sm">
+    <header class="bg-white sticky top-0 z-50" style="border-bottom:1px solid #e4edf4;">
+    <div class="text-xs sm:text-sm" style="background:#edf6ff; color:#1f6fb2; border-bottom:1px solid #bfdcf7;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-center">
             PLUSは現在、法人設立準備中です。
         </div>
     </div>
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-bold text-blue-900 hover:text-blue-700 transition">
-                    PLUS（法人設立準備中）
+                <a href="index.html" class="font-bold transition" style="color:#3ea8ff; font-size:1.25rem; text-decoration:none;">
+                    PLUS
                 </a>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-blue-900 font-medium border-b-2 border-blue-900 pb-1">ホーム</a>
-                    <a href="service.html" class="text-gray-700 hover:text-blue-900 font-medium transition">サービス紹介</a>
-                    <a href="company.html" class="text-gray-700 hover:text-blue-900 font-medium transition">会社概要</a>
-                    <a href="download.html" class="bg-blue-900 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-800 transition shadow-md hover:shadow-lg">資料請求</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-blue-900 font-medium transition">お問い合わせ</a>
+                    <a href="index.html" class="font-medium pb-1" style="color:#3ea8ff; border-bottom:2px solid #3ea8ff;">ホーム</a>
+                    <a href="service.html" class="text-gray-700 font-medium transition" style="--hover-color:#3ea8ff;" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">サービス紹介</a>
+                    <a href="company.html" class="text-gray-700 font-medium transition" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">会社概要</a>
+                    <a href="download.html" class="text-white px-6 py-2 font-medium transition" style="background:#3ea8ff; border-radius:8px;">資料請求</a>
+                    <a href="contact.html" class="text-gray-700 font-medium transition" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">お問い合わせ</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-900 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
+                    <button id="mobile-menu-button" class="text-gray-700 p-2 rounded-lg focus:outline-none focus:ring-2" style="--tw-ring-color:#3ea8ff;" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
                         <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -41,46 +42,42 @@
             </div>
             <!-- モバイルメニュー -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="index.html" class="block text-blue-900 font-medium py-2 border-b-2 border-blue-900 inline-block">ホーム</a>
-                <a href="service.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">サービス紹介</a>
-                <a href="company.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">会社概要</a>
-                <a href="download.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">資料請求</a>
-                <a href="contact.html" class="block text-gray-700 hover:text-blue-900 font-medium py-2">お問い合わせ</a>
+                <a href="index.html" class="block font-medium py-2 inline-block" style="color:#3ea8ff; border-bottom:2px solid #3ea8ff;">ホーム</a>
+                <a href="service.html" class="block text-gray-700 font-medium py-2" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">サービス紹介</a>
+                <a href="company.html" class="block text-gray-700 font-medium py-2" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">会社概要</a>
+                <a href="download.html" class="block text-gray-700 font-medium py-2" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">資料請求</a>
+                <a href="contact.html" class="block text-gray-700 font-medium py-2" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">お問い合わせ</a>
             </div>
         </nav>
     </header>
 
     <!-- ヒーローセクション -->
-    <section class="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20 md:py-32 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-30">
-            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-200 rounded-full filter blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl"></div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section class="py-20 md:py-32" style="background:#f5f8fa;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col gap-12 items-center">
                 <!-- テキスト部分 -->
                 <div class="text-center">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 animate-fadeInUp">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fadeInUp" style="color:#333333;">
                         先生の「時間」を創り、<br>生徒の「本音」を引き出す。
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto animate-fadeInUp" style="animation-delay: 0.2s;">
+                    <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto animate-fadeInUp" style="color:#6e7b85; animation-delay: 0.2s;">
                         事務作業はAIに任せ、<br class="md:hidden">先生は「先生にしかできない指導」へ。
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp" style="animation-delay: 0.4s;">
-                        <a href="download.html" class="inline-block bg-gradient-to-r from-blue-900 to-blue-700 text-white px-10 py-4 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <a href="download.html" class="inline-block text-white px-10 py-4 font-bold text-lg transition-all duration-300" style="background:#3ea8ff; border-radius:8px;">
                             <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                             資料ダウンロード
                         </a>
-                        <a href="service.html" class="inline-block bg-white text-blue-900 border-2 border-blue-900 px-10 py-4 rounded-xl font-medium text-lg hover:bg-blue-50 transition-all duration-300 shadow-md hover:shadow-lg">
+                        <a href="service.html" class="inline-block bg-white font-medium text-lg hover:bg-gray-50 transition-all duration-300" style="color:#3ea8ff; border:1px solid #3ea8ff; border-radius:8px; padding:1rem 2.5rem;">
                             サービス詳細を見る
                         </a>
                     </div>
                 </div>
                 <!-- 画像 -->
                 <div class="flex justify-center w-full">
-                    <img src="assets/images/top.webp" alt="先生と生徒が進路について考える様子" class="rounded-2xl w-full max-w-4xl shadow-lg object-cover">
+                    <img src="assets/images/top.webp" alt="先生と生徒が進路について考える様子" class="rounded-2xl w-full max-w-4xl object-cover" style="border:1px solid #e4edf4;">
                 </div>
             </div>
         </div>
@@ -89,12 +86,12 @@
     <!-- 目的別ナビ -->
     <section class="bg-white border-y border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <p class="text-sm font-semibold text-blue-900 mb-3">目的から探す</p>
+            <p class="text-sm font-semibold mb-3" style="color:#333333;">目的から探す</p>
             <div class="flex flex-wrap gap-3">
-                <a href="#home-pain" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">課題を理解する</a>
-                <a href="#home-solution" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">解決策を知る</a>
-                <a href="#home-flow" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">導入の流れを確認する</a>
-                <a href="#home-contact" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-900 text-sm font-medium hover:bg-blue-100 transition">資料請求・問い合わせ</a>
+                <a href="#home-pain" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition" style="background:#edf6ff; color:#3ea8ff;">課題を理解する</a>
+                <a href="#home-solution" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition" style="background:#edf6ff; color:#3ea8ff;">解決策を知る</a>
+                <a href="#home-flow" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition" style="background:#edf6ff; color:#3ea8ff;">導入の流れを確認する</a>
+                <a href="#home-contact" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition" style="background:#edf6ff; color:#3ea8ff;">資料請求・問い合わせ</a>
             </div>
         </div>
     </section>
@@ -103,22 +100,21 @@
     <section id="home-pain" class="py-20 bg-gray-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color:#333333;">
                     先生方の「進路面談」におけるジレンマ
                 </h2>
-                <p class="text-sm text-blue-800 font-medium mb-4">ゴール：まず「なぜ現場で時間不足が起きるか」を短時間で共有する。</p>
-                <div class="w-20 h-1 bg-blue-900 mx-auto mb-8"></div>
-                <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                <div class="w-20 h-1 mx-auto mb-8" style="background:#3ea8ff;"></div>
+                <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color:#6e7b85;">
                     生徒一人ひとりと向き合いたい。<br class="br-sp">
-                    でも、そのための<span class="font-bold text-blue-900">「時間」と「情報」が足りない。</span>
+                    でも、そのための<span class="font-bold" style="color:#3ea8ff;">「時間」と「情報」が足りない。</span>
                 </p>
             </div>
 
-            <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100">
+            <div class="bg-white rounded-2xl p-8 md:p-12" style="border:1px solid #e4edf4;">
                 <div class="space-y-8">
                     <div class="flex items-start">
-                        <div class="bg-blue-100 rounded-full p-3 mr-5 flex-shrink-0">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="rounded-full p-3 mr-5 flex-shrink-0" style="background:#edf6ff;">
+                            <svg class="w-6 h-6" style="color:#3ea8ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
@@ -129,8 +125,8 @@
                     </div>
 
                     <div class="flex items-start">
-                        <div class="bg-blue-100 rounded-full p-3 mr-5 flex-shrink-0">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="rounded-full p-3 mr-5 flex-shrink-0" style="background:#edf6ff;">
+                            <svg class="w-6 h-6" style="color:#3ea8ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                             </svg>
                         </div>
@@ -141,8 +137,8 @@
                     </div>
 
                     <div class="flex items-start">
-                        <div class="bg-blue-100 rounded-full p-3 mr-5 flex-shrink-0">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="rounded-full p-3 mr-5 flex-shrink-0" style="background:#edf6ff;">
+                            <svg class="w-6 h-6" style="color:#3ea8ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
@@ -154,11 +150,11 @@
                 </div>
 
                 <div class="mt-10 pt-8 border-t border-gray-200 text-center">
-                    <p class="text-lg text-gray-700">
-                        <span class="font-bold text-blue-900">先生が悪いわけではありません。</span><br class="br-sp">
+                    <p class="text-lg" style="color:#6e7b85;">
+                        <span class="font-bold" style="color:#333333;">先生が悪いわけではありません。</span><br class="br-sp">
                         時間がない環境の中で、先生方は最善を尽くされています。
                     </p>
-                    <a href="#home-solution" class="inline-flex items-center mt-5 text-blue-900 font-semibold hover:text-blue-700">
+                    <a href="#home-solution" class="inline-flex items-center mt-5 font-semibold" style="color:#3ea8ff;">
                         次に見る：VisionWell+がどう解決するか →
                     </a>
                 </div>
@@ -170,21 +166,20 @@
     <section id="home-solution" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <p class="text-blue-700 font-medium mb-4">STEP 1：解決策</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                <p class="font-medium mb-4" style="color:#3ea8ff;">STEP 1：解決策</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color:#333333;">
                     VisionWell+でジレンマを解決
                 </h2>
-                <p class="text-sm text-blue-800 font-medium mb-4">ゴール：AI活用で「面談を本題から始められる状態」を具体的にイメージする。</p>
-                <div class="w-20 h-1 bg-blue-900 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                <div class="w-20 h-1 mx-auto mb-6" style="background:#3ea8ff;"></div>
+                <p class="text-lg max-w-2xl mx-auto" style="color:#6e7b85;">
                     生徒がAIと対話して考えを整理し、先生に共有。<br class="br-sp">
-                    先生は準備済みの状態で、<span class="font-bold text-blue-900">本質的な面談</span>に集中できます。
+                    先生は準備済みの状態で、<span class="font-bold" style="color:#333333;">本質的な面談</span>に集中できます。
                 </p>
             </div>
 
             <!-- 面談の流れ（ビフォーアフター統合） -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 mb-12 border border-blue-100">
-                <h3 class="text-xl font-bold text-blue-900 mb-6 text-center">面談はこう変わります</h3>
+            <div class="bg-white rounded-2xl p-8 md:p-10 mb-12" style="border:1px solid #e4edf4;">
+                <h3 class="text-xl font-bold mb-6 text-center" style="color:#333333;">面談はこう変わります</h3>
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Before -->
                     <div class="bg-gray-50 rounded-xl p-6">
@@ -208,22 +203,22 @@
                         </ul>
                     </div>
                     <!-- After -->
-                    <div class="bg-blue-50 rounded-xl p-6 border-2 border-blue-200">
+                    <div class="rounded-xl p-6" style="background:#edf6ff; border:1px solid #bfdcf7;">
                         <div class="flex items-center mb-4">
-                            <span class="bg-blue-900 text-white text-sm font-bold px-3 py-1 rounded-full mr-3">After</span>
-                            <span class="text-blue-900 font-medium">VisionWell+導入後</span>
+                            <span class="text-white text-sm font-bold px-3 py-1 mr-3" style="background:#3ea8ff; border-radius:99rem;">After</span>
+                            <span class="font-medium" style="color:#333333;">VisionWell+導入後</span>
                         </div>
                         <ul class="space-y-3 text-gray-700">
                             <li class="flex items-start">
-                                <span class="text-blue-600 mr-2">✓</span>
+                                <span class="mr-2" style="color:#3ea8ff;">✓</span>
                                 <span>生徒の考えを事前に把握、<strong>いきなり本題</strong>から</span>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-blue-600 mr-2">✓</span>
+                                <span class="mr-2" style="color:#3ea8ff;">✓</span>
                                 <span>AIには<strong>本音を話せる</strong>→整理して先生に共有</span>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-blue-600 mr-2">✓</span>
+                                <span class="mr-2" style="color:#3ea8ff;">✓</span>
                                 <span>20分すべてを<strong>深い対話</strong>に使える</span>
                             </li>
                         </ul>
@@ -232,82 +227,82 @@
             </div>
 
             <!-- 3つの体験価値（docs/plus-design-*.jsx の3軸を反映） -->
-            <h3 class="text-xl font-bold text-blue-900 mb-2 text-center">導入で実現する3つの体験価値</h3>
-            <p class="text-sm text-gray-600 text-center mb-6">信頼・前向きさ・進捗実感の3軸で、現場の変化を同じ粒度で比較できます。</p>
+            <h3 class="text-xl font-bold mb-2 text-center" style="color:#333333;">導入で実現する3つの体験価値</h3>
+            <p class="text-sm text-center mb-6" style="color:#6e7b85;">信頼・前向きさ・進捗実感の3軸で、現場の変化を同じ粒度で比較できます。</p>
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- 信頼 -->
-                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                <div class="bg-white rounded-xl p-6 transition" style="border:1px solid #e4edf4;">
                     <div class="flex items-center mb-3">
-                        <div class="bg-blue-100 rounded-lg p-2 mr-3">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="rounded-lg p-2 mr-3" style="background:#edf6ff;">
+                            <svg class="w-6 h-6" style="color:#3ea8ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                         </div>
-                        <h4 class="font-bold text-blue-900">信頼</h4>
+                        <h4 class="font-bold" style="color:#333333;">信頼</h4>
                     </div>
-                    <ul class="space-y-2 text-sm text-gray-700">
+                    <ul class="space-y-2 text-sm" style="color:#6e7b85;">
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>生徒・先生で同じ情報を共有できる</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>記録が散在せず、確認漏れを減らせる</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>面談前に状況を揃えて本題に入れる</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- 前向きさ -->
-                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                <div class="bg-white rounded-xl p-6 transition" style="border:1px solid #e4edf4;">
                     <div class="flex items-center mb-3">
-                        <div class="bg-blue-100 rounded-lg p-2 mr-3">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="rounded-lg p-2 mr-3" style="background:#edf6ff;">
+                            <svg class="w-6 h-6" style="color:#3ea8ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h4 class="font-bold text-blue-900">前向きさ</h4>
+                        <h4 class="font-bold" style="color:#333333;">前向きさ</h4>
                     </div>
-                    <ul class="space-y-2 text-sm text-gray-700">
+                    <ul class="space-y-2 text-sm" style="color:#6e7b85;">
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>生徒がAIに本音を言語化しやすい</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>先生は事務確認より対話に集中できる</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>「できた」実感が次の行動につながる</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- 進捗実感 -->
-                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                <div class="bg-white rounded-xl p-6 transition" style="border:1px solid #e4edf4;">
                     <div class="flex items-center mb-3">
-                        <div class="bg-blue-100 rounded-lg p-2 mr-3">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="rounded-lg p-2 mr-3" style="background:#edf6ff;">
+                            <svg class="w-6 h-6" style="color:#3ea8ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                             </svg>
                         </div>
-                        <h4 class="font-bold text-blue-900">進捗実感</h4>
+                        <h4 class="font-bold" style="color:#333333;">進捗実感</h4>
                     </div>
-                    <ul class="space-y-2 text-sm text-gray-700">
+                    <ul class="space-y-2 text-sm" style="color:#6e7b85;">
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>提出状況や面談準備状況を可視化できる</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>次に確認すべき生徒・項目がわかりやすい</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-600 mr-2">•</span>
+                            <span class="mr-2" style="color:#3ea8ff;">•</span>
                             <span>年度をまたいで改善サイクルを回せる</span>
                         </li>
                     </ul>
@@ -318,18 +313,13 @@
     </section>
 
     <!-- 数値で見る導入効果 -->
-    <section id="home-flow" class="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="home-flow" class="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <p class="text-blue-200 font-medium mb-4">STEP 3：導入効果</p>
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
                     数値で見る導入効果
                 </h2>
-                <p class="text-sm text-blue-100 font-medium mb-4">ゴール：導入後の効果を「時間」「面談品質」「生徒の主体性」で判断できる状態にする。</p>
                 <div class="w-20 h-1 bg-white mx-auto mb-8"></div>
                 <p class="text-xl text-blue-100">
                     実際に導入いただいた学校での成果です
@@ -413,23 +403,22 @@
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <p class="text-blue-700 font-medium mb-4">STEP 4：利用イメージ</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+                <p class="font-medium mb-4" style="color:#3ea8ff;">STEP 4：利用イメージ</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color:#333333;">
                     こんな場面で活用できます
                 </h2>
-                <p class="text-sm text-blue-800 font-medium mb-4">ゴール：生徒・教員それぞれの運用イメージを具体化し、導入後の現場像を掴む。</p>
-                <div class="w-20 h-1 bg-blue-900 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-700">
+                <div class="w-20 h-1 mx-auto mb-6" style="background:#3ea8ff;"></div>
+                <p class="text-lg" style="color:#6e7b85;">
                     具体的な利用シーンをご紹介します
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- シーン1：生徒側の利用 -->
-                <div class="bg-white rounded-xl p-6 border border-blue-100">
+                <div class="bg-white rounded-xl p-6" style="border:1px solid #e4edf4;">
                     <div class="flex items-center mb-3">
-                        <span class="bg-blue-100 text-blue-900 text-xs font-bold px-2 py-1 rounded mr-2">生徒</span>
-                        <h3 class="font-bold text-blue-900">初めての面談準備</h3>
+                        <span class="text-xs font-bold px-2 py-1 mr-2" style="background:#edf6ff; color:#3ea8ff; border-radius:3px;">生徒</span>
+                        <h3 class="font-bold" style="color:#333333;">初めての面談準備</h3>
                     </div>
                     <img src="./assets/images/student.webp" alt="生徒がスマホでAIに相談する様子" class="h-32 w-full rounded-lg border border-gray-200 object-contain bg-gray-50 mb-4">
                     <p class="text-gray-700 text-sm">
@@ -438,10 +427,10 @@
                 </div>
 
                 <!-- シーン2：教員側の利用 -->
-                <div class="bg-white rounded-xl p-6 border border-blue-100">
+                <div class="bg-white rounded-xl p-6" style="border:1px solid #e4edf4;">
                     <div class="flex items-center mb-3">
-                        <span class="bg-blue-100 text-blue-900 text-xs font-bold px-2 py-1 rounded mr-2">教員</span>
-                        <h3 class="font-bold text-blue-900">推薦入試の準備を効率化</h3>
+                        <span class="text-xs font-bold px-2 py-1 mr-2" style="background:#edf6ff; color:#3ea8ff; border-radius:3px;">教員</span>
+                        <h3 class="font-bold" style="color:#333333;">推薦入試の準備を効率化</h3>
                     </div>
                     <img src="./assets/images/teacher.webp" alt="先生がPCで作業している様子" class="h-32 w-full rounded-lg border border-gray-200 object-contain bg-gray-50 mb-4">
                     <p class="text-gray-700 text-sm">
@@ -450,7 +439,7 @@
                 </div>
             </div>
             <div class="text-center mt-10">
-                <a href="#home-contact" class="inline-flex items-center text-blue-900 font-semibold hover:text-blue-700">
+                <a href="#home-contact" class="inline-flex items-center font-semibold" style="color:#3ea8ff;">
                     次に見る：資料請求・相談の進め方 →
                 </a>
             </div>
@@ -464,7 +453,6 @@
             <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
                 まずはお気軽にご相談ください
             </h2>
-            <p class="text-sm text-blue-100 font-medium mb-4">ゴール：導入検討の次アクション（資料確認・相談）を迷わず実行できる。</p>
             <p class="text-lg text-blue-100 mb-6">
                 サービスについてのご相談、導入検討・実証実験のご相談を承っております
             </p>
@@ -484,7 +472,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
-                    <h3 class="text-xl font-bold text-blue-900 mb-4">株式会社PLUS</h3>
+                    <h3 class="text-xl font-bold mb-4" style="color:#3ea8ff;">株式会社PLUS</h3>
                     <p class="text-gray-600">
                         教育機関向け進路支援サービスの<br class="br-sp">企画・開発・提供
                     </p>
@@ -492,11 +480,11 @@
                 <div>
                     <h4 class="font-bold text-gray-900 mb-4">サイトマップ</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-600 hover:text-blue-900 transition">ホーム</a></li>
-                        <li><a href="service.html" class="text-gray-600 hover:text-blue-900 transition">サービス紹介</a></li>
-                        <li><a href="company.html" class="text-gray-600 hover:text-blue-900 transition">会社概要</a></li>
-                        <li><a href="download.html" class="text-gray-600 hover:text-blue-900 transition">資料請求</a></li>
-                        <li><a href="contact.html" class="text-gray-600 hover:text-blue-900 transition">お問い合わせ</a></li>
+                        <li><a href="index.html" class="text-gray-600 transition" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">ホーム</a></li>
+                        <li><a href="service.html" class="text-gray-600 transition" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">サービス紹介</a></li>
+                        <li><a href="company.html" class="text-gray-600 transition" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">会社概要</a></li>
+                        <li><a href="download.html" class="text-gray-600 transition" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">資料請求</a></li>
+                        <li><a href="contact.html" class="text-gray-600 transition" onmouseover="this.style.color='#3ea8ff'" onmouseout="this.style.color=''">お問い合わせ</a></li>
                     </ul>
                 </div>
                 <div>
@@ -514,13 +502,13 @@
 
     <!-- フローティングCTAボタン -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 animate-slideInRight">
-        <a href="download.html" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-6 py-3 rounded-full font-bold text-sm hover:from-blue-800 hover:to-blue-600 transition-all duration-300 shadow-2xl hover:shadow-3xl flex items-center gap-2 group">
-            <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <a href="download.html" class="text-white px-6 py-3 font-bold text-sm transition-all duration-300 shadow-2xl flex items-center gap-2 group" style="background:#3ea8ff; border-radius:8px;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
             <span class="hidden sm:inline">資料請求</span>
         </a>
-        <a href="contact.html" class="bg-white text-blue-900 border-2 border-blue-900 px-6 py-3 rounded-full font-medium text-sm hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
+        <a href="contact.html" class="bg-white font-medium text-sm hover:bg-gray-50 transition-all duration-300 shadow-lg flex items-center gap-2" style="color:#3ea8ff; border:1px solid #3ea8ff; border-radius:8px; padding:0.75rem 1.5rem;">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
             </svg>

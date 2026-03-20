@@ -29,7 +29,7 @@ export function ExampleDashboard() {
         <Button variant="secondary">詳細を見る</Button>
       </Card>
 
-      <InputBar />
+      <InputBar highlightShare />
     </main>
   );
 }

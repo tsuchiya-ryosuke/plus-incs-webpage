@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const C = {
   brand: "#3ea8ff", brandPale: "#edf6ff",
-  text: "#333", textSub: "#6e7b85", textMeta: "#a0aab4",
+  text: "#333", textSub: "#6e7b85", textMeta: "#5f6b76",
   border: "#e4edf4", borderFaint: "#f0f4f8",
   bg: "#f5f8fa", white: "#fff",
   green: "#1cb955", greenPale: "#edfaf3",
@@ -27,6 +27,16 @@ export default function App() {
   return (
     <div style={{ fontFamily: ff, background: C.bg, minHeight: "100vh", color: C.text }}>
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <style>{`
+        .focusable {
+          outline: none;
+        }
+        .focusable:focus-visible {
+          outline: 3px solid ${C.brand};
+          outline-offset: 2px;
+          box-shadow: 0 0 0 2px ${C.white};
+        }
+      `}</style>
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}` }}>
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 24px 0" }}>
           <p style={{ fontSize: 12, fontWeight: 600, color: C.brand, margin: "0 0 8px", letterSpacing: "0.04em" }}>PLUS DESIGN</p>
@@ -34,7 +44,7 @@ export default function App() {
           <p style={{ fontSize: 13, color: C.textSub, margin: "0 0 24px", lineHeight: 1.6 }}>共有シートボタン = 入力欄統合型 / ナビ = ヘッダー内セグメント</p>
           <nav style={{ display: "flex", gap: 0, position: "relative", bottom: -1 }}>
             {tabs.map(t => (
-              <button key={t.id} onClick={() => setTab(t.id)} style={{
+              <button key={t.id} onClick={() => setTab(t.id)} className="focusable" style={{
                 fontFamily: ff, padding: "10px 18px", fontSize: 13,
                 fontWeight: tab === t.id ? 700 : 400, color: tab === t.id ? C.brand : C.textSub,
                 background: tab === t.id ? C.bg : "transparent",
@@ -100,7 +110,7 @@ function StudentFlow() {
       <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
         <Phone label="3. プレビュー確認">
           <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontSize: 16, color: C.textSub, cursor: "pointer" }}>←</span>
+            <button type="button" className="focusable" aria-label="前の画面に戻る" style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
             <span style={{ fontSize: 15, fontWeight: 700 }}>共有シート</span>
           </div>
           <div style={{ padding: 16, flex: 1 }}>
@@ -118,21 +128,21 @@ function StudentFlow() {
                 </div>
               ))}
             </div>
-            <button style={{ ...bs("primary"), width: "100%", padding: "12px 20px", fontSize: 14, marginBottom: 8 }}>先生に送信する</button>
-            <button style={{ ...bs("secondary"), width: "100%", padding: "10px 20px", fontSize: 13 }}>編集する</button>
+            <button type="button" className="focusable" style={{ ...bs("primary"), width: "100%", padding: "12px 20px", fontSize: 14, marginBottom: 8 }}>先生に送信する</button>
+            <button type="button" className="focusable" style={{ ...bs("secondary"), width: "100%", padding: "10px 20px", fontSize: 13 }}>編集する</button>
           </div>
         </Phone>
 
         <Phone label="4. 送信完了">
           <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontSize: 16, color: C.textSub, cursor: "pointer" }}>←</span>
+            <button type="button" className="focusable" aria-label="前の画面に戻る" style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
             <span style={{ fontSize: 15, fontWeight: 700 }}>共有シート</span>
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", textAlign: "center" }}>
             <div style={{ width: 48, height: 48, borderRadius: "50%", background: C.greenPale, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, marginBottom: 14 }}>✓</div>
             <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 6 }}>送信しました</div>
             <div style={{ fontSize: 13, color: C.textSub, lineHeight: 1.7, marginBottom: 24 }}>田中先生に共有シートが届きました。</div>
-            <button style={{ ...bs("secondary"), padding: "10px 28px" }}>チャットに戻る</button>
+            <button type="button" className="focusable" style={{ ...bs("secondary"), padding: "10px 28px" }}>チャットに戻る</button>
           </div>
         </Phone>
       </div>
@@ -168,7 +178,7 @@ function TeacherScreens() {
                 { nm: "遠藤 美咲", topic: "模試の結果振り返り", time: "3日前", isNew: false },
                 { nm: "大野 翔太", topic: "併願パターンの相談", time: "1週間前", isNew: false },
               ].map((s, i) => (
-                <div key={i} style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: "12px 14px", cursor: "pointer" }}>
+                <button type="button" className="focusable" key={i} style={{ background: C.white, borderRadius: R.card, border: `1px solid ${C.border}`, padding: "12px 14px", cursor: "pointer", textAlign: "left", width: "100%" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
                     <div style={{ fontSize: 13, fontWeight: 600 }}>{s.nm}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -177,7 +187,7 @@ function TeacherScreens() {
                     </div>
                   </div>
                   <div style={{ fontSize: 12, color: C.textSub }}>{s.topic}</div>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -185,7 +195,7 @@ function TeacherScreens() {
 
         <Phone label="シート詳細">
           <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontSize: 16, color: C.textSub, cursor: "pointer" }}>←</span>
+            <button type="button" className="focusable" aria-label="生徒一覧に戻る" style={{ fontSize: 16, color: C.textSub, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>←</button>
             <span style={{ fontSize: 15, fontWeight: 700 }}>青木 太郎</span>
           </div>
           <div style={{ padding: 16, flex: 1 }}>
@@ -206,7 +216,7 @@ function TeacherScreens() {
                 </div>
               ))}
             </div>
-            <button style={{ ...bs("primary"), width: "100%", padding: "11px 20px", fontSize: 13 }}>コメントを返す</button>
+            <button type="button" className="focusable" style={{ ...bs("primary"), width: "100%", padding: "11px 20px", fontSize: 13 }}>コメントを返す</button>
           </div>
         </Phone>
       </div>
@@ -235,7 +245,7 @@ function InputDetails() {
               <div style={{ fontSize: 11, fontWeight: 600, color: C.brand, marginBottom: 6 }}>① 入力欄</div>
               <div style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 20, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 13, color: C.textMeta, flex: 1 }}>メッセージを入力...</span>
-                <div style={{ width: 30, height: 30, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 13, flexShrink: 0 }}>↑</div>
+                <button type="button" className="focusable" aria-label="メッセージを送信" style={{ width: 30, height: 30, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 13, flexShrink: 0, border: "none" }}>↑</button>
               </div>
             </div>
             {/* Sheet link row */}
@@ -243,7 +253,7 @@ function InputDetails() {
               <div style={{ fontSize: 11, fontWeight: 600, color: C.brand, marginBottom: 6 }}>② 共有シートリンク</div>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
                 <div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div>
-                <span style={{ fontSize: 12, color: C.brand, fontWeight: 500 }}>共有シートを作成</span>
+                <button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, background: "transparent", border: "none", padding: 0 }}>共有シートを作成</button>
               </div>
             </div>
           </div>
@@ -281,7 +291,7 @@ function InputDetails() {
           {/* Mimicking current VisionWell+ */}
           <div style={{ background: "#4a9e5c", padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 16, color: C.white, cursor: "pointer" }}>☰</span>
+              <button type="button" className="focusable" aria-label="メニューを開く" style={{ fontSize: 16, color: C.white, cursor: "pointer", border: "none", background: "transparent", padding: 0, lineHeight: 1 }}>☰</button>
               <span style={{ fontSize: 15, fontWeight: 700, color: C.white }}>VisionWell+</span>
             </div>
             <span style={{ fontSize: 12, color: C.white, border: "1px solid rgba(255,255,255,.5)", borderRadius: 4, padding: "3px 8px" }}>設定</span>
@@ -348,14 +358,15 @@ function Header({ active }) {
       </div>
       <div style={{ display: "flex", background: C.bg, borderRadius: R.btn, padding: 3 }}>
         {["チャット", "レポート"].map(x => (
-          <div key={x} style={{
+          <button type="button" className="focusable" key={x} style={{
             flex: 1, textAlign: "center", padding: "6px 0", fontSize: 12,
             fontWeight: x === active ? 600 : 400,
             color: x === active ? C.brand : C.textMeta,
             background: x === active ? C.white : "transparent",
             borderRadius: 6,
+            border: "none",
             boxShadow: x === active ? "0 1px 3px rgba(0,0,0,.06)" : "none",
-          }}>{x}</div>
+          }}>{x}</button>
         ))}
       </div>
     </div>
@@ -367,14 +378,14 @@ function InputC({ highlight } = {}) {
     <div style={{ padding: "10px 14px", background: C.white, borderTop: `1px solid ${C.border}` }}>
       <div style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 20, padding: "9px 14px", display: "flex", alignItems: "center", gap: 8 }}>
         <span style={{ fontSize: 13, color: C.textMeta, flex: 1 }}>メッセージを入力...</span>
-        <div style={{ width: 28, height: 28, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 12, flexShrink: 0 }}>↑</div>
+        <button type="button" className="focusable" aria-label="メッセージを送信" style={{ width: 28, height: 28, borderRadius: "50%", background: C.brand, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 12, flexShrink: 0, border: "none" }}>↑</button>
       </div>
       <div style={{
         display: "flex", alignItems: "center", justifyContent: "center", gap: 6, paddingTop: 8,
         ...(highlight ? { background: C.brandPale, margin: "8px -14px -10px", padding: "10px 14px", borderRadius: "0 0 0 0" } : {}),
       }}>
         <div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${C.brand}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.brand }}>↗</div>
-        <span style={{ fontSize: 12, color: C.brand, fontWeight: 500, cursor: "pointer" }}>共有シートを作成</span>
+        <button type="button" className="focusable" style={{ fontSize: 12, color: C.brand, fontWeight: 500, cursor: "pointer", background: "transparent", border: "none", padding: 0 }}>共有シートを作成</button>
       </div>
     </div>
   );

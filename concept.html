@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社PLUS — Corporate Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=DM+Mono:wght@300;400&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #f7f4ef;
+    --gray: #8a8680;
+    --light: #e8e4dd;
+    --accent: #1a1a1a;
+    --ink: #2c2a27;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 3rem 4rem;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%;
+    height: 100%;
+    background: var(--black);
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 6rem;
+  }
+
+  .kicker {
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+
+  .formula-main {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(32px, 6vw, 72px);
+    font-weight: 500;
+    color: var(--black);
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    line-height: 1.2;
+  }
+
+  .rotating-word {
+    display: inline-block;
+    color: var(--black);
+    font-weight: 500;
+    min-width: 2.5em;
+    opacity: 1;
+    transition: opacity 0.35s ease;
+  }
+
+  .rotating-word.fade {
+    opacity: 0;
+  }
+
+  .formula-static {
+    white-space: nowrap;
+    color: var(--ink);
+  }
+
+  .formula-block {
+    margin-bottom: 3rem;
+  }
+
+  /* scroll hint */
+  .scroll-hint {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gray);
+  }
+
+  /* ── VALUES ── */
+  .values-section {
+    background: var(--black);
+    color: var(--white);
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .value-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid #2a2a2a;
+    align-items: start;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .value-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .value-item:last-child {
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .value-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .value-tag .plus {
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  .value-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #444;
+    letter-spacing: 0.1em;
+  }
+
+  .value-subtitle {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .value-body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #8a8680;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── NEXT PAGE LINK ── */
+  .next-section {
+    background: var(--white);
+    padding: 5rem 4rem;
+    border-top: 1px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .next-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .next-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--black);
+    letter-spacing: 0.02em;
+  }
+
+  .next-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--black);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 2px;
+    transition: opacity 0.2s ease;
+  }
+
+  .next-link:hover {
+    opacity: 0.5;
+  }
+
+  .next-link::after {
+    content: '→';
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ── */
+  .footer-section {
+    background: var(--white);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--light);
+  }
+
+  .company-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner > * {
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .kicker        { animation-delay: 0.1s; }
+  .formula-block { animation-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { padding: 2rem; }
+    .hero::before { width: 30%; }
+    .values-section { padding: 4rem 2rem; }
+    .value-item { grid-template-columns: 1fr; gap: 1.5rem; }
+    .next-section { padding: 3rem 2rem; flex-direction: column; gap: 2rem; align-items: flex-start; }
+    .footer-section { padding: 2rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .company-name { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="kicker">株式会社PLUS — Corporate Concept</p>
+
+    <div class="formula-block">
+      <div class="formula-main">
+        <span class="rotating-word" id="rotator">学校</span><span class="formula-static">に、PLUSする。</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="scroll-hint">Values</p>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <p class="section-label">Our Values</p>
+
+  <div class="values-grid">
+    <div class="value-item">
+      <div class="value-left">
+        <p class="value-tag"><span class="plus">+</span> Ultra</p>
+        <p class="value-number">01</p>
+      </div>
+      <div class="value-right">
+        <p class="value-subtitle">期待を、ひとつ超える。</p>
+        <p class="value-body">生徒の未来に関わっているという自覚を持つ。「ここまでやってくれたんだ」と思われる仕事をする。</p>
+      </div>
+    </div>
+
+    <div class="value-item">
+      <div class="value-left">
+        <p class="value-tag"><span class="plus">+</span> Respect</p>
+        <p class="value-number">02</p>
+      </div>
+      <div class="value-right">
+        <p class="value-subtitle">相手の現場に、敬意を持つ。</p>
+        <p class="value-body">先生、生徒、学校、チームメンバー。相手の背景や制約を理解してから提案する。使う人が安心できるか、迷わないか、信頼できるかまで考える。</p>
+      </div>
+    </div>
+
+    <div class="value-item">
+      <div class="value-left">
+        <p class="value-tag"><span class="plus">+</span> Quick</p>
+        <p class="value-number">03</p>
+      </div>
+      <div class="value-right">
+        <p class="value-subtitle">まず動き、早く届ける。</p>
+        <p class="value-body">小さく試して、早く形にする。相手が次に進める品質で届け、反応をもらい、すぐに改善する。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT: GUIDELINES -->
+<div class="next-section">
+  <div>
+    <p class="next-label">Next</p>
+    <p class="next-title">行動指針</p>
+  </div>
+  <a href="guidelines.html" class="next-link">Guidelines</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-section">
+  <p class="company-name">株式会社PLUS</p>
+  <p class="company-name" style="font-size: 10px;">plus-incs.com</p>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.value-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+      }
+    });
+  }, { threshold: 0.1 });
+  items.forEach(el => observer.observe(el));
+
+  const words = ['学校', '先生', '生徒', '社会', 'あなた', 'チーム', '未来'];
+  let idx = 0;
+  const rotator = document.getElementById('rotator');
+  setInterval(() => {
+    rotator.classList.add('fade');
+    setTimeout(() => {
+      idx = (idx + 1) % words.length;
+      rotator.textContent = words[idx];
+      rotator.classList.remove('fade');
+    }, 360);
+  }, 2000);
+</script>
+</body>
+</html>
